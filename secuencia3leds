@@ -4,9 +4,8 @@
 
 CONFIG  FOSC = INTOSCIO_EC    ; Usa el oscilador interno a 8 MHz
 CONFIG  WDT = OFF             ; Deshabilitar Watchdog Timer
-CONFIG  PBADEN = OFF          ; Configurar PORTB como digital
+CONFIG  PBADEN = OFF          ; Configurar PORTA como digital
 CONFIG  LVP = OFF             ; Deshabilitar programación de baja tensión
-
 
 ; Definición de variables en memoria UDATA
 UDATA
@@ -20,40 +19,40 @@ ORG 0x00
 ; Rutina Principal
 INICIO:
     MOVLB 1           ; Seleccionar banco 1 de memoria
-    CLRF TRISA        ; Configurar PORTB como salida (todos los pines en 0 = salida)
+    CLRF TRISA        ; Configurar PORTA como salida (todos los pines en 0 = salida)
     MOVLB 0           ; Volver al banco 0
-    CLRF LATA        ; Apagar todos los LEDs al inicio
+    CLRF LATA         ; Apagar todos los LEDs al inicio
 
 LOOP:
     ; Encender LEDs en secuencia
-    BSF LATA, 0       ; Encender LED en RB0
+    BSF LATA, 0       ; Encender LED en RA0
     CALL DELAY_1S     ; Esperar 1 segundo
-    BCF LATA, 0       ; Apagar LED en RB0
+    BCF LATA, 0       ; Apagar LED en RA0
 
-    BSF LATA, 1       ; Encender LED en RB1
+    BSF LATA, 1       ; Encender LED en RA1
     CALL DELAY_1S     ; Esperar 1 segundo
-    BCF LATA, 1       ; Apagar LED en RB1
+    BCF LATA, 1       ; Apagar LED en RA1
 
-    BSF LATA, 2       ; Encender LED en RB2
+    BSF LATA, 2       ; Encender LED en RA2
     CALL DELAY_1S     ; Esperar 1 segundo
-    BCF LATA, 2       ; Apagar LED en RB2
+    BCF LATA, 2       ; Apagar LED en RA2
 
     ; Apagar LEDs en orden inverso
-    BSF LATA, 2       ; Encender LED en RB2
+    BSF LATA, 2       ; Encender LED en RA2
     CALL DELAY_1S     ; Esperar 1 segundo
-    BCF LATA, 2       ; Apagar LED en RB2
+    BCF LATA, 2       ; Apagar LED en RA2
 
-    BSF LATA, 1       ; Encender LED en RB1
+    BSF LATA, 1       ; Encender LED en RA1
     CALL DELAY_1S     ; Esperar 1 segundo
-    BCF LATA, 1       ; Apagar LED en RB1
+    BCF LATA, 1       ; Apagar LED en RA1
 
-    BSF LATA, 0       ; Encender LED en RB0
+    BSF LATA, 0       ; Encender LED en RA0
     CALL DELAY_1S     ; Esperar 1 segundo
-    BCF LATA, 0       ; Apagar LED en RB0
+    BCF LATA, 0       ; Apagar LED en RA0
 
     GOTO LOOP         ; Repetir ciclo indefinidamente
-; Rutina de Retardo de 1 Segundo (Ajustado para 8 MHz)
 
+; Rutina de Retardo de 1 Segundo (Ajustado para 8 MHz)
 DELAY_1S:
     MOVLW D'125'       ; Cargar W con 125 (contador externo)
     MOVWF COUNT1       ; Guardar en COUNT1
