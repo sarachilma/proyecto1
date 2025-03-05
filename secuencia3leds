@@ -1,0 +1,71 @@
+; Secuencia de 3 LEDs con PIC18F4550
+; Configuración del PIC18F4550
+#include "p18f4550.inc"
+
+CONFIG  FOSC = INTOSCIO_EC    ; Usa el oscilador interno a 8 MHz
+CONFIG  WDT = OFF             ; Deshabilitar Watchdog Timer
+CONFIG  PBADEN = OFF          ; Configurar PORTB como digital
+CONFIG  LVP = OFF             ; Deshabilitar programación de baja tensión
+
+
+; Definición de variables en memoria UDATA
+UDATA
+COUNT1  RES 1   ; Reserva 1 byte de memoria para COUNT1 (contador externo)
+COUNT2  RES 1   ; Reserva 1 byte de memoria para COUNT2 (contador interno)
+
+; Código principal
+ORG 0x00
+    GOTO INICIO   ; Salto a la rutina principal para evitar el vector de reset
+
+; Rutina Principal
+INICIO:
+    MOVLB 1           ; Seleccionar banco 1 de memoria
+    CLRF TRISA        ; Configurar PORTB como salida (todos los pines en 0 = salida)
+    MOVLB 0           ; Volver al banco 0
+    CLRF LATA        ; Apagar todos los LEDs al inicio
+
+LOOP:
+    ; Encender LEDs en secuencia
+    BSF LATA, 0       ; Encender LED en RB0
+    CALL DELAY_1S     ; Esperar 1 segundo
+    BCF LATA, 0       ; Apagar LED en RB0
+
+    BSF LATA, 1       ; Encender LED en RB1
+    CALL DELAY_1S     ; Esperar 1 segundo
+    BCF LATA, 1       ; Apagar LED en RB1
+
+    BSF LATA, 2       ; Encender LED en RB2
+    CALL DELAY_1S     ; Esperar 1 segundo
+    BCF LATA, 2       ; Apagar LED en RB2
+
+    ; Apagar LEDs en orden inverso
+    BSF LATA, 2       ; Encender LED en RB2
+    CALL DELAY_1S     ; Esperar 1 segundo
+    BCF LATA, 2       ; Apagar LED en RB2
+
+    BSF LATA, 1       ; Encender LED en RB1
+    CALL DELAY_1S     ; Esperar 1 segundo
+    BCF LATA, 1       ; Apagar LED en RB1
+
+    BSF LATA, 0       ; Encender LED en RB0
+    CALL DELAY_1S     ; Esperar 1 segundo
+    BCF LATA, 0       ; Apagar LED en RB0
+
+    GOTO LOOP         ; Repetir ciclo indefinidamente
+; Rutina de Retardo de 1 Segundo (Ajustado para 8 MHz)
+
+DELAY_1S:
+    MOVLW D'125'       ; Cargar W con 125 (contador externo)
+    MOVWF COUNT1       ; Guardar en COUNT1
+DELAY_1S_LOOP1:
+    MOVLW D'200'       ; Cargar W con 200 (contador interno)
+    MOVWF COUNT2       ; Guardar en COUNT2
+DELAY_1S_LOOP2:
+    NOP                ; Consume un ciclo de reloj
+    DECFSZ COUNT2, F   ; Decrementar COUNT2 y verificar si es 0
+    GOTO DELAY_1S_LOOP2 ; Si COUNT2 no es 0, seguir en el bucle
+    DECFSZ COUNT1, F   ; Decrementar COUNT1 y verificar si es 0
+    GOTO DELAY_1S_LOOP1 ; Si COUNT1 no es 0, repetir el ciclo externo
+    RETURN             ; Regresar de la subrutina
+
+END
