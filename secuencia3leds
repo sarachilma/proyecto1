@@ -1,70 +1,107 @@
-; Secuencia de 3 LEDs con PIC18F4550
-; Configuración del PIC18F4550
-#include "p18f4550.inc"
+; ---------------------------------------------------------------------
+; Secuencia de 3 LEDs con retardos de 1 segundo
+; Microcontrolador: PIC18F4550
+; Oscilador interno configurado a 250 kHz
+; ---------------------------------------------------------------------
 
-CONFIG  FOSC = INTOSCIO_EC    ; Usa el oscilador interno a 8 MHz
-CONFIG  WDT = OFF             ; Deshabilitar Watchdog Timer
-CONFIG  PBADEN = OFF          ; Configurar PORTA como digital
-CONFIG  LVP = OFF             ; Deshabilitar programación de baja tensión
+; ---------------------------------------------------------------------
+; CONFIGURACIÓN DE BITS (DIRECTIVAS DEL COMPILADOR)
+; ---------------------------------------------------------------------
+#include "p18f4550.inc"  ; Incluir archivo de definiciones del PIC18F4550
 
-; Definición de variables en memoria UDATA
+CONFIG  FOSC = INTOSCIO_EC    ; Usar oscilador interno con salida en RA6
+CONFIG  WDT = OFF             ; Deshabilitar Watchdog Timer (evitar reset automático)
+CONFIG  PBADEN = OFF          ; Deshabilitar conversión A/D en PORTB (configurar como digital)
+CONFIG  LVP = OFF             ; Deshabilitar programación de bajo voltaje (LVP)
+
+; ---------------------------------------------------------------------
+; VARIABLES EN MEMORIA (SECCIÓN UDATA)
+; ---------------------------------------------------------------------
 UDATA
-COUNT1  RES 1   ; Reserva 1 byte de memoria para COUNT1 (contador externo)
-COUNT2  RES 1   ; Reserva 1 byte de memoria para COUNT2 (contador interno)
+COUNT1  RES 1       ; Reservar 1 byte para COUNT1 (contador para bucle externo)
+COUNT2  RES 1       ; Reservar 1 byte para COUNT2 (contador para bucle interno)
 
-; Código principal
-ORG 0x00
-    GOTO INICIO   ; Salto a la rutina principal para evitar el vector de reset
+; ---------------------------------------------------------------------
+; VECTOR DE RESET (INICIO DEL PROGRAMA)
+; ---------------------------------------------------------------------
+ORG     0x0000      ; Origen del programa en la dirección 0x0000
+    GOTO    INICIO  ; Saltar a la etiqueta INICIO (inicio del programa principal)
 
-; Rutina Principal
+; ---------------------------------------------------------------------
+; PROGRAMA PRINCIPAL
+; ---------------------------------------------------------------------
 INICIO:
-    MOVLB 1           ; Seleccionar banco 1 de memoria
-    CLRF TRISA        ; Configurar PORTA como salida (todos los pines en 0 = salida)
-    MOVLB 0           ; Volver al banco 0
-    CLRF LATA         ; Apagar todos los LEDs al inicio
+    ; -----------------------------------------------------------------
+    ; CONFIGURACIÓN INICIAL DEL MICROCONTROLADOR
+    ; -----------------------------------------------------------------
+    MOVLB   1           ; Seleccionar banco 1 (para acceder a registros especiales)
+    CLRF    TRISA       ; Configurar todos los pines de PORTA como salidas (TRISA = 0)
+    MOVLW   B'00110000' ; Configurar OSCCON: IRCF3:IRCF0 = 011 (250 kHz), SCS = 00 (usar FOSC)
+    MOVWF   OSCCON,FAST ; Cargar valor en OSCCON (configurar oscilador interno a 250 kHz)
+    
+    MOVLB   0           ; Volver al banco 0 (banco por defecto)
+    CLRF    LATA        ; Apagar todos los LEDs (LATA = 0)
 
+; ---------------------------------------------------------------------
+; BUCLE PRINCIPAL (SECUENCIA DE LEDs)
+; ---------------------------------------------------------------------
 LOOP:
-    ; Encender LEDs en secuencia
-    BSF LATA, 0       ; Encender LED en RA0
-    CALL DELAY_1S     ; Esperar 1 segundo
-    BCF LATA, 0       ; Apagar LED en RA0
+    ; Secuencia hacia adelante: RA0 -> RA1 -> RA2
+    BSF     LATA, 0     ; Encender LED en RA0 (poner a 1 el bit 0 de LATA)
+    CALL    DELAY_1S    ; Llamar a la rutina de retardo de 1 segundo
+    BCF     LATA, 0     ; Apagar LED en RA0 (poner a 0 el bit 0 de LATA)
 
-    BSF LATA, 1       ; Encender LED en RA1
-    CALL DELAY_1S     ; Esperar 1 segundo
-    BCF LATA, 1       ; Apagar LED en RA1
+    BSF     LATA, 1     ; Encender LED en RA1
+    CALL    DELAY_1S    ; Esperar 1 segundo
+    BCF     LATA, 1     ; Apagar LED en RA1
 
-    BSF LATA, 2       ; Encender LED en RA2
-    CALL DELAY_1S     ; Esperar 1 segundo
-    BCF LATA, 2       ; Apagar LED en RA2
+    BSF     LATA, 2     ; Encender LED en RA2
+    CALL    DELAY_1S    ; Esperar 1 segundo
+    BCF     LATA, 2     ; Apagar LED en RA2
 
-    ; Apagar LEDs en orden inverso
-    BSF LATA, 2       ; Encender LED en RA2
-    CALL DELAY_1S     ; Esperar 1 segundo
-    BCF LATA, 2       ; Apagar LED en RA2
+    ; Secuencia hacia atrás: RA2 -> RA1 -> RA0
+    BSF     LATA, 2     ; Encender LED en RA2
+    CALL    DELAY_1S    ; Esperar 1 segundo
+    BCF     LATA, 2     ; Apagar LED en RA2
 
-    BSF LATA, 1       ; Encender LED en RA1
-    CALL DELAY_1S     ; Esperar 1 segundo
-    BCF LATA, 1       ; Apagar LED en RA1
+    BSF     LATA, 1     ; Encender LED en RA1
+    CALL    DELAY_1S    ; Esperar 1 segundo
+    BCF     LATA, 1     ; Apagar LED en RA1
 
-    BSF LATA, 0       ; Encender LED en RA0
-    CALL DELAY_1S     ; Esperar 1 segundo
-    BCF LATA, 0       ; Apagar LED en RA0
+    BSF     LATA, 0     ; Encender LED en RA0
+    CALL    DELAY_1S    ; Esperar 1 segundo
+    BCF     LATA, 0     ; Apagar LED en RA0
 
-    GOTO LOOP         ; Repetir ciclo indefinidamente
+    GOTO    LOOP        ; Repetir el bucle indefinidamente
 
-; Rutina de Retardo de 1 Segundo (Ajustado para 8 MHz)
+; ---------------------------------------------------------------------
+; RUTINA DE RETARDO DE 1 SEGUNDO (PARA 250 kHz)
+; ---------------------------------------------------------------------
 DELAY_1S:
-    MOVLW D'125'       ; Cargar W con 125 (contador externo)
-    MOVWF COUNT1       ; Guardar en COUNT1
+    ; -----------------------------------------------------------------
+    ; Bucle externo (COUNT1 = 125 iteraciones)
+    ; -----------------------------------------------------------------
+    MOVLW   D'125'      ; Cargar valor 125 en W (para COUNT1)
+    MOVWF   COUNT1      ; Mover W a COUNT1 (inicializar bucle externo)
 DELAY_1S_LOOP1:
-    MOVLW D'200'       ; Cargar W con 200 (contador interno)
-    MOVWF COUNT2       ; Guardar en COUNT2
+    ; -----------------------------------------------------------------
+    ; Bucle interno (COUNT2 = 200 iteraciones)
+    ; -----------------------------------------------------------------
+    MOVLW   D'200'      ; Cargar valor 200 en W (para COUNT2)
+    MOVWF   COUNT2      ; Mover W a COUNT2 (inicializar bucle interno)
 DELAY_1S_LOOP2:
-    NOP                ; Consume un ciclo de reloj
-    DECFSZ COUNT2, F   ; Decrementar COUNT2 y verificar si es 0
-    GOTO DELAY_1S_LOOP2 ; Si COUNT2 no es 0, seguir en el bucle
-    DECFSZ COUNT1, F   ; Decrementar COUNT1 y verificar si es 0
-    GOTO DELAY_1S_LOOP1 ; Si COUNT1 no es 0, repetir el ciclo externo
-    RETURN             ; Regresar de la subrutina
+    NOP                 ; No operation (1 ciclo de retardo)
+    DECFSZ  COUNT2,F    ; Decrementar COUNT2 y saltar si es cero (1 ciclo, 2 si salta)
+    GOTO    DELAY_1S_LOOP2 ; Repetir bucle interno (2 ciclos)
+    
+    ; -----------------------------------------------------------------
+    ; Ajustar bucle externo
+    ; -----------------------------------------------------------------
+    DECFSZ  COUNT1,F    ; Decrementar COUNT1 y saltar si es cero (1 ciclo, 2 si salta)
+    GOTO    DELAY_1S_LOOP1 ; Repetir bucle externo (2 ciclos)
+    RETURN              ; Retornar de la rutina de retardo
 
-END
+; ---------------------------------------------------------------------
+; FIN DEL PROGRAMA
+; ---------------------------------------------------------------------
+    END                 ; Fin del código
