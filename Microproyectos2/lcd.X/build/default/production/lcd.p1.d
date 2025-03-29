@@ -1,3 +1,4 @@
-build/default/production/lcd.p1:  \
-lcd.c  \
-lcd.h 
+build/default/production/LCD.p1:  \
+LCD.c  \
+LCD.h  \
+Config.h 

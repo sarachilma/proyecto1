@@ -1,4 +1,4 @@
-# 1 "lcd.c"
+# 1 "LCD.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 285 "<built-in>" 3
@@ -6,9 +6,10 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include/language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "lcd.c" 2
-# 1 "./lcd.h" 1
-# 11 "./lcd.h"
+# 1 "LCD.c" 2
+# 26 "LCD.c"
+# 1 "./LCD.h" 1
+# 31 "./LCD.h"
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include/xc.h" 1 3
 # 18 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -5640,97 +5641,155 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include/xc.h" 2 3
-# 12 "./lcd.h" 2
-# 23 "./lcd.h"
-void Lcd_Init(void);
-void Lcd_Cmd(unsigned char cmd);
-void Lcd_Write_Char(char data);
-void Lcd_Write_String(const char *str);
-void Lcd_Set_Cursor(unsigned char row, unsigned char col);
-void Lcd_Clear(void);
-# 2 "lcd.c" 2
+# 32 "./LCD.h" 2
 
 
+# 1 "./Config.h" 1
+# 34 "./Config.h"
+#pragma config PLLDIV = 1
+#pragma config CPUDIV = OSC1_PLL2
+#pragma config USBDIV = 1
 
-void Lcd_Pulse_EN(void) {
-    PORTAbits.RA2 = 1;
-    _delay((unsigned long)((10)*(8000000/4000000.0)));
-    PORTAbits.RA2 = 0;
-    _delay((unsigned long)((10)*(8000000/4000000.0)));
+
+#pragma config FOSC = INTOSC_EC
+#pragma config FCMEN = OFF
+#pragma config IESO = OFF
+
+
+#pragma config PWRT = OFF
+#pragma config BOR = ON
+#pragma config BORV = 3
+#pragma config VREGEN = OFF
+
+
+#pragma config WDT = OFF
+#pragma config WDTPS = 32768
+
+
+#pragma config CCP2MX = ON
+#pragma config PBADEN = OFF
+#pragma config LPT1OSC = OFF
+#pragma config MCLRE = OFF
+
+
+#pragma config STVREN = ON
+#pragma config LVP = OFF
+#pragma config ICPRT = OFF
+#pragma config XINST = OFF
+
+
+#pragma config CP0 = OFF
+#pragma config CP1 = OFF
+#pragma config CP2 = OFF
+#pragma config CP3 = OFF
+
+
+#pragma config CPB = OFF
+#pragma config CPD = OFF
+
+
+#pragma config WRT0 = OFF
+#pragma config WRT1 = OFF
+#pragma config WRT2 = OFF
+#pragma config WRT3 = OFF
+
+
+#pragma config WRTC = OFF
+#pragma config WRTB = OFF
+#pragma config WRTD = OFF
+
+
+#pragma config EBTR0 = OFF
+#pragma config EBTR1 = OFF
+#pragma config EBTR2 = OFF
+#pragma config EBTR3 = OFF
+
+
+#pragma config EBTRB = OFF
+# 35 "./LCD.h" 2
+# 45 "./LCD.h"
+void LCD_Init();
+void LCD_Command(unsigned char );
+void LCD_Char(unsigned char x);
+void LCD_String(const char *);
+void LCD_String_xy(char, char , const char *);
+void LCD_Clear();
+# 27 "LCD.c" 2
+
+void LCD_Init()
+{
+    TRISD = 0;
+    _delay((unsigned long)((15)*(8000000/4000.0)));
+    LCD_Command(0x02);
+
+    LCD_Command(0x28);
+
+ LCD_Command(0x01);
+    LCD_Command(0x0c);
+ LCD_Command(0x06);
+}
+
+void LCD_Command(unsigned char cmd )
+{
+ LATD = (LATD & 0x0f) |(0xF0 & cmd);
+ LATD0 = 0;
+ LATD1 = 1;
+ __nop();
+ LATD1 = 0;
+ _delay((unsigned long)((1)*(8000000/4000.0)));
+    LATD = (LATD & 0x0f) | (cmd<<4);
+ LATD1 = 1;
+ __nop();
+ LATD1 = 0;
+ _delay((unsigned long)((3)*(8000000/4000.0)));
 }
 
 
-void Lcd_Send_Nibble(unsigned char data) {
-    PORTBbits.RB0 = (data >> 0) & 1;
-    PORTBbits.RB1 = (data >> 1) & 1;
-    PORTBbits.RB2 = (data >> 2) & 1;
-    PORTBbits.RB3 = (data >> 3) & 1;
-    Lcd_Pulse_EN();
+void LCD_Char(unsigned char dat)
+{
+ LATD = (LATD & 0x0f) | (0xF0 & dat);
+ LATD0 = 1;
+ LATD1 = 1;
+ __nop();
+ LATD1 = 0;
+ _delay((unsigned long)((1)*(8000000/4000.0)));
+    LATD = (LATD & 0x0f) | (dat<<4);
+ LATD1 = 1;
+ __nop();
+ LATD1 = 0;
+ _delay((unsigned long)((3)*(8000000/4000.0)));
 }
 
-
-void Lcd_Cmd(unsigned char cmd) {
-    PORTAbits.RA0 = 0;
-    Lcd_Send_Nibble(cmd >> 4);
-    Lcd_Send_Nibble(cmd & 0x0F);
-    _delay((unsigned long)((2)*(8000000/4000.0)));
-}
-
-
-void Lcd_Write_Char(char data) {
-    PORTAbits.RA0 = 1;
-    Lcd_Send_Nibble(data >> 4);
-    Lcd_Send_Nibble(data & 0x0F);
-    _delay((unsigned long)((40)*(8000000/4000000.0)));
-}
-
-
-void Lcd_Write_String(const char *str) {
-    while (*str) {
-        Lcd_Write_Char(*str++);
+void LCD_String(const char *msg)
+{
+ while((*msg)!=0)
+ {
+   LCD_Char(*msg);
+   msg++;
     }
+
 }
 
-
-void Lcd_Set_Cursor(unsigned char row, unsigned char col) {
-    unsigned char address;
-    if (row == 0)
-        address = 0x80 + col;
+void LCD_String_xy(char row,char pos,const char *msg)
+{
+    char location=0;
+    if(row<=1)
+    {
+        location = (0x80) | ((pos) & 0x0f);
+        LCD_Command(location);
+    }
     else
-        address = 0xC0 + col;
-    Lcd_Cmd(address);
+    {
+        location = (0xC0) | ((pos) & 0x0f);
+        LCD_Command(location);
+    }
+
+
+    LCD_String(msg);
+
 }
 
-
-void Lcd_Clear(void) {
-    Lcd_Cmd(0x01);
-    _delay((unsigned long)((2)*(8000000/4000.0)));
-}
-
-
-void Lcd_Init(void) {
-
-    TRISAbits.TRISA0 = 0;
-    TRISAbits.TRISA1 = 0;
-    TRISAbits.TRISA2 = 0;
-    TRISBbits.TRISB0 = 0;
-    TRISBbits.TRISB1 = 0;
-    TRISBbits.TRISB2 = 0;
-    TRISBbits.TRISB3 = 0;
-
-    PORTAbits.RA1 = 0;
-
-
-    _delay((unsigned long)((20)*(8000000/4000.0)));
-    Lcd_Send_Nibble(0x03);
-    _delay((unsigned long)((5)*(8000000/4000.0)));
-    Lcd_Send_Nibble(0x03);
-    _delay((unsigned long)((100)*(8000000/4000000.0)));
-    Lcd_Send_Nibble(0x03);
-    Lcd_Send_Nibble(0x02);
-
-    Lcd_Cmd(0x28);
-    Lcd_Cmd(0x0C);
-    Lcd_Cmd(0x06);
-    Lcd_Clear();
+void LCD_Clear()
+{
+    LCD_Command(0x01);
 }

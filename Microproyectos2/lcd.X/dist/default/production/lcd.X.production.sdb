@@ -27,160 +27,81 @@
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"5 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\lcd.X\lcd.c
-[v _Lcd_Pulse_EN Lcd_Pulse_EN `(v  1 e 1 0 ]
-"13
-[v _Lcd_Send_Nibble Lcd_Send_Nibble `(v  1 e 1 0 ]
-"22
-[v _Lcd_Cmd Lcd_Cmd `(v  1 e 1 0 ]
-"30
-[v _Lcd_Write_Char Lcd_Write_Char `(v  1 e 1 0 ]
-"38
-[v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
-"45
-[v _Lcd_Set_Cursor Lcd_Set_Cursor `(v  1 e 1 0 ]
-"55
-[v _Lcd_Clear Lcd_Clear `(v  1 e 1 0 ]
-"61
-[v _Lcd_Init Lcd_Init `(v  1 e 1 0 ]
-"80 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\lcd.X\main.c
+"28 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\LCD.X\LCD.c
+[v _LCD_Init LCD_Init `(v  1 e 1 0 ]
+"41
+[v _LCD_Command LCD_Command `(v  1 e 1 0 ]
+"57
+[v _LCD_Char LCD_Char `(v  1 e 1 0 ]
+"72
+[v _LCD_String LCD_String `(v  1 e 1 0 ]
+"82
+[v _LCD_String_xy LCD_String_xy `(v  1 e 1 0 ]
+"101
+[v _LCD_Clear LCD_Clear `(v  1 e 1 0 ]
+"36 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\LCD.X\lcd_main.c
 [v _main main `(v  1 e 1 0 ]
-[s S24 . 1 `uc 1 RA0 1 0 :1:0 
-`uc 1 RA1 1 0 :1:1 
-`uc 1 RA2 1 0 :1:2 
-`uc 1 RA3 1 0 :1:3 
-`uc 1 RA4 1 0 :1:4 
-`uc 1 RA5 1 0 :1:5 
-`uc 1 RA6 1 0 :1:6 
-]
-"2353 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc/pic18f4550.h
-[s S32 . 1 `uc 1 AN0 1 0 :1:0 
-`uc 1 AN1 1 0 :1:1 
-`uc 1 AN2 1 0 :1:2 
-`uc 1 AN3 1 0 :1:3 
-`uc 1 T0CKI 1 0 :1:4 
-`uc 1 AN4 1 0 :1:5 
-`uc 1 OSC2 1 0 :1:6 
-]
-[s S40 . 1 `uc 1 . 1 0 :2:0 
-`uc 1 VREFM 1 0 :1:2 
-`uc 1 VREFP 1 0 :1:3 
-`uc 1 . 1 0 :1:4 
-`uc 1 LVDIN 1 0 :1:5 
-]
-[s S46 . 1 `uc 1 . 1 0 :5:0 
-`uc 1 HLVDIN 1 0 :1:5 
-]
-[s S49 . 1 `uc 1 ULPWUIN 1 0 :1:0 
-]
-[u S51 . 1 `S24 1 . 1 0 `S32 1 . 1 0 `S40 1 . 1 0 `S46 1 . 1 0 `S49 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES51  1 e 1 @3968 ]
-[s S91 . 1 `uc 1 RB0 1 0 :1:0 
-`uc 1 RB1 1 0 :1:1 
-`uc 1 RB2 1 0 :1:2 
-`uc 1 RB3 1 0 :1:3 
-`uc 1 RB4 1 0 :1:4 
-`uc 1 RB5 1 0 :1:5 
-`uc 1 RB6 1 0 :1:6 
-`uc 1 RB7 1 0 :1:7 
-]
-"2483
-[s S100 . 1 `uc 1 INT0 1 0 :1:0 
-`uc 1 INT1 1 0 :1:1 
-`uc 1 INT2 1 0 :1:2 
-`uc 1 . 1 0 :2:3 
-`uc 1 PGM 1 0 :1:5 
-`uc 1 PGC 1 0 :1:6 
-`uc 1 PGD 1 0 :1:7 
-]
-[s S108 . 1 `uc 1 . 1 0 :3:0 
-`uc 1 CCP2_PA2 1 0 :1:3 
-]
-[u S111 . 1 `S91 1 . 1 0 `S100 1 . 1 0 `S108 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES111  1 e 1 @3969 ]
-[s S136 . 1 `uc 1 TRISA0 1 0 :1:0 
-`uc 1 TRISA1 1 0 :1:1 
-`uc 1 TRISA2 1 0 :1:2 
-`uc 1 TRISA3 1 0 :1:3 
-`uc 1 TRISA4 1 0 :1:4 
-`uc 1 TRISA5 1 0 :1:5 
-`uc 1 TRISA6 1 0 :1:6 
-]
-"3457
-[u S152 . 1 `S136 1 . 1 0 `S24 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES152  1 e 1 @3986 ]
-[s S172 . 1 `uc 1 TRISB0 1 0 :1:0 
-`uc 1 TRISB1 1 0 :1:1 
-`uc 1 TRISB2 1 0 :1:2 
-`uc 1 TRISB3 1 0 :1:3 
-`uc 1 TRISB4 1 0 :1:4 
-`uc 1 TRISB5 1 0 :1:5 
-`uc 1 TRISB6 1 0 :1:6 
-`uc 1 TRISB7 1 0 :1:7 
-]
-"3657
-[u S190 . 1 `S172 1 . 1 0 `S91 1 . 1 0 ]
-[v _TRISBbits TRISBbits `VES190  1 e 1 @3987 ]
-"80 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\lcd.X\main.c
+"3263 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc/pic18f4550.h
+[v _LATD LATD `VEuc  1 e 1 @3980 ]
+"4001
+[v _TRISD TRISD `VEuc  1 e 1 @3989 ]
+"7986
+[v _OSCCON OSCCON `VEuc  1 e 1 @4051 ]
+"9987
+[v _LATD0 LATD0 `VEb  1 e 0 @31840 ]
+"9990
+[v _LATD1 LATD1 `VEb  1 e 0 @31841 ]
+"10392
+[v _RBPU RBPU `VEb  1 e 0 @32655 ]
+"36 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\LCD.X\lcd_main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"94
+"53
 } 0
-"38 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\lcd.X\lcd.c
-[v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
+"82 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\LCD.X\LCD.c
+[v _LCD_String_xy LCD_String_xy `(v  1 e 1 0 ]
 {
-[v Lcd_Write_String@str str `*.31Cuc  1 p 1 3 ]
-"42
+[v LCD_String_xy@row row `uc  1 p 1 wreg ]
+"84
+[v LCD_String_xy@location location `uc  1 a 1 6 ]
+"82
+[v LCD_String_xy@row row `uc  1 p 1 wreg ]
+[v LCD_String_xy@pos pos `uc  1 p 1 3 ]
+[v LCD_String_xy@msg msg `*.31Cuc  1 p 1 4 ]
+[v LCD_String_xy@row row `uc  1 p 1 5 ]
+"99
 } 0
-"30
-[v _Lcd_Write_Char Lcd_Write_Char `(v  1 e 1 0 ]
+"72
+[v _LCD_String LCD_String `(v  1 e 1 0 ]
 {
-[v Lcd_Write_Char@data data `uc  1 p 1 wreg ]
-[v Lcd_Write_Char@data data `uc  1 p 1 wreg ]
-[v Lcd_Write_Char@data data `uc  1 p 1 2 ]
-"35
+[v LCD_String@msg msg `*.31Cuc  1 p 1 2 ]
+"80
 } 0
-"45
-[v _Lcd_Set_Cursor Lcd_Set_Cursor `(v  1 e 1 0 ]
+"57
+[v _LCD_Char LCD_Char `(v  1 e 1 0 ]
 {
-[v Lcd_Set_Cursor@row row `uc  1 p 1 wreg ]
-"46
-[v Lcd_Set_Cursor@address address `uc  1 a 1 6 ]
-"45
-[v Lcd_Set_Cursor@row row `uc  1 p 1 wreg ]
-[v Lcd_Set_Cursor@col col `uc  1 p 1 4 ]
-"47
-[v Lcd_Set_Cursor@row row `uc  1 p 1 5 ]
-"52
+[v LCD_Char@dat dat `uc  1 p 1 wreg ]
+[v LCD_Char@dat dat `uc  1 p 1 wreg ]
+"59
+[v LCD_Char@dat dat `uc  1 p 1 1 ]
+"70
 } 0
-"61
-[v _Lcd_Init Lcd_Init `(v  1 e 1 0 ]
+"28
+[v _LCD_Init LCD_Init `(v  1 e 1 0 ]
 {
-"86
+"39
 } 0
-"55
-[v _Lcd_Clear Lcd_Clear `(v  1 e 1 0 ]
+"101
+[v _LCD_Clear LCD_Clear `(v  1 e 1 0 ]
 {
-"58
+"104
 } 0
-"22
-[v _Lcd_Cmd Lcd_Cmd `(v  1 e 1 0 ]
+"41
+[v _LCD_Command LCD_Command `(v  1 e 1 0 ]
 {
-[v Lcd_Cmd@cmd cmd `uc  1 p 1 wreg ]
-[v Lcd_Cmd@cmd cmd `uc  1 p 1 wreg ]
-[v Lcd_Cmd@cmd cmd `uc  1 p 1 3 ]
-"27
-} 0
-"13
-[v _Lcd_Send_Nibble Lcd_Send_Nibble `(v  1 e 1 0 ]
-{
-[v Lcd_Send_Nibble@data data `uc  1 p 1 wreg ]
-[v Lcd_Send_Nibble@data data `uc  1 p 1 wreg ]
-[v Lcd_Send_Nibble@data data `uc  1 p 1 1 ]
-"19
-} 0
-"5
-[v _Lcd_Pulse_EN Lcd_Pulse_EN `(v  1 e 1 0 ]
-{
-"10
+[v LCD_Command@cmd cmd `uc  1 p 1 wreg ]
+[v LCD_Command@cmd cmd `uc  1 p 1 wreg ]
+"43
+[v LCD_Command@cmd cmd `uc  1 p 1 1 ]
+"54
 } 0

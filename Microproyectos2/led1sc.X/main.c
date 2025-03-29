@@ -79,7 +79,7 @@
 #define _XTAL_FREQ 31000  // Definir la frecuencia del oscilador (31 kHz)
 
 void main(void) {
-    TRISA0 = 0;  // Configurar RA0 como salida (0 = salida)
+    TRISAbits.TRISA0 = 0;  // Configurar RA0 como salida (0 = salida)
     PORTA = 0;   // Asegurar que el puerto A está limpio
 
     // Configuración del oscilador interno a 31 kHz (OSCCON = 0x07)

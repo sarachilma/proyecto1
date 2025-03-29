@@ -1,86 +1,105 @@
-#include "lcd.h" // Incluye el archivo de cabecera de la LCD
-#define _XTAL_FREQ 8000000 // Frecuencia de 8 MHz
+/*!
+\file   LCD.c
+\date   2021-09-13
+\author Fulvio Vivas <fulvio.vivas@unicauca.edu.co>
+\brief  configuration LCD 16X2 4BITS.
 
-// Función para generar un pulso en el pin EN
-void Lcd_Pulse_EN(void) {
-    EN = 1;
-    __delay_us(10);
-    EN = 0;
-    __delay_us(10);
+\par Copyright
+Information contained herein is proprietary to and constitutes valuable
+confidential trade secrets of unicauca, and
+is subject to restrictions on use and disclosure.
+
+\par
+Copyright (c) unicauca 2021. All rights reserved.
+
+\par
+The copyright notices above do not evidence any actual or
+intended publication of this material.
+
+\note
+Last modified: 2025-03-26 Cristian Valencia <chpayan@unicauca.edu.co>
+******************************************************************************
+*/
+
+
+
+#include "LCD.h"
+
+void LCD_Init()
+{
+    LCD_Port = 0;                   /*PORT as Output Port*/
+    __delay_ms(15);                    /*15ms,16x2 LCD Power on delay*/
+    LCD_Command(0x02);              /*send for initialization of LCD 
+                                     *for nibble (4-bit) mode */
+    LCD_Command(0x28);              /*use 2 line and 
+                                     *initialize 5*8 matrix in (4-bit mode)*/
+	LCD_Command(CMD_CLEAR_LCD);              /*clear display screen*/
+    LCD_Command(0x0c);              /*display on cursor off*/
+	LCD_Command(0x06);              /*increment cursor (shift cursor to right)*/	   
 }
 
-// Función para enviar un nibble (4 bits) a la LCD
-void Lcd_Send_Nibble(unsigned char data) {
-    D4 = (data >> 0) & 1;
-    D5 = (data >> 1) & 1;
-    D6 = (data >> 2) & 1;
-    D7 = (data >> 3) & 1;
-    Lcd_Pulse_EN();
+void LCD_Command(unsigned char cmd )
+{
+	ldata = (ldata & 0x0f) |(0xF0 & cmd);   /*Send higher nibble of command first to PORT*/ 
+	RS = 0;                                 /*Command Register is selected i.e.RS=0*/ 
+	EN = 1;                                 /*High-to-low pulse on Enable pin to latch data*/ 
+	NOP();
+	EN = 0;
+	__delay_ms(1);
+    ldata = (ldata & 0x0f) | (cmd<<4);      /*Send lower nibble of command to PORT */
+	EN = 1;
+	NOP();
+	EN = 0;
+	__delay_ms(3);
 }
 
-// Función para enviar un comando a la LCD
-void Lcd_Cmd(unsigned char cmd) {
-    RS = 0; // Modo comando
-    Lcd_Send_Nibble(cmd >> 4); // Enviar nibble alto
-    Lcd_Send_Nibble(cmd & 0x0F); // Enviar nibble bajo
-    __delay_ms(2); // Retardo para comandos que requieren más tiempo
+
+void LCD_Char(unsigned char dat)
+{
+	ldata = (ldata & 0x0f) | (0xF0 & dat);   /*Send higher nibble of data first to PORT*/
+	RS = 1;                                  /*Data Register is selected*/
+	EN = 1;                                  /*High-to-low pulse on Enable pin to latch data*/
+	NOP();
+	EN = 0;
+	__delay_ms(1);
+    ldata = (ldata & 0x0f) | (dat<<4);               /*Send lower nibble of data to PORT*/
+	EN = 1;                         /*High-to-low pulse on Enable pin to latch data*/
+	NOP();
+	EN = 0;
+	__delay_ms(3);
 }
 
-// Función para escribir un carácter en la LCD
-void Lcd_Write_Char(char data) {
-    RS = 1; // Modo dato
-    Lcd_Send_Nibble(data >> 4); // Enviar nibble alto
-    Lcd_Send_Nibble(data & 0x0F); // Enviar nibble bajo
-    __delay_us(40); // Retardo para escritura de caracteres
-}
-
-// Función para escribir una cadena en la LCD
-void Lcd_Write_String(const char *str) {
-    while (*str) {
-        Lcd_Write_Char(*str++);
+void LCD_String(const char *msg)
+{
+	while((*msg)!=0)
+	{		
+	  LCD_Char(*msg);
+	  msg++;	
     }
+		
 }
 
-// Función para posicionar el cursor en una fila y columna específica
-void Lcd_Set_Cursor(unsigned char row, unsigned char col) {
-    unsigned char address;
-    if (row == 0)
-        address = 0x80 + col; // Primera fila
+void LCD_String_xy(char row,char pos,const char *msg)
+{
+    char location=0;
+    if(row<=1)
+    {
+        location = (0x80) | ((pos) & 0x0f);      /*Print message on 1st row and desired location*/
+        LCD_Command(location);
+    }
     else
-        address = 0xC0 + col; // Segunda fila
-    Lcd_Cmd(address);
+    {
+        location = (0xC0) | ((pos) & 0x0f);      /*Print message on 2nd row and desired location*/
+        LCD_Command(location);    
+    }  
+    
+
+    LCD_String(msg);
+
 }
 
-// Función para limpiar la pantalla
-void Lcd_Clear(void) {
-    Lcd_Cmd(0x01); // Comando para limpiar la pantalla
-    __delay_ms(2); // Retardo para que el comando se complete
+void LCD_Clear()
+{
+   	LCD_Command(CMD_CLEAR_LCD);     /*clear display screen*/
 }
 
-// Función para inicializar la LCD
-void Lcd_Init(void) {
-    // Configurar pines como salidas
-    TRISAbits.TRISA0 = 0; // RS
-    TRISAbits.TRISA1 = 0; // RW
-    TRISAbits.TRISA2 = 0; // EN
-    TRISBbits.TRISB0 = 0; // D4
-    TRISBbits.TRISB1 = 0; // D5
-    TRISBbits.TRISB2 = 0; // D6
-    TRISBbits.TRISB3 = 0; // D7
-
-    RW = 0; // Modo escritura
-
-    // Inicialización del LCD en modo 4 bits
-    __delay_ms(20); // Esperar para que el LCD se estabilice
-    Lcd_Send_Nibble(0x03); // Inicialización
-    __delay_ms(5);
-    Lcd_Send_Nibble(0x03);
-    __delay_us(100);
-    Lcd_Send_Nibble(0x03);
-    Lcd_Send_Nibble(0x02); // Modo 4 bits
-
-    Lcd_Cmd(0x28); // Configurar LCD en 4 bits, 2 líneas, 5x7 puntos
-    Lcd_Cmd(0x0C); // Encender LCD, cursor apagado
-    Lcd_Cmd(0x06); // Incrementar cursor, no desplazar
-    Lcd_Clear();   // Limpiar pantalla
-}

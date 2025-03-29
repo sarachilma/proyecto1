@@ -1,7 +1,7 @@
 ### HEXMate logfile and output summary ###
 
 ### Command-line arguments ###
- dist/default/production\led1sc.X.production.hex
+ C:\Users\Esteban\AppData\Local\Temp\xcAs9bs.\driver_tmp_3.o
  -Odist/default/production\led1sc.X.production.hex
  -logfile=dist/default/production\led1sc.X.production.hxl
  -format=INHX032
@@ -9,29 +9,33 @@
  -break=300000
 
 ### Memory Usage ###
- Intel Hex-file ranges:
-  0h - 3h		(dist/default/production\led1sc.X.production.hex)
-  7FC4h - 7FFFh		(dist/default/production\led1sc.X.production.hex)
-  200000h - 200007h		(dist/default/production\led1sc.X.production.hex)
-  300000h - 30000Dh		(dist/default/production\led1sc.X.production.hex)
+ Input file ranges:
+  0h - 3h		(C:\Users\Esteban\AppData\Local\Temp\xcAs9bs.\driver_tmp_3.o)
+  800h - 83Bh		(C:\Users\Esteban\AppData\Local\Temp\xcAs9bs.\driver_tmp_3.o)
+  7FFCh - 7FFFh		(C:\Users\Esteban\AppData\Local\Temp\xcAs9bs.\driver_tmp_3.o)
+  200000h - 200007h		(C:\Users\Esteban\AppData\Local\Temp\xcAs9bs.\driver_tmp_3.o)
+  300000h - 30000Dh		(C:\Users\Esteban\AppData\Local\Temp\xcAs9bs.\driver_tmp_3.o)
  Unused ranges:
-  4h - 7FC3h
+  4h - 7FFh
+  83Ch - 7FFBh
   8000h - 1FFFFFh
   200008h - 2FFFFFh
 
 ### Hex Memory Map ###
  Legend:
   -- = Unused memory
-  H1 = Intel Hex-file         (dist/default/production\led1sc.X.production.hex)
+  H1 = Input file             (C:\Users\Esteban\AppData\Local\Temp\xcAs9bs.\driver_tmp_3.o)
 ----------------------------------------------------------
          | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
 ----------------------------------------------------------
 00000000 | H1 H1 H1 H1 -- -- -- -- -- -- -- -- -- -- -- --
 ----------------------------------------------------------
-00007FC0 | -- -- -- -- H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00007FD0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00007FE0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00007FF0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00000800 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00000810 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00000820 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00000830 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 -- -- -- --
+----------------------------------------------------------
+00007FF0 | -- -- -- -- -- -- -- -- -- -- -- -- H1 H1 H1 H1
 ----------------------------------------------------------
 00200000 | H1 H1 H1 H1 H1 H1 H1 H1 -- -- -- -- -- -- -- --
 ----------------------------------------------------------

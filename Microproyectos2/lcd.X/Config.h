@@ -1,26 +1,48 @@
-/* 
- * File:   main.c
- * Author: Esteban
- *
- * Created on 17 de marzo de 2025, 08:00 PM
- */
-// PIC18F4550 Configuration Bit Settings
+/*!
+\file   Config.h
+\date   2021-09-13
+\author Fulvio Vivas <fulvio.vivas@unicauca.edu.co>
+\brief  configuration bits pic18f4550.
 
-// 'C' source line config statements
+\par Copyright
+Information contained herein is proprietary to and constitutes valuable
+confidential trade secrets of unicauca, and
+is subject to restrictions on use and disclosure.
 
-// CONFIG1L
+\par
+Copyright (c) unicauca 2021. All rights reserved.
+
+\par
+The copyright notices above do not evidence any actual or
+intended publication of this material.
+
+\note
+Last modified: 2025-03-26 Cristian Valencia <chpayan@unicauca.edu.co>
+******************************************************************************
+*/
+
+#include <xc.h>
+
+#ifndef CONFIG_H
+#define	CONFIG_H
+
+#ifdef	__cplusplus
+extern "C" {
+#endif
+
+    // CONFIG1L
 #pragma config PLLDIV = 1       // PLL Prescaler Selection bits (No prescale (4 MHz oscillator input drives PLL directly))
 #pragma config CPUDIV = OSC1_PLL2// System Clock Postscaler Selection bits ([Primary Oscillator Src: /1][96 MHz PLL Src: /2])
-#pragma config USBDIV = 2       // USB Clock Selection bit (used in Full-Speed USB mode only; UCFG:FSEN = 1) (USB clock source comes from the 96 MHz PLL divided by 2)
+#pragma config USBDIV = 1       // USB Clock Selection bit (used in Full-Speed USB mode only; UCFG:FSEN = 1) (USB clock source comes directly from the primary oscillator block with no postscale)
 
 // CONFIG1H
-#pragma config FOSC = INTOSCIO_EC// Oscillator Selection bits (Internal oscillator, port function on RA6, EC used by USB (INTIO))
+#pragma config FOSC = INTOSC_EC // Oscillator Selection bits (Internal oscillator, CLKO function on RA6, EC used by USB (INTCKO))
 #pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor disabled)
 #pragma config IESO = OFF       // Internal/External Oscillator Switchover bit (Oscillator Switchover mode disabled)
 
 // CONFIG2L
 #pragma config PWRT = OFF       // Power-up Timer Enable bit (PWRT disabled)
-#pragma config BOR = ON         // Brown-out Reset Enable bits (Brown-out Reset enabled in hardware only (SBOREN is disabled))
+#pragma config BOR = ON         // Brown-out Reset Enable bits (Brown-out Reset disabled in hardware and software)
 #pragma config BORV = 3         // Brown-out Reset Voltage bits (Minimum setting 2.05V)
 #pragma config VREGEN = OFF     // USB Voltage Regulator Enable bit (USB voltage regulator disabled)
 
@@ -30,13 +52,13 @@
 
 // CONFIG3H
 #pragma config CCP2MX = ON      // CCP2 MUX bit (CCP2 input/output is multiplexed with RC1)
-#pragma config PBADEN = ON      // PORTB A/D Enable bit (PORTB<4:0> pins are configured as analog input channels on Reset)
+#pragma config PBADEN = OFF      // PORTB A/D Enable bit (PORTB<4:0> pins are configured as analog input channels on Reset)
 #pragma config LPT1OSC = OFF    // Low-Power Timer 1 Oscillator Enable bit (Timer1 configured for higher power operation)
-#pragma config MCLRE = ON       // MCLR Pin Enable bit (MCLR pin enabled; RE3 input pin disabled)
+#pragma config MCLRE = OFF      // MCLR Pin Enable bit (RE3 input pin enabled; MCLR pin disabled)
 
 // CONFIG4L
 #pragma config STVREN = ON      // Stack Full/Underflow Reset Enable bit (Stack full/underflow will cause Reset)
-#pragma config LVP = OFF        // Single-Supply ICSP Enable bit (Single-Supply ICSP disabled)
+#pragma config LVP = OFF         // Single-Supply ICSP Enable bit (Single-Supply ICSP enabled)
 #pragma config ICPRT = OFF      // Dedicated In-Circuit Debug/Programming Port (ICPORT) Enable bit (ICPORT disabled)
 #pragma config XINST = OFF      // Extended Instruction Set Enable bit (Instruction set extension and Indexed Addressing mode disabled (Legacy mode))
 
@@ -70,25 +92,11 @@
 // CONFIG7H
 #pragma config EBTRB = OFF      // Boot Block Table Read Protection bit (Boot block (000000-0007FFh) is not protected from table reads executed in other blocks)
 
-// #pragma config statements should precede project file includes.
-// Use project enums instead of #define for ON and OFF.
+#define _XTAL_FREQ 8000000
 
-#include <xc.h>
-
-#include "lcd.h" // Incluye la librería LCD
-
-void main(void) {
-    // Inicializar la LCD
-    Lcd_Init();
-
-    // Escribir en la LCD
-    Lcd_Set_Cursor(0, 0); // Primera fila, primera columna
-    Lcd_Write_String("Hola, Mundo!");
-
-    Lcd_Set_Cursor(1, 0); // Segunda fila, primera columna
-    Lcd_Write_String("PIC18F4550");
-
-    while (1) {
-        // Bucle infinito
-    }
+#ifdef	__cplusplus
 }
+#endif
+
+#endif	/* CONFIG_H */
+

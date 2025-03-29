@@ -1,90 +1,27 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"23 ./lcd.h
-[; ;./lcd.h: 23: void Lcd_Init(void);
-[v _Lcd_Init `(v ~T0 @X0 0 ef ]
-"27
-[; ;./lcd.h: 27: void Lcd_Set_Cursor(unsigned char row, unsigned char col);
-[v _Lcd_Set_Cursor `(v ~T0 @X0 0 ef2`uc`uc ]
-"26
-[; ;./lcd.h: 26: void Lcd_Write_String(const char *str);
-[v _Lcd_Write_String `(v ~T0 @X0 0 ef1`*Cuc ]
-"12 main.c
-[p x PLLDIV  =  1        ]
-"13
-[p x CPUDIV  =  OSC1_PLL2 ]
-"14
-[p x USBDIV  =  2        ]
-"17
-[p x FOSC  =  INTOSCIO_EC ]
-"18
-[p x FCMEN  =  OFF       ]
-"19
-[p x IESO  =  OFF        ]
-"22
-[p x PWRT  =  OFF        ]
-"23
-[p x BOR  =  ON          ]
-"24
-[p x BORV  =  3          ]
-"25
-[p x VREGEN  =  OFF      ]
-"28
-[p x WDT  =  OFF         ]
-"29
-[p x WDTPS  =  32768     ]
-"32
-[p x CCP2MX  =  ON       ]
-"33
-[p x PBADEN  =  ON       ]
-"34
-[p x LPT1OSC  =  OFF     ]
-"35
-[p x MCLRE  =  ON        ]
-"38
-[p x STVREN  =  ON       ]
-"39
-[p x LVP  =  OFF         ]
-"40
-[p x ICPRT  =  OFF       ]
-"41
-[p x XINST  =  OFF       ]
-"44
-[p x CP0  =  OFF         ]
-"45
-[p x CP1  =  OFF         ]
+"7986 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc/pic18f4550.h
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc/pic18f4550.h: 7986: extern volatile unsigned char OSCCON __attribute__((address(0xFD3)));
+[v _OSCCON `Vuc ~T0 @X0 0 e@4051 ]
+"10392
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc/pic18f4550.h: 10392: extern volatile __bit RBPU __attribute__((address(0x7F8F)));
+[v _RBPU `Vb ~T0 @X0 0 e@32655 ]
+"45 ./LCD.h
+[; ;./LCD.h: 45: void LCD_Init();
+[v _LCD_Init `(v ~T0 @X0 0 e? ]
+"49
+[; ;./LCD.h: 49: void LCD_String_xy(char, char , const char *);
+[v _LCD_String_xy `(v ~T0 @X0 0 ef3`uc`uc`*Cuc ]
 "46
-[p x CP2  =  OFF         ]
-"47
-[p x CP3  =  OFF         ]
-"50
-[p x CPB  =  OFF         ]
-"51
-[p x CPD  =  OFF         ]
-"54
-[p x WRT0  =  OFF        ]
-"55
-[p x WRT1  =  OFF        ]
-"56
-[p x WRT2  =  OFF        ]
-"57
-[p x WRT3  =  OFF        ]
-"60
-[p x WRTC  =  OFF        ]
-"61
-[p x WRTB  =  OFF        ]
-"62
-[p x WRTD  =  OFF        ]
-"65
-[p x EBTR0  =  OFF       ]
-"66
-[p x EBTR1  =  OFF       ]
-"67
-[p x EBTR2  =  OFF       ]
-"68
-[p x EBTR3  =  OFF       ]
-"71
-[p x EBTRB  =  OFF       ]
+[; ;./LCD.h: 46: void LCD_Command(unsigned char );
+[v _LCD_Command `(v ~T0 @X0 0 ef1`uc ]
+[v F3171 `(v ~T0 @X0 1 tf1`ul ]
+"203 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include/pic18.h
+[v __delay `JF3171 ~T0 @X0 0 e ]
+[p i __delay ]
+"50 ./LCD.h
+[; ;./LCD.h: 50: void LCD_Clear();
+[v _LCD_Clear `(v ~T0 @X0 0 e? ]
 "54 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc/pic18f4550.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc/pic18f4550.h: 54: __asm("SPPDATA equ 0F62h");
 [; <" SPPDATA equ 0F62h ;# ">
@@ -595,41 +532,157 @@ Version 4.0 HI-TECH Software Intermediate Code
 "8893
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc/pic18f4550.h: 8893: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
+"34 ./Config.h
+[p x PLLDIV  =  1        ]
+"35
+[p x CPUDIV  =  OSC1_PLL2 ]
+"36
+[p x USBDIV  =  1        ]
+"39
+[p x FOSC  =  INTOSC_EC  ]
+"40
+[p x FCMEN  =  OFF       ]
+"41
+[p x IESO  =  OFF        ]
+"44
+[p x PWRT  =  OFF        ]
+"45
+[p x BOR  =  ON          ]
+"46
+[p x BORV  =  3          ]
+"47
+[p x VREGEN  =  OFF      ]
+"50
+[p x WDT  =  OFF         ]
+"51
+[p x WDTPS  =  32768     ]
+"54
+[p x CCP2MX  =  ON       ]
+"55
+[p x PBADEN  =  OFF       ]
+"56
+[p x LPT1OSC  =  OFF     ]
+"57
+[p x MCLRE  =  OFF       ]
+"60
+[p x STVREN  =  ON       ]
+"61
+[p x LVP  =  OFF          ]
+"62
+[p x ICPRT  =  OFF       ]
+"63
+[p x XINST  =  OFF       ]
+"66
+[p x CP0  =  OFF         ]
+"67
+[p x CP1  =  OFF         ]
+"68
+[p x CP2  =  OFF         ]
+"69
+[p x CP3  =  OFF         ]
+"72
+[p x CPB  =  OFF         ]
+"73
+[p x CPD  =  OFF         ]
+"76
+[p x WRT0  =  OFF        ]
+"77
+[p x WRT1  =  OFF        ]
+"78
+[p x WRT2  =  OFF        ]
+"79
+[p x WRT3  =  OFF        ]
+"82
+[p x WRTC  =  OFF        ]
+"83
+[p x WRTB  =  OFF        ]
+"84
+[p x WRTD  =  OFF        ]
+"87
+[p x EBTR0  =  OFF       ]
+"88
+[p x EBTR1  =  OFF       ]
+"89
+[p x EBTR2  =  OFF       ]
+"90
+[p x EBTR3  =  OFF       ]
+"93
+[p x EBTRB  =  OFF       ]
+"31 lcd_main.c
+[; ;lcd_main.c: 31: unsigned char password[5] ={'2','0','2','1',0};
+[v _password `uc ~T0 @X0 -> 5 `i e ]
+[i _password
+:U ..
+-> -> 50 `ui `uc
+-> -> 48 `ui `uc
+-> -> 50 `ui `uc
+-> -> 49 `ui `uc
+-> -> 0 `i `uc
+..
+]
+"33
+[; ;lcd_main.c: 33: unsigned char pass_user[5];
+[v _pass_user `uc ~T0 @X0 -> 5 `i e ]
+"34
+[; ;lcd_main.c: 34: unsigned char idx = 0;
+[v _idx `uc ~T0 @X0 1 e ]
+[i _idx
+-> -> 0 `i `uc
+]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"80 main.c
-[; ;main.c: 80: void main(void) {
+"36
+[; ;lcd_main.c: 36: void main()
 [v _main `(v ~T0 @X0 1 ef ]
+"37
+[; ;lcd_main.c: 37: {
 {
 [e :U _main ]
 [f ]
-"82
-[; ;main.c: 82:     Lcd_Init();
-[e ( _Lcd_Init ..  ]
-"85
-[; ;main.c: 85:     Lcd_Set_Cursor(0, 0);
-[e ( _Lcd_Set_Cursor (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
-"86
-[; ;main.c: 86:     Lcd_Write_String("Hola, Mundo!");
-[e ( _Lcd_Write_String (1 :s 1C ]
-"88
-[; ;main.c: 88:     Lcd_Set_Cursor(1, 0);
-[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"89
-[; ;main.c: 89:     Lcd_Write_String("PIC18F4550");
-[e ( _Lcd_Write_String (1 :s 2C ]
-"91
-[; ;main.c: 91:     while (1) {
+"38
+[; ;lcd_main.c: 38:     char key;
+[v _key `uc ~T0 @X0 1 a ]
+"39
+[; ;lcd_main.c: 39:     OSCCON = 0x72;
+[e = _OSCCON -> -> 114 `i `uc ]
+"41
+[; ;lcd_main.c: 41:     RBPU=0;
+[e = _RBPU -> -> 0 `i `b ]
+"42
+[; ;lcd_main.c: 42:     LCD_Init();
+[e ( _LCD_Init ..  ]
+"43
+[; ;lcd_main.c: 43:     LCD_String_xy(0,0,"WELCOME");
+[e ( _LCD_String_xy (3 , , -> -> 0 `i `uc -> -> 0 `i `uc :s 1C ]
+"44
+[; ;lcd_main.c: 44:     LCD_Command(0xC0);
+[e ( _LCD_Command (1 -> -> 192 `i `uc ]
+"45
+[; ;lcd_main.c: 45:     while(1)
 [e :U 369 ]
+"46
+[; ;lcd_main.c: 46:     {
 {
-"93
-[; ;main.c: 93:     }
+"47
+[; ;lcd_main.c: 47:         LCD_String_xy(0,0,"MICROCONTROLADORES");
+[e ( _LCD_String_xy (3 , , -> -> 0 `i `uc -> -> 0 `i `uc :s 2C ]
+"48
+[; ;lcd_main.c: 48:   _delay((unsigned long)((2000)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"49
+[; ;lcd_main.c: 49:   LCD_Clear();
+[e ( _LCD_Clear ..  ]
+"50
+[; ;lcd_main.c: 50:   _delay((unsigned long)((1000)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"51
+[; ;lcd_main.c: 51:     }
 }
 [e :U 368 ]
 [e $U 369  ]
 [e :U 370 ]
-"94
-[; ;main.c: 94: }
+"53
+[; ;lcd_main.c: 53: }
 [e :UE 367 ]
 }
-[a 2C 80 73 67 49 56 70 52 53 53 48 0 ]
-[a 1C 72 111 108 97 44 32 77 117 110 100 111 33 0 ]
+[a 2C 77 73 67 82 79 67 79 78 84 82 79 76 65 68 79 82 69 83 0 ]
+[a 1C 87 69 76 67 79 77 69 0 ]
