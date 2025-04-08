@@ -5802,7 +5802,7 @@ uint8_t DHT11_Read() {
     uint8_t data = 0;
     for (uint8_t i = 0; i < 8; i++) {
         while (!PORTAbits.RA0);
-        _delay((unsigned long)((35)*(8000000/4000000.0)));
+        _delay((unsigned long)((50)*(8000000/4000000.0)));
         data <<= 1;
         if (PORTAbits.RA0) data |= 1;
         while (PORTAbits.RA0);
@@ -5813,24 +5813,24 @@ uint8_t DHT11_Read() {
 uint8_t DHT11_GetTemperature() {
     TRISAbits.TRISA0 = 0;
     PORTAbits.RA0 = 0;
-    _delay((unsigned long)((18)*(8000000/4000.0)));
+    _delay((unsigned long)((20)*(8000000/4000.0)));
     PORTAbits.RA0 = 1;
-    _delay((unsigned long)((30)*(8000000/4000000.0)));
+    _delay((unsigned long)((40)*(8000000/4000000.0)));
     TRISAbits.TRISA0 = 1;
 
     if (PORTAbits.RA0 == 0) {
-        while (!PORTAbits.RA0);
-        while (PORTAbits.RA0);
+        uint16_t timeout = 1000;
+        while (!PORTAbits.RA0 && timeout--) _delay((unsigned long)((1)*(8000000/4000000.0)));
+        timeout = 1000;
+        while (PORTAbits.RA0 && timeout--) _delay((unsigned long)((1)*(8000000/4000000.0)));
 
-        uint8_t checksum = (
-            DHT11_Read() +
-            DHT11_Read() +
-            DHT11_Read() +
-            DHT11_Read()
-        );
+        uint8_t data[5];
+        for (uint8_t i = 0; i < 5; i++) {
+            data[i] = DHT11_Read();
+        }
 
-        if (checksum == DHT11_Read()) {
-            return DHT11_Read();
+        if (data[0] + data[1] + data[2] + data[3] == data[4]) {
+            return data[2];
         }
     }
     return 255;

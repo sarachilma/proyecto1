@@ -5848,34 +5848,25 @@ void LCD_Char(unsigned char dat)
 
 void LCD_String(const char *msg)
 {
- while((*msg)!=0)
- {
-   LCD_Char(*msg);
-   msg++;
+    while((*msg) != 0) {
+        LCD_Char(*msg);
+        msg++;
     }
-
 }
 
-void LCD_String_xy(char row,char pos,const char *msg)
-{
-    char location=0;
-    if(row<=1)
-    {
-        location = (0x80) | ((pos) & 0x0f);
-        LCD_Command(location);
+void LCD_String_xy(char row, char pos, const char *msg) {
+    char location = 0;
+    if (row == 0) {
+        location = 0x80 | (pos & 0x0F);
+    } else {
+        location = 0xC0 | (pos & 0x0F);
     }
-    else
-    {
-        location = (0xC0) | ((pos) & 0x0f);
-        LCD_Command(location);
-    }
-
-
+    LCD_Command(location);
     LCD_String(msg);
-
 }
 
 void LCD_Clear()
 {
     LCD_Command(0x01);
+    _delay((unsigned long)((2)*(8000000/4000.0)));
 }

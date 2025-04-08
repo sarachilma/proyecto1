@@ -5823,21 +5823,24 @@ void main() {
     CMCON = 0x07;
 
     LCD_Init();
+    LCD_Clear();
     LCD_String_xy(0, 0, "Temperatura:");
 
     while(1) {
         uint8_t temp = DHT11_GetTemperature();
-        char buffer[5];
 
         if (temp != 255) {
+            char buffer[6];
+
             buffer[0] = (temp/10) + '0';
             buffer[1] = (temp%10) + '0';
             buffer[2] = ' ';
             buffer[3] = 'C';
             buffer[4] = '\0';
+
             LCD_String_xy(1, 0, buffer);
         } else {
-            LCD_String_xy(1, 0, "Error");
+            LCD_String_xy(1, 0, "Error ");
         }
         _delay((unsigned long)((2000)*(8000000/4000.0)));
     }

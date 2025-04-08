@@ -27,6 +27,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "21 ./LCD.h
 [; ;./LCD.h: 21: void LCD_Init(void);
 [v _LCD_Init `(v ~T0 @X0 0 ef ]
+"26
+[; ;./LCD.h: 26: void LCD_Clear(void);
+[v _LCD_Clear `(v ~T0 @X0 0 ef ]
 "25
 [; ;./LCD.h: 25: void LCD_String_xy(char row, char pos, const char *msg);
 [v _LCD_String_xy `(v ~T0 @X0 0 ef3`uc`uc`*Cuc ]
@@ -646,66 +649,69 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 21:     LCD_Init();
 [e ( _LCD_Init ..  ]
 "22
-[; ;main.c: 22:     LCD_String_xy(0, 0, "Temperatura:");
+[; ;main.c: 22:     LCD_Clear();
+[e ( _LCD_Clear ..  ]
+"23
+[; ;main.c: 23:     LCD_String_xy(0, 0, "Temperatura:");
 [e ( _LCD_String_xy (3 , , -> -> 0 `i `uc -> -> 0 `i `uc :s 1C ]
-"24
-[; ;main.c: 24:     while(1) {
+"25
+[; ;main.c: 25:     while(1) {
 [e :U 369 ]
 {
-"25
-[; ;main.c: 25:         uint8_t temp = DHT11_GetTemperature();
+"26
+[; ;main.c: 26:         uint8_t temp = DHT11_GetTemperature();
 [v _temp `uc ~T0 @X0 1 a ]
 [e = _temp ( _DHT11_GetTemperature ..  ]
-"26
-[; ;main.c: 26:         char buffer[5];
-[v _buffer `uc ~T0 @X0 -> 5 `i a ]
 "28
 [; ;main.c: 28:         if (temp != 255) {
 [e $ ! != -> _temp `i -> 255 `i 371  ]
 {
 "29
-[; ;main.c: 29:             buffer[0] = (temp/10) + '0';
-[e = *U + &U _buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> + -> / -> _temp `i -> 10 `i `ui -> 48 `ui `uc ]
-"30
-[; ;main.c: 30:             buffer[1] = (temp%10) + '0';
-[e = *U + &U _buffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> + -> % -> _temp `i -> 10 `i `ui -> 48 `ui `uc ]
+[; ;main.c: 29:             char buffer[6];
+[v _buffer `uc ~T0 @X0 -> 6 `i a ]
 "31
-[; ;main.c: 31:             buffer[2] = ' ';
-[e = *U + &U _buffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 32 `ui `uc ]
+[; ;main.c: 31:             buffer[0] = (temp/10) + '0';
+[e = *U + &U _buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> + -> / -> _temp `i -> 10 `i `ui -> 48 `ui `uc ]
 "32
-[; ;main.c: 32:             buffer[3] = 'C';
-[e = *U + &U _buffer * -> -> -> 3 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 67 `ui `uc ]
+[; ;main.c: 32:             buffer[1] = (temp%10) + '0';
+[e = *U + &U _buffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> + -> % -> _temp `i -> 10 `i `ui -> 48 `ui `uc ]
 "33
-[; ;main.c: 33:             buffer[4] = '\0';
-[e = *U + &U _buffer * -> -> -> 4 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 0 `ui `uc ]
+[; ;main.c: 33:             buffer[2] = ' ';
+[e = *U + &U _buffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 32 `ui `uc ]
 "34
-[; ;main.c: 34:             LCD_String_xy(1, 0, buffer);
-[e ( _LCD_String_xy (3 , , -> -> 1 `i `uc -> -> 0 `i `uc -> &U _buffer `*Cuc ]
+[; ;main.c: 34:             buffer[3] = 'C';
+[e = *U + &U _buffer * -> -> -> 3 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 67 `ui `uc ]
 "35
-[; ;main.c: 35:         } else {
+[; ;main.c: 35:             buffer[4] = '\0';
+[e = *U + &U _buffer * -> -> -> 4 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 0 `ui `uc ]
+"37
+[; ;main.c: 37:             LCD_String_xy(1, 0, buffer);
+[e ( _LCD_String_xy (3 , , -> -> 1 `i `uc -> -> 0 `i `uc -> &U _buffer `*Cuc ]
+"38
+[; ;main.c: 38:         } else {
 }
 [e $U 372  ]
 [e :U 371 ]
 {
-"36
-[; ;main.c: 36:             LCD_String_xy(1, 0, "Error");
+"39
+[; ;main.c: 39:             LCD_String_xy(1, 0, "Error ");
 [e ( _LCD_String_xy (3 , , -> -> 1 `i `uc -> -> 0 `i `uc :s 2C ]
-"37
-[; ;main.c: 37:         }
+"40
+[; ;main.c: 40:         }
 }
 [e :U 372 ]
-"38
-[; ;main.c: 38:         _delay((unsigned long)((2000)*(8000000/4000.0)));
+"41
+[; ;main.c: 41:         _delay((unsigned long)((2000)*(8000000/4000.0)));
 [e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"39
-[; ;main.c: 39:     }
+"42
+[; ;main.c: 42:     }
 }
 [e :U 368 ]
 [e $U 369  ]
 [e :U 370 ]
-"40
-[; ;main.c: 40: }
+"43
+[; ;main.c: 43: }
 [e :UE 367 ]
 }
-[a 2C 69 114 114 111 114 0 ]
 [a 1C 84 101 109 112 101 114 97 116 117 114 97 58 0 ]
+[a 2C 69 114 114 111 114 32 0 ]

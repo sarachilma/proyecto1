@@ -13,27 +13,30 @@
 #include "DHT11.h"
 
 void main() {
-    OSCCON = 0x72;          // Oscilador interno a 8MHz
+    OSCCON = 0x72;          // Oscilador a 8MHz
     TRISAbits.TRISA0 = 1;   // RA0 como entrada
-    ADCON1 = 0x0F;          // Todos los pines AN como digitales
+    ADCON1 = 0x0F;          // Pines AN como digitales
     CMCON = 0x07;           // Deshabilitar comparadores
 
-    LCD_Init();
-    LCD_String_xy(0, 0, "Temperatura:");
+    LCD_Init();             // Inicializar LCD
+    LCD_Clear();            // Limpiar pantalla
+    LCD_String_xy(0, 0, "Temperatura:"); // Texto completo
 
     while(1) {
         uint8_t temp = DHT11_GetTemperature();
-        char buffer[5];  // Tamaño optimizado: "28 C\0"
         
         if (temp != 255) {
+            char buffer[6];
+            // Formato: "24 C"
             buffer[0] = (temp/10) + '0';  // Decenas
             buffer[1] = (temp%10) + '0';  // Unidades
             buffer[2] = ' ';
             buffer[3] = 'C';
-            buffer[4] = '\0';  // Fin de cadena
-            LCD_String_xy(1, 0, buffer);
+            buffer[4] = '\0';
+            
+            LCD_String_xy(1, 0, buffer);  // Mostrar en segunda fila
         } else {
-            LCD_String_xy(1, 0, "Error");
+            LCD_String_xy(1, 0, "Error "); 
         }
         __delay_ms(2000);
     }

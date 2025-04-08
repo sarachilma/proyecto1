@@ -754,100 +754,86 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;LCD.c: 46: {
 [f ]
 "47
-[; ;LCD.c: 47:  while((*msg)!=0)
+[; ;LCD.c: 47:     while((*msg) != 0) {
 [e $U 371  ]
 [e :U 372 ]
-"48
-[; ;LCD.c: 48:  {
 {
-"49
-[; ;LCD.c: 49:    LCD_Char(*msg);
+"48
+[; ;LCD.c: 48:         LCD_Char(*msg);
 [e ( _LCD_Char (1 -> *U _msg `uc ]
-"50
-[; ;LCD.c: 50:    msg++;
+"49
+[; ;LCD.c: 49:         msg++;
 [e ++ _msg * -> -> 1 `i `x -> -> # *U _msg `i `x ]
-"51
-[; ;LCD.c: 51:     }
+"50
+[; ;LCD.c: 50:     }
 }
 [e :U 371 ]
 "47
-[; ;LCD.c: 47:  while((*msg)!=0)
+[; ;LCD.c: 47:     while((*msg) != 0) {
 [e $ != -> *U _msg `i -> 0 `i 372  ]
 [e :U 373 ]
-"53
-[; ;LCD.c: 53: }
+"51
+[; ;LCD.c: 51: }
 [e :UE 370 ]
 }
-"55
-[; ;LCD.c: 55: void LCD_String_xy(char row,char pos,const char *msg)
+"53
+[; ;LCD.c: 53: void LCD_String_xy(char row, char pos, const char *msg) {
 [v _LCD_String_xy `(v ~T0 @X0 1 ef3`uc`uc`*Cuc ]
-"56
-[; ;LCD.c: 56: {
 {
 [e :U _LCD_String_xy ]
-"55
-[; ;LCD.c: 55: void LCD_String_xy(char row,char pos,const char *msg)
 [v _row `uc ~T0 @X0 1 r1 ]
 [v _pos `uc ~T0 @X0 1 r2 ]
 [v _msg `*Cuc ~T0 @X0 1 r3 ]
-"56
-[; ;LCD.c: 56: {
 [f ]
-"57
-[; ;LCD.c: 57:     char location=0;
+"54
+[; ;LCD.c: 54:     char location = 0;
 [v _location `uc ~T0 @X0 1 a ]
 [e = _location -> -> 0 `i `uc ]
-"58
-[; ;LCD.c: 58:     if(row<=1)
-[e $ ! <= -> _row `i -> 1 `i 375  ]
-"59
-[; ;LCD.c: 59:     {
+"55
+[; ;LCD.c: 55:     if (row == 0) {
+[e $ ! == -> _row `i -> 0 `i 375  ]
 {
-"60
-[; ;LCD.c: 60:         location = (0x80) | ((pos) & 0x0f);
+"56
+[; ;LCD.c: 56:         location = 0x80 | (pos & 0x0F);
 [e = _location -> | -> 128 `i & -> _pos `i -> 15 `i `uc ]
-"61
-[; ;LCD.c: 61:         LCD_Command(location);
-[e ( _LCD_Command (1 -> _location `uc ]
-"62
-[; ;LCD.c: 62:     }
+"57
+[; ;LCD.c: 57:     } else {
 }
 [e $U 376  ]
-"63
-[; ;LCD.c: 63:     else
 [e :U 375 ]
-"64
-[; ;LCD.c: 64:     {
 {
-"65
-[; ;LCD.c: 65:         location = (0xC0) | ((pos) & 0x0f);
+"58
+[; ;LCD.c: 58:         location = 0xC0 | (pos & 0x0F);
 [e = _location -> | -> 192 `i & -> _pos `i -> 15 `i `uc ]
-"66
-[; ;LCD.c: 66:         LCD_Command(location);
-[e ( _LCD_Command (1 -> _location `uc ]
-"67
-[; ;LCD.c: 67:     }
+"59
+[; ;LCD.c: 59:     }
 }
 [e :U 376 ]
-"70
-[; ;LCD.c: 70:     LCD_String(msg);
+"60
+[; ;LCD.c: 60:     LCD_Command(location);
+[e ( _LCD_Command (1 -> _location `uc ]
+"61
+[; ;LCD.c: 61:     LCD_String(msg);
 [e ( _LCD_String (1 _msg ]
-"72
-[; ;LCD.c: 72: }
+"62
+[; ;LCD.c: 62: }
 [e :UE 374 ]
 }
-"74
-[; ;LCD.c: 74: void LCD_Clear()
+"64
+[; ;LCD.c: 64: void LCD_Clear()
 [v _LCD_Clear `(v ~T0 @X0 1 ef ]
-"75
-[; ;LCD.c: 75: {
+"65
+[; ;LCD.c: 65: {
 {
 [e :U _LCD_Clear ]
 [f ]
-"76
-[; ;LCD.c: 76:     LCD_Command(0x01);
+"66
+[; ;LCD.c: 66:     LCD_Command(0x01);
 [e ( _LCD_Command (1 -> -> 1 `i `uc ]
-"77
-[; ;LCD.c: 77: }
+"67
+[; ;LCD.c: 67:     _delay((unsigned long)((2)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"68
+[; ;LCD.c: 68: }
 [e :UE 377 ]
 }
