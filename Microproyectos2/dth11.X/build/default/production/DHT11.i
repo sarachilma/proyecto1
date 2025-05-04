@@ -5793,12 +5793,12 @@ typedef uint32_t uint_fast32_t;
 
 
 
-uint8_t DHT11_Read();
-uint8_t DHT11_GetTemperature();
+
+uint8_t DHT11_Read(uint8_t *humidity, uint8_t *temperature);
 # 2 "DHT11.c" 2
 
 
-uint8_t DHT11_Read() {
+uint8_t DHT11_ReadByte() {
     uint8_t data = 0;
     for (uint8_t i = 0; i < 8; i++) {
         while (!PORTAbits.RA0);
@@ -5810,28 +5810,30 @@ uint8_t DHT11_Read() {
     return data;
 }
 
-uint8_t DHT11_GetTemperature() {
+uint8_t DHT11_Read(uint8_t *humidity, uint8_t *temperature) {
     TRISAbits.TRISA0 = 0;
     PORTAbits.RA0 = 0;
-    _delay((unsigned long)((20)*(8000000/4000.0)));
+    _delay((unsigned long)((18)*(8000000/4000.0)));
     PORTAbits.RA0 = 1;
-    _delay((unsigned long)((40)*(8000000/4000000.0)));
+    _delay((unsigned long)((30)*(8000000/4000000.0)));
     TRISAbits.TRISA0 = 1;
 
     if (PORTAbits.RA0 == 0) {
-        uint16_t timeout = 1000;
-        while (!PORTAbits.RA0 && timeout--) _delay((unsigned long)((1)*(8000000/4000000.0)));
-        timeout = 1000;
-        while (PORTAbits.RA0 && timeout--) _delay((unsigned long)((1)*(8000000/4000000.0)));
+        while (!PORTAbits.RA0);
+        while (PORTAbits.RA0);
+
 
         uint8_t data[5];
         for (uint8_t i = 0; i < 5; i++) {
-            data[i] = DHT11_Read();
+            data[i] = DHT11_ReadByte();
         }
 
-        if (data[0] + data[1] + data[2] + data[3] == data[4]) {
-            return data[2];
+
+        if ((data[0] + data[1] + data[2] + data[3]) == data[4]) {
+            *humidity = data[0];
+            *temperature = data[2];
+            return 1;
         }
     }
-    return 255;
+    return 0;
 }

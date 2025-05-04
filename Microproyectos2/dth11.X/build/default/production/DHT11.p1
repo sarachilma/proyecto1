@@ -632,10 +632,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "78
 [p x EBTRB  =  OFF       ]
 "4 DHT11.c
-[; ;DHT11.c: 4: uint8_t DHT11_Read() {
-[v _DHT11_Read `(uc ~T0 @X0 1 ef ]
+[; ;DHT11.c: 4: uint8_t DHT11_ReadByte() {
+[v _DHT11_ReadByte `(uc ~T0 @X0 1 ef ]
 {
-[e :U _DHT11_Read ]
+[e :U _DHT11_ReadByte ]
 [f ]
 "5
 [; ;DHT11.c: 5:     uint8_t data = 0;
@@ -691,10 +691,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 367 ]
 }
 "16
-[; ;DHT11.c: 16: uint8_t DHT11_GetTemperature() {
-[v _DHT11_GetTemperature `(uc ~T0 @X0 1 ef ]
+[; ;DHT11.c: 16: uint8_t DHT11_Read(uint8_t *humidity, uint8_t *temperature) {
+[v _DHT11_Read `(uc ~T0 @X0 1 ef2`*uc`*uc ]
 {
-[e :U _DHT11_GetTemperature ]
+[e :U _DHT11_Read ]
+[v _humidity `*uc ~T0 @X0 1 r1 ]
+[v _temperature `*uc ~T0 @X0 1 r2 ]
 [f ]
 "17
 [; ;DHT11.c: 17:     TRISAbits.TRISA0 = 0;
@@ -703,14 +705,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;DHT11.c: 18:     PORTAbits.RA0 = 0;
 [e = . . _PORTAbits 0 0 -> -> 0 `i `uc ]
 "19
-[; ;DHT11.c: 19:     _delay((unsigned long)((20)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;DHT11.c: 19:     _delay((unsigned long)((18)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 18 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "20
 [; ;DHT11.c: 20:     PORTAbits.RA0 = 1;
 [e = . . _PORTAbits 0 0 -> -> 1 `i `uc ]
 "21
-[; ;DHT11.c: 21:     _delay((unsigned long)((40)*(8000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 40 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+[; ;DHT11.c: 21:     _delay((unsigned long)((30)*(8000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 30 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
 "22
 [; ;DHT11.c: 22:     TRISAbits.TRISA0 = 1;
 [e = . . _TRISAbits 0 0 -> -> 1 `i `uc ]
@@ -719,33 +721,24 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == -> . . _PORTAbits 0 0 `i -> 0 `i 379  ]
 {
 "25
-[; ;DHT11.c: 25:         uint16_t timeout = 1000;
-[v _timeout `us ~T0 @X0 1 a ]
-[e = _timeout -> -> 1000 `i `us ]
-"26
-[; ;DHT11.c: 26:         while (!PORTAbits.RA0 && timeout--) _delay((unsigned long)((1)*(8000000/4000000.0)));
+[; ;DHT11.c: 25:         while (!PORTAbits.RA0);
 [e $U 380  ]
 [e :U 381 ]
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
 [e :U 380 ]
-[e $ && ! != -> . . _PORTAbits 0 0 `i -> 0 `i != -> -- _timeout -> -> 1 `i `us `ui -> -> 0 `i `ui 381  ]
+[e $ ! != -> . . _PORTAbits 0 0 `i -> 0 `i 381  ]
 [e :U 382 ]
-"27
-[; ;DHT11.c: 27:         timeout = 1000;
-[e = _timeout -> -> 1000 `i `us ]
-"28
-[; ;DHT11.c: 28:         while (PORTAbits.RA0 && timeout--) _delay((unsigned long)((1)*(8000000/4000000.0)));
+"26
+[; ;DHT11.c: 26:         while (PORTAbits.RA0);
 [e $U 383  ]
 [e :U 384 ]
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
 [e :U 383 ]
-[e $ && != -> . . _PORTAbits 0 0 `i -> 0 `i != -> -- _timeout -> -> 1 `i `us `ui -> -> 0 `i `ui 384  ]
+[e $ != -> . . _PORTAbits 0 0 `i -> 0 `i 384  ]
 [e :U 385 ]
-"30
-[; ;DHT11.c: 30:         uint8_t data[5];
+"29
+[; ;DHT11.c: 29:         uint8_t data[5];
 [v _data `uc ~T0 @X0 -> 5 `i a ]
-"31
-[; ;DHT11.c: 31:         for (uint8_t i = 0; i < 5; i++) {
+"30
+[; ;DHT11.c: 30:         for (uint8_t i = 0; i < 5; i++) {
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
@@ -753,37 +746,43 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 387  ]
 [e :U 386 ]
 {
+"31
+[; ;DHT11.c: 31:             data[i] = DHT11_ReadByte();
+[e = *U + &U _data * -> _i `ux -> -> # *U &U _data `ui `ux ( _DHT11_ReadByte ..  ]
 "32
-[; ;DHT11.c: 32:             data[i] = DHT11_Read();
-[e = *U + &U _data * -> _i `ux -> -> # *U &U _data `ui `ux ( _DHT11_Read ..  ]
-"33
-[; ;DHT11.c: 33:         }
+[; ;DHT11.c: 32:         }
 }
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 5 `i 386  ]
 [e :U 387 ]
 }
 "35
-[; ;DHT11.c: 35:         if (data[0] + data[1] + data[2] + data[3] == data[4]) {
+[; ;DHT11.c: 35:         if ((data[0] + data[1] + data[2] + data[3]) == data[4]) {
 [e $ ! == + + + -> *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux `i -> *U + &U _data * -> -> -> 1 `i `ui `ux -> -> # *U &U _data `ui `ux `i -> *U + &U _data * -> -> -> 2 `i `ui `ux -> -> # *U &U _data `ui `ux `i -> *U + &U _data * -> -> -> 3 `i `ui `ux -> -> # *U &U _data `ui `ux `i -> *U + &U _data * -> -> -> 4 `i `ui `ux -> -> # *U &U _data `ui `ux `i 389  ]
 {
 "36
-[; ;DHT11.c: 36:             return data[2];
-[e ) *U + &U _data * -> -> -> 2 `i `ui `ux -> -> # *U &U _data `ui `ux ]
-[e $UE 378  ]
+[; ;DHT11.c: 36:             *humidity = data[0];
+[e = *U _humidity *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux ]
 "37
-[; ;DHT11.c: 37:         }
+[; ;DHT11.c: 37:             *temperature = data[2];
+[e = *U _temperature *U + &U _data * -> -> -> 2 `i `ui `ux -> -> # *U &U _data `ui `ux ]
+"38
+[; ;DHT11.c: 38:             return 1;
+[e ) -> -> 1 `i `uc ]
+[e $UE 378  ]
+"39
+[; ;DHT11.c: 39:         }
 }
 [e :U 389 ]
-"38
-[; ;DHT11.c: 38:     }
+"40
+[; ;DHT11.c: 40:     }
 }
 [e :U 379 ]
-"39
-[; ;DHT11.c: 39:     return 255;
-[e ) -> -> 255 `i `uc ]
+"41
+[; ;DHT11.c: 41:     return 0;
+[e ) -> -> 0 `i `uc ]
 [e $UE 378  ]
-"40
-[; ;DHT11.c: 40: }
+"42
+[; ;DHT11.c: 42: }
 [e :UE 378 ]
 }

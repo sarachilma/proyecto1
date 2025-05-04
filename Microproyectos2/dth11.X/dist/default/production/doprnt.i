@@ -945,7 +945,15 @@ vfpfcnvrt(FILE *fp, char *fmt[], va_list ap)
 
 
   }
-# 1806 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\sources\\c99\\common\\doprnt.c"
+# 1798 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\sources\\c99\\common\\doprnt.c"
+        if ((*fmt)[0] == '%') {
+            ++*fmt;
+            fputc((int)'%', fp);
+            return (void) 1;
+        }
+
+
+
         ++*fmt;
         return (void) 0;
     }
