@@ -1,5 +1,6 @@
 build/default/production/main.p1:  \
 main.c  \
-Config.h  \
 LCD.h  \
-RTC.h 
+Config.h  \
+i2c.h  \
+ds1307.h 

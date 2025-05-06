@@ -1,26 +1,47 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"7986 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4550.h
-[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4550.h: 7986: extern volatile unsigned char OSCCON __attribute__((address(0xFD3)));
-[v _OSCCON `Vuc ~T0 @X0 0 e@4051 ]
+"7992 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4550.h
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4550.h: 7992:     struct {
+[s S344 :2 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 ]
+[n S344 . SCS IOFS OSTS IRCF IDLEN ]
+"7999
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4550.h: 7999:     struct {
+[s S345 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S345 . SCS0 SCS1 FLTS . IRCF0 IRCF1 IRCF2 ]
+"7991
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4550.h: 7991: typedef union {
+[u S343 `S344 1 `S345 1 ]
+[n S343 . . . ]
+"8009
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4550.h: 8009: extern volatile OSCCONbits_t OSCCONbits __attribute__((address(0xFD3)));
+[v _OSCCONbits `VS343 ~T0 @X0 0 e@4051 ]
+"6581
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4550.h: 6581: extern volatile unsigned char ADCON1 __attribute__((address(0xFC1)));
+[v _ADCON1 `Vuc ~T0 @X0 0 e@4033 ]
 "24 ./LCD.h
 [; ;./LCD.h: 24: void LCD_Init(void);
 [v _LCD_Init `(v ~T0 @X0 0 ef ]
-"18 ./RTC.h
-[; ;./RTC.h: 18: void RTC_Init(void);
-[v _RTC_Init `(v ~T0 @X0 0 ef ]
-"29 ./LCD.h
+"29
 [; ;./LCD.h: 29: void LCD_Clear(void);
 [v _LCD_Clear `(v ~T0 @X0 0 ef ]
-"21 ./RTC.h
-[; ;./RTC.h: 21: void RTC_GetTime(uint8_t *hour, uint8_t *min, uint8_t *sec);
-[v _RTC_GetTime `(v ~T0 @X0 0 ef3`*uc`*uc`*uc ]
-"22
-[; ;./RTC.h: 22: void RTC_GetDate(uint8_t *date, uint8_t *month, uint8_t *year);
-[v _RTC_GetDate `(v ~T0 @X0 0 ef3`*uc`*uc`*uc ]
+"4 ./i2c.h
+[; ;./i2c.h: 4: void I2C_Master_Init(const unsigned long c);
+[v _I2C_Master_Init `(v ~T0 @X0 0 ef1`Cul ]
 "28 ./LCD.h
 [; ;./LCD.h: 28: void LCD_String_xy(char, char, const char *);
 [v _LCD_String_xy `(v ~T0 @X0 0 ef3`uc`uc`*Cuc ]
+"4 ./ds1307.h
+[; ;./ds1307.h: 4: void RTC_Init(void);
+[v _RTC_Init `(v ~T0 @X0 0 ef ]
+"5
+[; ;./ds1307.h: 5: void RTC_SetDateTime(unsigned char h, unsigned char m, unsigned char s,
+[v _RTC_SetDateTime `(v ~T0 @X0 0 ef6`uc`uc`uc`uc`uc`uc ]
+"7
+[; ;./ds1307.h: 7: void RTC_GetDateTime(unsigned char *hour, unsigned char *min, unsigned char *sec,
+[v _RTC_GetDateTime `(v ~T0 @X0 0 ef6`*uc`*uc`*uc`*uc`*uc`*uc ]
+"121 C:\Program Files\Microchip\xc8\v2.50\pic\include\c99\stdio.h
+[; ;C:\Program Files\Microchip\xc8\v2.50\pic\include\c99\stdio.h: 121: int sprintf(char *restrict, const char *restrict, ...);
+[v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
 [v F3171 `(v ~T0 @X0 1 tf1`ul ]
 "203 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\pic18.h
 [v __delay `JF3171 ~T0 @X0 0 e ]
@@ -535,215 +556,163 @@ Version 4.0 HI-TECH Software Intermediate Code
 "8893
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4550.h: 8893: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"18 ./Config.h
+"34 ./Config.h
 [p x PLLDIV  =  1        ]
-"19
-[p x CPUDIV  =  OSC1_PLL2 ]
-"20
-[p x USBDIV  =  1        ]
-"23
-[p x FOSC  =  INTOSC_EC  ]
-"24
-[p x FCMEN  =  OFF       ]
-"25
-[p x IESO  =  OFF        ]
-"28
-[p x PWRT  =  OFF        ]
-"29
-[p x BOR  =  ON          ]
-"30
-[p x BORV  =  3          ]
-"31
-[p x VREGEN  =  OFF      ]
-"34
-[p x WDT  =  OFF         ]
 "35
-[p x WDTPS  =  32768     ]
-"38
-[p x CCP2MX  =  ON       ]
+[p x CPUDIV  =  OSC1_PLL2 ]
+"36
+[p x USBDIV  =  1        ]
 "39
-[p x PBADEN  =  OFF       ]
+[p x FOSC  =  INTOSC_EC  ]
 "40
-[p x LPT1OSC  =  OFF     ]
+[p x FCMEN  =  OFF       ]
 "41
-[p x MCLRE  =  OFF       ]
+[p x IESO  =  OFF        ]
 "44
-[p x STVREN  =  ON       ]
+[p x PWRT  =  OFF        ]
 "45
-[p x LVP  =  OFF          ]
+[p x BOR  =  ON          ]
 "46
-[p x ICPRT  =  OFF       ]
+[p x BORV  =  3          ]
 "47
-[p x XINST  =  OFF       ]
+[p x VREGEN  =  OFF      ]
 "50
-[p x CP0  =  OFF         ]
+[p x WDT  =  OFF         ]
 "51
-[p x CP1  =  OFF         ]
-"52
-[p x CP2  =  OFF         ]
-"53
-[p x CP3  =  OFF         ]
+[p x WDTPS  =  32768     ]
+"54
+[p x CCP2MX  =  ON       ]
+"55
+[p x PBADEN  =  OFF       ]
 "56
-[p x CPB  =  OFF         ]
+[p x LPT1OSC  =  OFF     ]
 "57
-[p x CPD  =  OFF         ]
+[p x MCLRE  =  OFF       ]
 "60
-[p x WRT0  =  OFF        ]
+[p x STVREN  =  ON       ]
 "61
-[p x WRT1  =  OFF        ]
+[p x LVP  =  OFF          ]
 "62
-[p x WRT2  =  OFF        ]
+[p x ICPRT  =  OFF       ]
 "63
-[p x WRT3  =  OFF        ]
+[p x XINST  =  OFF       ]
 "66
-[p x WRTC  =  OFF        ]
+[p x CP0  =  OFF         ]
 "67
-[p x WRTB  =  OFF        ]
+[p x CP1  =  OFF         ]
 "68
-[p x WRTD  =  OFF        ]
-"71
-[p x EBTR0  =  OFF       ]
+[p x CP2  =  OFF         ]
+"69
+[p x CP3  =  OFF         ]
 "72
-[p x EBTR1  =  OFF       ]
+[p x CPB  =  OFF         ]
 "73
-[p x EBTR2  =  OFF       ]
-"74
-[p x EBTR3  =  OFF       ]
+[p x CPD  =  OFF         ]
+"76
+[p x WRT0  =  OFF        ]
 "77
+[p x WRT1  =  OFF        ]
+"78
+[p x WRT2  =  OFF        ]
+"79
+[p x WRT3  =  OFF        ]
+"82
+[p x WRTC  =  OFF        ]
+"83
+[p x WRTB  =  OFF        ]
+"84
+[p x WRTD  =  OFF        ]
+"87
+[p x EBTR0  =  OFF       ]
+"88
+[p x EBTR1  =  OFF       ]
+"89
+[p x EBTR2  =  OFF       ]
+"90
+[p x EBTR3  =  OFF       ]
+"93
 [p x EBTRB  =  OFF       ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"20 main.c
-[; ;main.c: 20: void main() {
+"8 main.c
+[; ;main.c: 8: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"22
-[; ;main.c: 22:     uint8_t hour, min, sec, date, month, year;
-[v _hour `uc ~T0 @X0 1 a ]
-[v _min `uc ~T0 @X0 1 a ]
-[v _sec `uc ~T0 @X0 1 a ]
-[v _date `uc ~T0 @X0 1 a ]
-[v _month `uc ~T0 @X0 1 a ]
-[v _year `uc ~T0 @X0 1 a ]
-[v F3249 `uc ~T0 @X0 -> 9 `i s ]
-[i F3249
-:U ..
-"23
-[; ;main.c: 23:     char time_str[9] = "00:00:00";
--> 48 `c
--> 48 `c
--> 58 `c
--> 48 `c
--> 48 `c
--> 58 `c
--> 48 `c
--> 48 `c
--> 0 `c
-..
-]
-[v _time_str `uc ~T0 @X0 -> 9 `i a ]
-[e = _time_str F3249 ]
-[v F3251 `uc ~T0 @X0 -> 9 `i s ]
-[i F3251
-:U ..
-"24
-[; ;main.c: 24:     char date_str[9] = "00/00/00";
--> 48 `c
--> 48 `c
--> 47 `c
--> 48 `c
--> 48 `c
--> 47 `c
--> 48 `c
--> 48 `c
--> 0 `c
-..
-]
-[v _date_str `uc ~T0 @X0 -> 9 `i a ]
-[e = _date_str F3251 ]
-"27
-[; ;main.c: 27:     OSCCON = 0x72;
-[e = _OSCCON -> -> 114 `i `uc ]
-"28
-[; ;main.c: 28:     LCD_Init();
+"9
+[; ;main.c: 9:     unsigned char h, m, s, d, mo, y;
+[v _h `uc ~T0 @X0 1 a ]
+[v _m `uc ~T0 @X0 1 a ]
+[v _s `uc ~T0 @X0 1 a ]
+[v _d `uc ~T0 @X0 1 a ]
+[v _mo `uc ~T0 @X0 1 a ]
+[v _y `uc ~T0 @X0 1 a ]
+"10
+[; ;main.c: 10:     char buffer[17];
+[v _buffer `uc ~T0 @X0 -> 17 `i a ]
+"12
+[; ;main.c: 12:     OSCCONbits.IRCF = 0b111;
+[e = . . _OSCCONbits 0 3 -> -> 7 `i `uc ]
+"13
+[; ;main.c: 13:     OSCCONbits.SCS = 0b10;
+[e = . . _OSCCONbits 0 0 -> -> 2 `i `uc ]
+"14
+[; ;main.c: 14:     ADCON1 = 0x0F;
+[e = _ADCON1 -> -> 15 `i `uc ]
+"16
+[; ;main.c: 16:     LCD_Init();
 [e ( _LCD_Init ..  ]
-"29
-[; ;main.c: 29:     RTC_Init();
-[e ( _RTC_Init ..  ]
-"35
-[; ;main.c: 35:     LCD_Clear();
+"17
+[; ;main.c: 17:     LCD_Clear();
 [e ( _LCD_Clear ..  ]
-"37
-[; ;main.c: 37:     while(1) {
-[e :U 369 ]
-{
-"39
-[; ;main.c: 39:         RTC_GetTime(&hour, &min, &sec);
-[e ( _RTC_GetTime (3 , , &U _hour &U _min &U _sec ]
-"40
-[; ;main.c: 40:         RTC_GetDate(&date, &month, &year);
-[e ( _RTC_GetDate (3 , , &U _date &U _month &U _year ]
-"43
-[; ;main.c: 43:         time_str[0] = (hour / 10) + '0';
-[e = *U + &U _time_str * -> -> -> 0 `i `ui `ux -> -> # *U &U _time_str `ui `ux -> + -> / -> _hour `i -> 10 `i `ui -> 48 `ui `uc ]
-"44
-[; ;main.c: 44:         time_str[1] = (hour % 10) + '0';
-[e = *U + &U _time_str * -> -> -> 1 `i `ui `ux -> -> # *U &U _time_str `ui `ux -> + -> % -> _hour `i -> 10 `i `ui -> 48 `ui `uc ]
-"45
-[; ;main.c: 45:         time_str[3] = (min / 10) + '0';
-[e = *U + &U _time_str * -> -> -> 3 `i `ui `ux -> -> # *U &U _time_str `ui `ux -> + -> / -> _min `i -> 10 `i `ui -> 48 `ui `uc ]
-"46
-[; ;main.c: 46:         time_str[4] = (min % 10) + '0';
-[e = *U + &U _time_str * -> -> -> 4 `i `ui `ux -> -> # *U &U _time_str `ui `ux -> + -> % -> _min `i -> 10 `i `ui -> 48 `ui `uc ]
-"47
-[; ;main.c: 47:         time_str[6] = (sec / 10) + '0';
-[e = *U + &U _time_str * -> -> -> 6 `i `ui `ux -> -> # *U &U _time_str `ui `ux -> + -> / -> _sec `i -> 10 `i `ui -> 48 `ui `uc ]
-"48
-[; ;main.c: 48:         time_str[7] = (sec % 10) + '0';
-[e = *U + &U _time_str * -> -> -> 7 `i `ui `ux -> -> # *U &U _time_str `ui `ux -> + -> % -> _sec `i -> 10 `i `ui -> 48 `ui `uc ]
-"51
-[; ;main.c: 51:         date_str[0] = (date / 10) + '0';
-[e = *U + &U _date_str * -> -> -> 0 `i `ui `ux -> -> # *U &U _date_str `ui `ux -> + -> / -> _date `i -> 10 `i `ui -> 48 `ui `uc ]
-"52
-[; ;main.c: 52:         date_str[1] = (date % 10) + '0';
-[e = *U + &U _date_str * -> -> -> 1 `i `ui `ux -> -> # *U &U _date_str `ui `ux -> + -> % -> _date `i -> 10 `i `ui -> 48 `ui `uc ]
-"53
-[; ;main.c: 53:         date_str[3] = (month / 10) + '0';
-[e = *U + &U _date_str * -> -> -> 3 `i `ui `ux -> -> # *U &U _date_str `ui `ux -> + -> / -> _month `i -> 10 `i `ui -> 48 `ui `uc ]
-"54
-[; ;main.c: 54:         date_str[4] = (month % 10) + '0';
-[e = *U + &U _date_str * -> -> -> 4 `i `ui `ux -> -> # *U &U _date_str `ui `ux -> + -> % -> _month `i -> 10 `i `ui -> 48 `ui `uc ]
-"55
-[; ;main.c: 55:         date_str[6] = (year / 10) + '0';
-[e = *U + &U _date_str * -> -> -> 6 `i `ui `ux -> -> # *U &U _date_str `ui `ux -> + -> / -> _year `i -> 10 `i `ui -> 48 `ui `uc ]
-"56
-[; ;main.c: 56:         date_str[7] = (year % 10) + '0';
-[e = *U + &U _date_str * -> -> -> 7 `i `ui `ux -> -> # *U &U _date_str `ui `ux -> + -> % -> _year `i -> 10 `i `ui -> 48 `ui `uc ]
-"59
-[; ;main.c: 59:         LCD_String_xy(0, 0, "Date:");
+"18
+[; ;main.c: 18:     I2C_Master_Init(100000);
+[e ( _I2C_Master_Init (1 -> -> 100000 `l `ul ]
+"19
+[; ;main.c: 19:     LCD_String_xy(0, 0, "Configurando RTC");
 [e ( _LCD_String_xy (3 , , -> -> 0 `i `uc -> -> 0 `i `uc :s 1C ]
-"60
-[; ;main.c: 60:         LCD_String_xy(0, 6, date_str);
-[e ( _LCD_String_xy (3 , , -> -> 0 `i `uc -> -> 6 `i `uc -> &U _date_str `*Cuc ]
-"61
-[; ;main.c: 61:         LCD_String_xy(1, 0, "Time:");
-[e ( _LCD_String_xy (3 , , -> -> 1 `i `uc -> -> 0 `i `uc :s 2C ]
-"62
-[; ;main.c: 62:         LCD_String_xy(1, 6, time_str);
-[e ( _LCD_String_xy (3 , , -> -> 1 `i `uc -> -> 6 `i `uc -> &U _time_str `*Cuc ]
-"64
-[; ;main.c: 64:         _delay((unsigned long)((500)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"65
-[; ;main.c: 65:     }
+"20
+[; ;main.c: 20:     RTC_Init();
+[e ( _RTC_Init ..  ]
+"21
+[; ;main.c: 21:     RTC_SetDateTime(10, 50, 0, 5, 5, 25);
+[e ( _RTC_SetDateTime (4 , , , , , -> -> 10 `i `uc -> -> 50 `i `uc -> -> 0 `i `uc -> -> 5 `i `uc -> -> 5 `i `uc -> -> 25 `i `uc ]
+"22
+[; ;main.c: 22:     LCD_Clear();
+[e ( _LCD_Clear ..  ]
+"24
+[; ;main.c: 24:     while (1) {
+[e :U 371 ]
+{
+"25
+[; ;main.c: 25:         RTC_GetDateTime(&h, &m, &s, &d, &mo, &y);
+[e ( _RTC_GetDateTime (4 , , , , , &U _h &U _m &U _s &U _d &U _mo &U _y ]
+"27
+[; ;main.c: 27:         sprintf(buffer, "Fecha:%02d/%02d/20%02d", d, mo, y);
+[e ( _sprintf (1 , , , (. , &U _buffer :s 2C -> _d `i -> _mo `i -> _y `i ]
+"28
+[; ;main.c: 28:         LCD_String_xy(0, 0, buffer);
+[e ( _LCD_String_xy (3 , , -> -> 0 `i `uc -> -> 0 `i `uc -> &U _buffer `*Cuc ]
+"31
+[; ;main.c: 31:         sprintf(buffer, "Hora: %02d:%02d:%02d", h, m, s);
+[e ( _sprintf (1 , , , (. , &U _buffer :s 3C -> _h `i -> _m `i -> _s `i ]
+"32
+[; ;main.c: 32:         LCD_String_xy(1, 0, buffer);
+[e ( _LCD_String_xy (3 , , -> -> 1 `i `uc -> -> 0 `i `uc -> &U _buffer `*Cuc ]
+"34
+[; ;main.c: 34:         _delay((unsigned long)((1000)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"35
+[; ;main.c: 35:     }
 }
-[e :U 368 ]
-[e $U 369  ]
 [e :U 370 ]
-"66
-[; ;main.c: 66: }
-[e :UE 367 ]
+[e $U 371  ]
+[e :U 372 ]
+"36
+[; ;main.c: 36: }
+[e :UE 369 ]
 }
-[a 1C 68 97 116 101 58 0 ]
-[a 2C 84 105 109 101 58 0 ]
+[p f _sprintf 8421508 ]
+[a 3C 72 111 114 97 58 32 37 48 50 100 58 37 48 50 100 58 37 48 50 100 0 ]
+[a 2C 70 101 99 104 97 58 37 48 50 100 47 37 48 50 100 47 50 48 37 48 50 100 0 ]
+[a 1C 67 111 110 102 105 103 117 114 97 110 100 111 32 82 84 67 0 ]

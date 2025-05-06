@@ -1,66 +1,36 @@
-/* 
- * File:   main.c
- * Author: danis
- *
- * Created on 21 de abril de 2025, 09:17 AM
- */
-
-/* 
- * File:   main.c
- * Author: danis
- *
- * Created on 21 de abril de 2025, 09:17 AM
- */
-
 #include <xc.h>
-#include "Config.h"
+#include <stdio.h>
 #include "LCD.h"
-#include "RTC.h"
+#include "Config.h"
+#include "i2c.h"
+#include "ds1307.h"
 
-void main() {
-    // Variables para fecha y hora
-    uint8_t hour, min, sec, date, month, year;
-    char time_str[9] = "00:00:00";
-    char date_str[9] = "00/00/00";  // Reducido a 9 caracteres (DD/MM/YY)
-    
-    // Inicialización
-    OSCCON = 0x72;
+void main(void) {
+    unsigned char h, m, s, d, mo, y;
+    char buffer[17];
+
+    OSCCONbits.IRCF = 0b111; // 8 MHz
+    OSCCONbits.SCS = 0b10;
+    ADCON1 = 0x0F;
+
     LCD_Init();
-    RTC_Init();
-    
-    // Configuración inicial (descomentar solo la primera vez)
-    //RTC_SetDate(23, 4, 25);  // 21/04/25 (sin día de semana)
-    //RTC_SetTime(8, 20, 0);   // 12:00:00
-    
     LCD_Clear();
-    
-    while(1) {
-        // Leer fecha y hora actual
-        RTC_GetTime(&hour, &min, &sec);
-        RTC_GetDate(&date, &month, &year);
+    I2C_Master_Init(100000); // MSSP I2C en RB0/RB1
+    LCD_String_xy(0, 0, "Configurando RTC");
+    RTC_Init();
+    RTC_SetDateTime(10, 50, 0, 5, 5, 25); // Configuración inicial
+    LCD_Clear();
+
+    while (1) {        
+        RTC_GetDateTime(&h, &m, &s, &d, &mo, &y);
         
-        // Formatear hora (HH:MM:SS)
-        time_str[0] = (hour / 10) + '0';
-        time_str[1] = (hour % 10) + '0';
-        time_str[3] = (min / 10) + '0';
-        time_str[4] = (min % 10) + '0';
-        time_str[6] = (sec / 10) + '0';
-        time_str[7] = (sec % 10) + '0';
-        
-        // Formatear fecha (DD/MM/YY)
-        date_str[0] = (date / 10) + '0';
-        date_str[1] = (date % 10) + '0';
-        date_str[3] = (month / 10) + '0';
-        date_str[4] = (month % 10) + '0';
-        date_str[6] = (year / 10) + '0';
-        date_str[7] = (year % 10) + '0';
-        
-        // Mostrar en LCD
-        LCD_String_xy(0, 0, "Date:");
-        LCD_String_xy(0, 6, date_str);  // Ajustado a posición 6
-        LCD_String_xy(1, 0, "Time:");
-        LCD_String_xy(1, 6, time_str);  // Ajustado a posición 6
-        
-        __delay_ms(500);
+        sprintf(buffer, "Fecha:%02d/%02d/20%02d", d, mo, y);
+        LCD_String_xy(0, 0, buffer);
+
+        // Mostrar hora con prefijo "Hora:"
+        sprintf(buffer, "Hora: %02d:%02d:%02d", h, m, s);
+        LCD_String_xy(1, 0, buffer);
+
+        __delay_ms(1000);
     }
 }
