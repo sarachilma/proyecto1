@@ -3,22 +3,15 @@
 [d edition pro ]
 [d chip 18F4550 ]
 [d frameptr 4065 ]
-"25 C:\Users\danis\OneDrive\Escritorio\Microproyectos2\Estacion.X\main.c
-[e E3754 . `uc
-SHOW_DHT11 0
-SHOW_GPS 1
-SHOW_RTC 2
-NUM_DISPLAYS 3
-]
-"7 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\__lldiv.c
+"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\__lldiv.c
 [v ___lldiv __lldiv `(ul  1 e 4 0 ]
-"1 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\abs.c
+"1 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\abs.c
 [v _abs abs `(i  1 e 2 0 ]
-"7 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\awdiv.c
+"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
-"7 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\awmod.c
+"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
-"193 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\doprnt.c
+"193 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\doprnt.c
 [v _pad pad `(v  1 s 1 pad ]
 "513
 [v _dtoa dtoa `(v  1 s 1 dtoa ]
@@ -30,61 +23,63 @@ NUM_DISPLAYS 3
 [v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
 "1817
 [v _vfprintf vfprintf `(i  1 e 2 0 ]
-"4 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\fleq.c
+"4 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
-"62 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\float.c
+"62 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\float.c
 [v ___ftpack __ftpack `(f  1 e 4 0 ]
-"86 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\ftadd.c
+"43 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
+"86 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftadd.c
 [v ___ftadd __ftadd `(f  1 e 4 0 ]
-"54 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\ftdiv.c
+"54 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftdiv.c
 [v ___ftdiv __ftdiv `(f  1 e 4 0 ]
-"62 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\ftmul.c
+"62 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftmul.c
 [v ___ftmul __ftmul `(f  1 e 4 0 ]
-"19 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\ftsub.c
+"19 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftsub.c
 [v ___ftsub __ftsub `(f  1 e 4 0 ]
-"7 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\lwmod.c
-[v ___lwmod __lwmod `(ui  1 e 2 0 ]
-"8 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\nf_fputc.c
+"8 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\nf_fputc.c
 [v _fputc fputc `(i  1 e 2 0 ]
-"8 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\nf_fputs.c
+"8 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\nf_fputs.c
 [v _fputs fputs `(i  1 e 2 0 ]
-"9 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\nf_sprintf.c
+"9 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\nf_sprintf.c
 [v _sprintf sprintf `(i  1 e 2 0 ]
-"7 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\putch.c
+"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\putch.c
 [v _putch putch `(v  1 e 1 0 ]
-"10 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\sprcadd.c
+"10 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "245
 [v ___flsub __flsub `(d  1 e 4 0 ]
-"11 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\sprcdiv.c
+"11 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\sprcdiv.c
 [v ___fldiv __fldiv `(d  1 e 4 0 ]
-"8 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\sprcmul.c
+"8 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
-"3 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strchr.c
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strchr.c
 [v _strchr strchr `(*.35uc  1 e 2 0 ]
-"3 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strcspn.c
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strcspn.c
 [v _strcspn strcspn `(ui  1 e 2 0 ]
-"5 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strlen.c
+"5 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strlen.c
 [v _strlen strlen `(ui  1 e 2 0 ]
-"3 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strncmp.c
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strncmp.c
 [v _strncmp strncmp `(i  1 e 2 0 ]
-"3 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strncpy.c
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strncpy.c
 [v _strncpy strncpy `(*.39uc  1 e 2 0 ]
-"3 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strspn.c
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strspn.c
 [v _strspn strspn `(ui  1 e 2 0 ]
-"4 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strstr.c
+"4 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strstr.c
 [v _strstr strstr `(*.35uc  1 e 2 0 ]
-"3 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strtok.c
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strtok.c
 [v _strtok strtok `(*.30uc  1 e 2 0 ]
-"15 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\Umul32.c
+"15 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
-"91 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\Umul64.c
+"91 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"4 C:\Users\danis\OneDrive\Escritorio\Microproyectos2\Estacion.X\DHT11.c
+"10 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\xxtofl.c
+[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
+"4 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\DHT11.c
 [v _DHT11_ReadByte DHT11_ReadByte `(uc  1 e 1 0 ]
 "16
 [v _DHT11_Read DHT11_Read `(uc  1 e 1 0 ]
-"6 C:\Users\danis\OneDrive\Escritorio\Microproyectos2\Estacion.X\ds1307.c
+"6 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\ds1307.c
 [v _BCD2DEC BCD2DEC `(uc  1 e 1 0 ]
 "10
 [v _DEC2BCD DEC2BCD `(uc  1 e 1 0 ]
@@ -92,13 +87,13 @@ NUM_DISPLAYS 3
 [v _RTC_Init RTC_Init `(v  1 e 1 0 ]
 "63
 [v _RTC_GetDateTime RTC_GetDateTime `(v  1 e 1 0 ]
-"6 C:\Users\danis\OneDrive\Escritorio\Microproyectos2\Estacion.X\GPS.c
+"6 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\GPS.c
 [v _GPS_Init GPS_Init `(v  1 e 1 0 ]
 "24
 [v _GPS_ReadSentence GPS_ReadSentence `(uc  1 e 1 0 ]
 "72
 [v _GPS_ParseGPRMC GPS_ParseGPRMC `(uc  1 e 1 0 ]
-"4 C:\Users\danis\OneDrive\Escritorio\Microproyectos2\Estacion.X\i2c.c
+"4 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\i2c.c
 [v _I2C_Master_Init I2C_Master_Init `(v  1 e 1 0 ]
 "13
 [v _I2C_Master_Wait I2C_Master_Wait `(v  1 e 1 0 ]
@@ -112,7 +107,7 @@ NUM_DISPLAYS 3
 [v _I2C_Master_Write I2C_Master_Write `(uc  1 e 1 0 ]
 "39
 [v _I2C_Master_Read I2C_Master_Read `(us  1 e 2 0 ]
-"3 C:\Users\danis\OneDrive\Escritorio\Microproyectos2\Estacion.X\LCD.c
+"3 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\LCD.c
 [v _LCD_Init LCD_Init `(v  1 e 1 0 ]
 "13
 [v _LCD_Command LCD_Command `(v  1 e 1 0 ]
@@ -124,17 +119,29 @@ NUM_DISPLAYS 3
 [v _LCD_String_xy LCD_String_xy `(v  1 e 1 0 ]
 "64
 [v _LCD_Clear LCD_Clear `(v  1 e 1 0 ]
-"32 C:\Users\danis\OneDrive\Escritorio\Microproyectos2\Estacion.X\main.c
+"31 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\main.c
+[v _Initialize_System Initialize_System `(v  1 e 1 0 ]
+"52
+[v _Setup_Interrupts Setup_Interrupts `(v  1 e 1 0 ]
+"64
+[v _HighPriorityISR HighPriorityISR `IIH(v  1 e 1 0 ]
+"73
+[v _Enter_Low_Power_Mode Enter_Low_Power_Mode `(v  1 e 1 0 ]
+"83
 [v _Clear_Line Clear_Line `(v  1 e 1 0 ]
-"39
+"88
 [v _Display_DHT11 Display_DHT11 `(v  1 e 1 0 ]
-"65
+"104
 [v _Display_GPS Display_GPS `(v  1 e 1 0 ]
-"94
+"127
 [v _Display_RTC Display_RTC `(v  1 e 1 0 ]
-"120
+"150
 [v _main main `(v  1 e 1 0 ]
-[s S156 . 1 `uc 1 RA0 1 0 :1:0 
+"31 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\USART_Source_File.c
+[v _USART_TxChar USART_TxChar `(v  1 e 1 0 ]
+"63
+[v _SoftUSART_TxChar SoftUSART_TxChar `(v  1 e 1 0 ]
+[s S377 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -142,8 +149,8 @@ NUM_DISPLAYS 3
 `uc 1 RA5 1 0 :1:5 
 `uc 1 RA6 1 0 :1:6 
 ]
-"2353 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4550.h
-[s S164 . 1 `uc 1 AN0 1 0 :1:0 
+"2353 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc/pic18f4550.h
+[s S385 . 1 `uc 1 AN0 1 0 :1:0 
 `uc 1 AN1 1 0 :1:1 
 `uc 1 AN2 1 0 :1:2 
 `uc 1 AN3 1 0 :1:3 
@@ -151,22 +158,66 @@ NUM_DISPLAYS 3
 `uc 1 AN4 1 0 :1:5 
 `uc 1 OSC2 1 0 :1:6 
 ]
-[s S172 . 1 `uc 1 . 1 0 :2:0 
+[s S393 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 VREFM 1 0 :1:2 
 `uc 1 VREFP 1 0 :1:3 
 `uc 1 . 1 0 :1:4 
 `uc 1 LVDIN 1 0 :1:5 
 ]
-[s S178 . 1 `uc 1 . 1 0 :5:0 
+[s S399 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 HLVDIN 1 0 :1:5 
 ]
-[s S181 . 1 `uc 1 ULPWUIN 1 0 :1:0 
+[s S402 . 1 `uc 1 ULPWUIN 1 0 :1:0 
 ]
-[u S183 . 1 `S156 1 . 1 0 `S164 1 . 1 0 `S172 1 . 1 0 `S178 1 . 1 0 `S181 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES183  1 e 1 @3968 ]
+[u S404 . 1 `S377 1 . 1 0 `S385 1 . 1 0 `S393 1 . 1 0 `S399 1 . 1 0 `S402 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES404  1 e 1 @3968 ]
+[s S804 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"2483
+[s S886 . 1 `uc 1 INT0 1 0 :1:0 
+`uc 1 INT1 1 0 :1:1 
+`uc 1 INT2 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 PGM 1 0 :1:5 
+`uc 1 PGC 1 0 :1:6 
+`uc 1 PGD 1 0 :1:7 
+]
+[s S894 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 CCP2_PA2 1 0 :1:3 
+]
+[u S897 . 1 `S804 1 . 1 0 `S886 1 . 1 0 `S894 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES897  1 e 1 @3969 ]
+[s S835 . 1 `uc 1 LATB0 1 0 :1:0 
+`uc 1 LATB1 1 0 :1:1 
+`uc 1 LATB2 1 0 :1:2 
+`uc 1 LATB3 1 0 :1:3 
+`uc 1 LATB4 1 0 :1:4 
+`uc 1 LATB5 1 0 :1:5 
+`uc 1 LATB6 1 0 :1:6 
+`uc 1 LATB7 1 0 :1:7 
+]
+"3100
+[s S844 . 1 `uc 1 LB0 1 0 :1:0 
+`uc 1 LB1 1 0 :1:1 
+`uc 1 LB2 1 0 :1:2 
+`uc 1 LB3 1 0 :1:3 
+`uc 1 LB4 1 0 :1:4 
+`uc 1 LB5 1 0 :1:5 
+`uc 1 LB6 1 0 :1:6 
+`uc 1 LB7 1 0 :1:7 
+]
+[u S853 . 1 `S835 1 . 1 0 `S844 1 . 1 0 ]
+[v _LATBbits LATBbits `VES853  1 e 1 @3978 ]
 "3263
 [v _LATD LATD `VEuc  1 e 1 @3980 ]
-[s S219 . 1 `uc 1 TRISA0 1 0 :1:0 
+[s S440 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
@@ -175,11 +226,25 @@ NUM_DISPLAYS 3
 `uc 1 TRISA6 1 0 :1:6 
 ]
 "3457
-[u S235 . 1 `S219 1 . 1 0 `S156 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES235  1 e 1 @3986 ]
+[u S456 . 1 `S440 1 . 1 0 `S377 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES456  1 e 1 @3986 ]
+"3625
+[v _TRISB TRISB `VEuc  1 e 1 @3987 ]
+[s S795 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+"3657
+[u S813 . 1 `S795 1 . 1 0 `S804 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES813  1 e 1 @3987 ]
 "4001
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
-[s S284 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[s S505 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 SSPIF 1 0 :1:3 
@@ -189,17 +254,17 @@ NUM_DISPLAYS 3
 `uc 1 SPPIF 1 0 :1:7 
 ]
 "4492
-[s S293 . 1 `uc 1 . 1 0 :4:0 
+[s S514 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 TX1IF 1 0 :1:4 
 `uc 1 RC1IF 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 PSPIF 1 0 :1:7 
 ]
-[u S299 . 1 `S284 1 . 1 0 `S293 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES299  1 e 1 @3998 ]
+[u S520 . 1 `S505 1 . 1 0 `S514 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES520  1 e 1 @3998 ]
 "4936
 [v _RCSTA RCSTA `VEuc  1 e 1 @4011 ]
-[s S318 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S539 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -209,24 +274,26 @@ NUM_DISPLAYS 3
 `uc 1 SPEN 1 0 :1:7 
 ]
 "4977
-[s S327 . 1 `uc 1 . 1 0 :3:0 
+[s S548 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 ADEN 1 0 :1:3 
 ]
-[s S330 . 1 `uc 1 . 1 0 :5:0 
+[s S551 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 SRENA 1 0 :1:5 
 ]
-[s S333 . 1 `uc 1 . 1 0 :6:0 
+[s S554 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC8_9 1 0 :1:6 
 ]
-[s S336 . 1 `uc 1 . 1 0 :6:0 
+[s S557 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC9 1 0 :1:6 
 ]
-[s S339 . 1 `uc 1 RCD8 1 0 :1:0 
+[s S560 . 1 `uc 1 RCD8 1 0 :1:0 
 ]
-[u S341 . 1 `S318 1 . 1 0 `S327 1 . 1 0 `S330 1 . 1 0 `S333 1 . 1 0 `S336 1 . 1 0 `S339 1 . 1 0 ]
-[v _RCSTAbits RCSTAbits `VES341  1 e 1 @4011 ]
+[u S562 . 1 `S539 1 . 1 0 `S548 1 . 1 0 `S551 1 . 1 0 `S554 1 . 1 0 `S557 1 . 1 0 `S560 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES562  1 e 1 @4011 ]
 "5146
 [v _TXSTA TXSTA `VEuc  1 e 1 @4012 ]
+"5402
+[v _TXREG TXREG `VEuc  1 e 1 @4013 ]
 "5414
 [v _RCREG RCREG `VEuc  1 e 1 @4014 ]
 "5426
@@ -247,14 +314,98 @@ NUM_DISPLAYS 3
 [v _SSPADD SSPADD `VEuc  1 e 1 @4040 ]
 "7193
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
+[s S150 . 1 `uc 1 NOT_BOR 1 0 :1:0 
+]
+"7588
+[s S152 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_POR 1 0 :1:1 
+]
+[s S155 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_PD 1 0 :1:2 
+]
+[s S158 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 NOT_TO 1 0 :1:3 
+]
+[s S161 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 NOT_RI 1 0 :1:4 
+]
+[s S164 . 1 `uc 1 nBOR 1 0 :1:0 
+`uc 1 nPOR 1 0 :1:1 
+`uc 1 nPD 1 0 :1:2 
+`uc 1 nTO 1 0 :1:3 
+`uc 1 nRI 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 SBOREN 1 0 :1:6 
+`uc 1 IPEN 1 0 :1:7 
+]
+[s S173 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 NOT_IPEN 1 0 :1:7 
+]
+[s S176 . 1 `uc 1 BOR 1 0 :1:0 
+`uc 1 POR 1 0 :1:1 
+`uc 1 PD 1 0 :1:2 
+`uc 1 TO 1 0 :1:3 
+`uc 1 RI 1 0 :1:4 
+`uc 1 . 1 0 :2:5 
+`uc 1 nIPEN 1 0 :1:7 
+]
+[u S184 . 1 `S150 1 . 1 0 `S152 1 . 1 0 `S155 1 . 1 0 `S158 1 . 1 0 `S161 1 . 1 0 `S164 1 . 1 0 `S173 1 . 1 0 `S176 1 . 1 0 ]
+[v _RCONbits RCONbits `VES184  1 e 1 @4048 ]
 "7986
 [v _OSCCON OSCCON `VEuc  1 e 1 @4051 ]
+[s S111 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 NOT_RBPU 1 0 :1:7 
+]
+"8532
+[s S114 . 1 `uc 1 RBIP 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 TMR0IP 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 INTEDG2 1 0 :1:4 
+`uc 1 INTEDG1 1 0 :1:5 
+`uc 1 INTEDG0 1 0 :1:6 
+`uc 1 nRBPU 1 0 :1:7 
+]
+[s S123 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T0IP 1 0 :1:2 
+`uc 1 . 1 0 :4:3 
+`uc 1 RBPU 1 0 :1:7 
+]
+[u S128 . 1 `S111 1 . 1 0 `S114 1 . 1 0 `S123 1 . 1 0 ]
+[v _INTCON2bits INTCON2bits `VES128  1 e 1 @4081 ]
+[s S62 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INT0IF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INT0IE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE_GIEL 1 0 :1:6 
+`uc 1 GIE_GIEH 1 0 :1:7 
+]
+"8614
+[s S71 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 INT0F 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 INT0E 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S80 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+[u S84 . 1 `S62 1 . 1 0 `S71 1 . 1 0 `S80 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES84  1 e 1 @4082 ]
 "8910
 [v _ACKDT ACKDT `VEb  1 e 0 @32301 ]
 "8913
 [v _ACKEN ACKEN `VEb  1 e 0 @32300 ]
 "8916
 [v _ACKSTAT ACKSTAT `VEb  1 e 0 @32302 ]
+"9201
+[v _CREN CREN `VEb  1 e 0 @32092 ]
 "9987
 [v _LATD0 LATD0 `VEb  1 e 0 @31840 ]
 "9990
@@ -263,6 +414,8 @@ NUM_DISPLAYS 3
 [v _PEN PEN `VEb  1 e 0 @32298 ]
 "10434
 [v _RCEN RCEN `VEb  1 e 0 @32299 ]
+"10443
+[v _RCIF RCIF `VEb  1 e 0 @31989 ]
 "10515
 [v _RSEN RSEN `VEb  1 e 0 @32297 ]
 "10560
@@ -271,58 +424,59 @@ NUM_DISPLAYS 3
 [v _TRISB0 TRISB0 `VEb  1 e 0 @31896 ]
 "10905
 [v _TRISB1 TRISB1 `VEb  1 e 0 @31897 ]
+"10935
+[v _TRISC6 TRISC6 `VEb  1 e 0 @31910 ]
 "10938
 [v _TRISC7 TRISC7 `VEb  1 e 0 @31911 ]
-"153 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\doprnt.c
+"11043
+[v _TXIF TXIF `VEb  1 e 0 @31988 ]
+"153 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\doprnt.c
 [v _prec prec `i  1 s 2 prec ]
 [v _width width `i  1 s 2 width ]
 "154
 [v _flags flags `uc  1 s 1 flags ]
 "185
 [v _dbuf dbuf `[32]uc  1 s 32 dbuf ]
-"25 C:\Users\danis\OneDrive\Escritorio\Microproyectos2\Estacion.X\main.c
-[v _current_display current_display `E3754  1 e 1 0 ]
-"26
+"17 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\main.c
+[v _system_state system_state `VEuc  1 e 1 0 ]
+"18
+[v _system_needs_reset system_needs_reset `VEuc  1 e 1 0 ]
+"19
 [v _lcd_buffer lcd_buffer `[17]uc  1 e 17 0 ]
-"120
+"150
 [v _main main `(v  1 e 1 0 ]
 {
-"159
+"178
 } 0
-"7 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\lwmod.c
-[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"52
+[v _Setup_Interrupts Setup_Interrupts `(v  1 e 1 0 ]
 {
-"10
-[v ___lwmod@counter counter `uc  1 a 1 4 ]
-"7
-[v ___lwmod@dividend dividend `ui  1 p 2 0 ]
-[v ___lwmod@divisor divisor `ui  1 p 2 2 ]
-"25
+"62
 } 0
-"14 C:\Users\danis\OneDrive\Escritorio\Microproyectos2\Estacion.X\ds1307.c
+"31
+[v _Initialize_System Initialize_System `(v  1 e 1 0 ]
+{
+"49
+} 0
+"14 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\ds1307.c
 [v _RTC_Init RTC_Init `(v  1 e 1 0 ]
 {
 "15
 [v RTC_Init@sec sec `uc  1 a 1 13 ]
 "37
 } 0
-"64 C:\Users\danis\OneDrive\Escritorio\Microproyectos2\Estacion.X\LCD.c
-[v _LCD_Clear LCD_Clear `(v  1 e 1 0 ]
-{
-"66
-} 0
-"3
+"3 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\LCD.c
 [v _LCD_Init LCD_Init `(v  1 e 1 0 ]
 {
 "11
 } 0
-"4 C:\Users\danis\OneDrive\Escritorio\Microproyectos2\Estacion.X\i2c.c
+"4 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\i2c.c
 [v _I2C_Master_Init I2C_Master_Init `(v  1 e 1 0 ]
 {
 [v I2C_Master_Init@c c `Cul  1 p 4 13 ]
 "11
 } 0
-"7 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\__lldiv.c
+"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\__lldiv.c
 [v ___lldiv __lldiv `(ul  1 e 4 0 ]
 {
 "10
@@ -334,28 +488,38 @@ NUM_DISPLAYS 3
 [v ___lldiv@divisor divisor `ul  1 p 4 4 ]
 "30
 } 0
-"6 C:\Users\danis\OneDrive\Escritorio\Microproyectos2\Estacion.X\GPS.c
+"6 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\GPS.c
 [v _GPS_Init GPS_Init `(v  1 e 1 0 ]
 {
 "17
 [v GPS_Init@dummy dummy `VEuc  1 a 1 0 ]
 "21
 } 0
-"94 C:\Users\danis\OneDrive\Escritorio\Microproyectos2\Estacion.X\main.c
+"73 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\main.c
+[v _Enter_Low_Power_Mode Enter_Low_Power_Mode `(v  1 e 1 0 ]
+{
+"80
+} 0
+"64 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\LCD.c
+[v _LCD_Clear LCD_Clear `(v  1 e 1 0 ]
+{
+"66
+} 0
+"127 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\main.c
 [v _Display_RTC Display_RTC `(v  1 e 1 0 ]
 {
-"95
-[v Display_RTC@year year `uc  1 a 1 75 ]
-[v Display_RTC@mon mon `uc  1 a 1 74 ]
-[v Display_RTC@day day `uc  1 a 1 73 ]
-[v Display_RTC@s s `uc  1 a 1 72 ]
-[v Display_RTC@m m `uc  1 a 1 71 ]
-[v Display_RTC@h h `uc  1 a 1 70 ]
-"96
-[v Display_RTC@refresh_count refresh_count `c  1 a 1 69 ]
-"115
+"129
+[v Display_RTC@refresh_count refresh_count `i  1 a 2 69 ]
+"128
+[v Display_RTC@year year `uc  1 a 1 76 ]
+[v Display_RTC@mon mon `uc  1 a 1 75 ]
+[v Display_RTC@day day `uc  1 a 1 74 ]
+[v Display_RTC@s s `uc  1 a 1 73 ]
+[v Display_RTC@m m `uc  1 a 1 72 ]
+[v Display_RTC@h h `uc  1 a 1 71 ]
+"147
 } 0
-"63 C:\Users\danis\OneDrive\Escritorio\Microproyectos2\Estacion.X\ds1307.c
+"63 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\ds1307.c
 [v _RTC_GetDateTime RTC_GetDateTime `(v  1 e 1 0 ]
 {
 [v RTC_GetDateTime@hour hour `*.30uc  1 p 1 5 ]
@@ -367,7 +531,7 @@ NUM_DISPLAYS 3
 [v RTC_GetDateTime@year year `*.30uc  1 p 1 10 ]
 "79
 } 0
-"32 C:\Users\danis\OneDrive\Escritorio\Microproyectos2\Estacion.X\i2c.c
+"32 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\i2c.c
 [v _I2C_Master_Write I2C_Master_Write `(uc  1 e 1 0 ]
 {
 [v I2C_Master_Write@d d `ui  1 p 2 1 ]
@@ -402,7 +566,7 @@ NUM_DISPLAYS 3
 {
 "15
 } 0
-"6 C:\Users\danis\OneDrive\Escritorio\Microproyectos2\Estacion.X\ds1307.c
+"6 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\ds1307.c
 [v _BCD2DEC BCD2DEC `(uc  1 e 1 0 ]
 {
 [v BCD2DEC@val val `uc  1 p 1 wreg ]
@@ -410,18 +574,19 @@ NUM_DISPLAYS 3
 [v BCD2DEC@val val `uc  1 p 1 1 ]
 "8
 } 0
-"65 C:\Users\danis\OneDrive\Escritorio\Microproyectos2\Estacion.X\main.c
+"104 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\main.c
 [v _Display_GPS Display_GPS `(v  1 e 1 0 ]
 {
-"66
+"105
 [v Display_GPS@buffer buffer `[100]uc  1 a 100 0 ]
+"106
 [v Display_GPS@lon lon `[11]uc  1 a 11 100 ]
 [v Display_GPS@lat lat `[10]uc  1 a 10 111 ]
 [v Display_GPS@ew ew `[2]uc  1 a 2 123 ]
 [v Display_GPS@ns ns `[2]uc  1 a 2 121 ]
-"89
+"125
 } 0
-"24 C:\Users\danis\OneDrive\Escritorio\Microproyectos2\Estacion.X\GPS.c
+"24 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\GPS.c
 [v _GPS_ReadSentence GPS_ReadSentence `(uc  1 e 1 0 ]
 {
 "41
@@ -459,7 +624,7 @@ NUM_DISPLAYS 3
 [v GPS_ParseGPRMC@ew ew `*.39uc  1 p 2 21 ]
 "121
 } 0
-"3 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strtok.c
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strtok.c
 [v _strtok strtok `(*.30uc  1 e 2 0 ]
 {
 [v strtok@s s `*.30uc  1 p 1 11 ]
@@ -468,7 +633,7 @@ NUM_DISPLAYS 3
 [v strtok@p p `*.30uc  1 s 1 p ]
 "13
 } 0
-"3 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strspn.c
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strspn.c
 [v _strspn strspn `(ui  1 e 2 0 ]
 {
 "5
@@ -478,7 +643,7 @@ NUM_DISPLAYS 3
 [v strspn@c c `*.31Cuc  1 p 1 7 ]
 "13
 } 0
-"3 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strcspn.c
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strcspn.c
 [v _strcspn strcspn `(ui  1 e 2 0 ]
 {
 "5
@@ -488,7 +653,7 @@ NUM_DISPLAYS 3
 [v strcspn@c c `*.31Cuc  1 p 1 7 ]
 "13
 } 0
-"4 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strstr.c
+"4 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strstr.c
 [v _strstr strstr `(*.35uc  1 e 2 0 ]
 {
 "7
@@ -498,7 +663,7 @@ NUM_DISPLAYS 3
 [v strstr@n n `*.31Cuc  1 p 1 8 ]
 "15
 } 0
-"3 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strncmp.c
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strncmp.c
 [v _strncmp strncmp `(i  1 e 2 0 ]
 {
 [v strncmp@l l `*.35Cuc  1 p 2 0 ]
@@ -506,7 +671,7 @@ NUM_DISPLAYS 3
 [v strncmp@n n `ui  1 p 2 3 ]
 "8
 } 0
-"5 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strlen.c
+"5 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strlen.c
 [v _strlen strlen `(ui  1 e 2 0 ]
 {
 "7
@@ -515,14 +680,14 @@ NUM_DISPLAYS 3
 [v strlen@s s `*.31Cuc  1 p 1 0 ]
 "12
 } 0
-"3 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strchr.c
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strchr.c
 [v _strchr strchr `(*.35uc  1 e 2 0 ]
 {
 [v strchr@s s `*.35Cuc  1 p 2 0 ]
 [v strchr@c c `i  1 p 2 2 ]
 "11
 } 0
-"3 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\strncpy.c
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strncpy.c
 [v _strncpy strncpy `(*.39uc  1 e 2 0 ]
 {
 "5
@@ -533,21 +698,21 @@ NUM_DISPLAYS 3
 [v strncpy@n n `ui  1 p 2 4 ]
 "15
 } 0
-"39 C:\Users\danis\OneDrive\Escritorio\Microproyectos2\Estacion.X\main.c
+"88 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\main.c
 [v _Display_DHT11 Display_DHT11 `(v  1 e 1 0 ]
 {
-"40
+"89
 [v Display_DHT11@temp temp `uc  1 a 1 68 ]
 [v Display_DHT11@hum hum `uc  1 a 1 67 ]
-"60
+"102
 } 0
-"9 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\nf_sprintf.c
+"9 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\nf_sprintf.c
 [v _sprintf sprintf `(i  1 e 2 0 ]
 {
-[u S974 . 2 `*.39uc 1 buffer 2 0 `*.39Cuc 1 source 2 0 ]
+[u S1402 . 2 `*.39uc 1 buffer 2 0 `*.39Cuc 1 source 2 0 ]
 "13
-[s S977 _IO_FILE 11 `S974 1 . 2 0 `i 1 count 2 2 `[3]uc 1 ungetbuf 3 4 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
-[v sprintf@f f `S977  1 a 11 56 ]
+[s S1405 _IO_FILE 11 `S1402 1 . 2 0 `i 1 count 2 2 `[3]uc 1 ungetbuf 3 4 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v sprintf@f f `S1405  1 a 11 56 ]
 "12
 [v sprintf@ap ap `[1]*.30v  1 a 1 55 ]
 "9
@@ -555,14 +720,14 @@ NUM_DISPLAYS 3
 [v sprintf@fmt fmt `*.31Cuc  1 p 1 48 ]
 "23
 } 0
-"1817 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\doprnt.c
+"1817 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\doprnt.c
 [v _vfprintf vfprintf `(i  1 e 2 0 ]
 {
 "1820
 [v vfprintf@cfmt cfmt `*.31uc  1 a 1 45 ]
-[s S1009 _IO_FILE 0 ]
+[s S1437 _IO_FILE 0 ]
 "1817
-[v vfprintf@fp fp `*.30S1009  1 p 1 42 ]
+[v vfprintf@fp fp `*.30S1437  1 p 1 42 ]
 [v vfprintf@fmt fmt `*.31Cuc  1 p 1 43 ]
 [v vfprintf@ap ap `*.30*.30v  1 p 1 44 ]
 "1840
@@ -570,16 +735,16 @@ NUM_DISPLAYS 3
 "1177
 [v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
 {
-[u S1033 . 4 `i 1 sint 2 0 `ui 1 uint 2 0 `d 1 f 4 0 ]
+[u S1461 . 4 `i 1 sint 2 0 `ui 1 uint 2 0 `d 1 f 4 0 ]
 "1188
-[v vfpfcnvrt@convarg convarg `S1033  1 a 4 36 ]
+[v vfpfcnvrt@convarg convarg `S1461  1 a 4 36 ]
 "1180
 [v vfpfcnvrt@done done `a  1 a 1 41 ]
 "1179
 [v vfpfcnvrt@cp cp `*.31uc  1 a 1 40 ]
-[s S1009 _IO_FILE 0 ]
+[s S1437 _IO_FILE 0 ]
 "1177
-[v vfpfcnvrt@fp fp `*.30S1009  1 p 1 31 ]
+[v vfpfcnvrt@fp fp `*.30S1437  1 p 1 31 ]
 [v vfpfcnvrt@fmt fmt `*.30*.31uc  1 p 1 32 ]
 [v vfpfcnvrt@ap ap `*.39*.30v  1 p 2 33 ]
 "1814
@@ -595,9 +760,9 @@ NUM_DISPLAYS 3
 [v stoa@w w `i  1 a 2 15 ]
 "945
 [v stoa@p p `i  1 a 2 13 ]
-[s S1009 _IO_FILE 0 ]
+[s S1437 _IO_FILE 0 ]
 "942
-[v stoa@fp fp `*.30S1009  1 p 1 8 ]
+[v stoa@fp fp `*.30S1437  1 p 1 8 ]
 [v stoa@s s `*.39uc  1 p 2 9 ]
 "997
 } 0
@@ -623,9 +788,9 @@ NUM_DISPLAYS 3
 [v dtoa@s s `uc  1 a 1 28 ]
 "520
 [v dtoa@p p `a  1 a 1 25 ]
-[s S1009 _IO_FILE 0 ]
+[s S1437 _IO_FILE 0 ]
 "513
-[v dtoa@fp fp `*.30S1009  1 p 1 20 ]
+[v dtoa@fp fp `*.30S1437  1 p 1 20 ]
 [v dtoa@d d `i  1 p 2 21 ]
 "583
 } 0
@@ -634,14 +799,14 @@ NUM_DISPLAYS 3
 {
 "195
 [v pad@i i `i  1 a 2 18 ]
-[s S1009 _IO_FILE 0 ]
+[s S1437 _IO_FILE 0 ]
 "193
-[v pad@fp fp `*.30S1009  1 p 1 13 ]
+[v pad@fp fp `*.30S1437  1 p 1 13 ]
 [v pad@buf buf `*.30uc  1 p 1 14 ]
 [v pad@p p `i  1 p 2 15 ]
 "226
 } 0
-"8 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\nf_fputs.c
+"8 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\nf_fputs.c
 [v _fputs fputs `(i  1 e 2 0 ]
 {
 "11
@@ -650,32 +815,32 @@ NUM_DISPLAYS 3
 [v fputs@c c `uc  1 a 1 10 ]
 "8
 [v fputs@s s `*.30Cuc  1 p 1 8 ]
-[u S974 . 2 `*.39uc 1 buffer 2 0 `*.39Cuc 1 source 2 0 ]
-[s S977 _IO_FILE 11 `S974 1 . 2 0 `i 1 count 2 2 `[3]uc 1 ungetbuf 3 4 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
-[v fputs@fp fp `*.30S977  1 p 1 9 ]
+[u S1402 . 2 `*.39uc 1 buffer 2 0 `*.39Cuc 1 source 2 0 ]
+[s S1405 _IO_FILE 11 `S1402 1 . 2 0 `i 1 count 2 2 `[3]uc 1 ungetbuf 3 4 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v fputs@fp fp `*.30S1405  1 p 1 9 ]
 "19
 } 0
-"8 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\nf_fputc.c
+"8 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\nf_fputc.c
 [v _fputc fputc `(i  1 e 2 0 ]
 {
 [v fputc@c c `i  1 p 2 0 ]
-[u S974 . 2 `*.39uc 1 buffer 2 0 `*.39Cuc 1 source 2 0 ]
-[s S977 _IO_FILE 11 `S974 1 . 2 0 `i 1 count 2 2 `[3]uc 1 ungetbuf 3 4 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
-[v fputc@fp fp `*.30S977  1 p 1 2 ]
+[u S1402 . 2 `*.39uc 1 buffer 2 0 `*.39Cuc 1 source 2 0 ]
+[s S1405 _IO_FILE 11 `S1402 1 . 2 0 `i 1 count 2 2 `[3]uc 1 ungetbuf 3 4 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v fputc@fp fp `*.30S1405  1 p 1 2 ]
 "24
 } 0
-"7 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\putch.c
+"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\putch.c
 [v _putch putch `(v  1 e 1 0 ]
 {
 "9
 } 0
-"1 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\abs.c
+"1 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\abs.c
 [v _abs abs `(i  1 e 2 0 ]
 {
 [v abs@a a `i  1 p 2 6 ]
 "4
 } 0
-"7 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\awmod.c
+"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
 {
 "10
@@ -686,7 +851,7 @@ NUM_DISPLAYS 3
 [v ___awmod@divisor divisor `i  1 p 2 2 ]
 "34
 } 0
-"7 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\awdiv.c
+"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 {
 "10
@@ -699,7 +864,27 @@ NUM_DISPLAYS 3
 [v ___awdiv@divisor divisor `i  1 p 2 2 ]
 "41
 } 0
-"16 C:\Users\danis\OneDrive\Escritorio\Microproyectos2\Estacion.X\DHT11.c
+"50 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\LCD.c
+[v _LCD_String_xy LCD_String_xy `(v  1 e 1 0 ]
+{
+[v LCD_String_xy@row row `uc  1 p 1 wreg ]
+"51
+[v LCD_String_xy@location location `uc  1 a 1 10 ]
+"50
+[v LCD_String_xy@row row `uc  1 p 1 wreg ]
+[v LCD_String_xy@pos pos `uc  1 p 1 4 ]
+[v LCD_String_xy@msg msg `*.35Cuc  1 p 2 5 ]
+"52
+[v LCD_String_xy@row row `uc  1 p 1 7 ]
+"62
+} 0
+"43
+[v _LCD_String LCD_String `(v  1 e 1 0 ]
+{
+[v LCD_String@msg msg `*.35Cuc  1 p 2 2 ]
+"48
+} 0
+"16 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\DHT11.c
 [v _DHT11_Read DHT11_Read `(uc  1 e 1 0 ]
 {
 "30
@@ -720,33 +905,24 @@ NUM_DISPLAYS 3
 [v DHT11_ReadByte@data data `uc  1 a 1 0 ]
 "14
 } 0
-"32 C:\Users\danis\OneDrive\Escritorio\Microproyectos2\Estacion.X\main.c
+"83 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\main.c
 [v _Clear_Line Clear_Line `(v  1 e 1 0 ]
 {
 [v Clear_Line@line line `uc  1 p 1 wreg ]
+"85
+[v Clear_Line@i i `uc  1 a 1 5 ]
+"83
 [v Clear_Line@line line `uc  1 p 1 wreg ]
-[v Clear_Line@line line `uc  1 p 1 11 ]
-"34
+[v Clear_Line@line line `uc  1 p 1 2 ]
+"86
 } 0
-"50 C:\Users\danis\OneDrive\Escritorio\Microproyectos2\Estacion.X\LCD.c
-[v _LCD_String_xy LCD_String_xy `(v  1 e 1 0 ]
+"13 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\LCD.c
+[v _LCD_Command LCD_Command `(v  1 e 1 0 ]
 {
-[v LCD_String_xy@row row `uc  1 p 1 wreg ]
-"51
-[v LCD_String_xy@location location `uc  1 a 1 10 ]
-"50
-[v LCD_String_xy@row row `uc  1 p 1 wreg ]
-[v LCD_String_xy@pos pos `uc  1 p 1 4 ]
-[v LCD_String_xy@msg msg `*.35Cuc  1 p 2 5 ]
-"52
-[v LCD_String_xy@row row `uc  1 p 1 7 ]
-"62
-} 0
-"43
-[v _LCD_String LCD_String `(v  1 e 1 0 ]
-{
-[v LCD_String@msg msg `*.35Cuc  1 p 2 2 ]
-"48
+[v LCD_Command@cmd cmd `uc  1 p 1 wreg ]
+[v LCD_Command@cmd cmd `uc  1 p 1 wreg ]
+[v LCD_Command@cmd cmd `uc  1 p 1 1 ]
+"26
 } 0
 "28
 [v _LCD_Char LCD_Char `(v  1 e 1 0 ]
@@ -756,11 +932,8 @@ NUM_DISPLAYS 3
 [v LCD_Char@dat dat `uc  1 p 1 1 ]
 "41
 } 0
-"13
-[v _LCD_Command LCD_Command `(v  1 e 1 0 ]
+"64 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\main.c
+[v _HighPriorityISR HighPriorityISR `IIH(v  1 e 1 0 ]
 {
-[v LCD_Command@cmd cmd `uc  1 p 1 wreg ]
-[v LCD_Command@cmd cmd `uc  1 p 1 wreg ]
-[v LCD_Command@cmd cmd `uc  1 p 1 1 ]
-"26
+"70
 } 0

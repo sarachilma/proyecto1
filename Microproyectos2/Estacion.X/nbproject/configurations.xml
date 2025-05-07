@@ -24,6 +24,8 @@
       <itemPath>ds1307.h</itemPath>
       <itemPath>i2c.c</itemPath>
       <itemPath>i2c.h</itemPath>
+      <itemPath>USART_Header_File.h</itemPath>
+      <itemPath>USART_Source_File.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -44,7 +46,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>Simulator</platformTool>
         <languageToolchain>XC8</languageToolchain>
-        <languageToolchainVersion>2.50</languageToolchainVersion>
+        <languageToolchainVersion>3.00</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
