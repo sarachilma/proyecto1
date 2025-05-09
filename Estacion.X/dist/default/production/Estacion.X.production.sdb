@@ -1,0 +1,761 @@
+[p GLOBOPT AUTOSTATIC IEEE_FLT IEEE_DBL LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4550 ]
+[d frameptr 4065 ]
+"20 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\main.c
+[e E3755 DisplayState `uc
+SHOW_DHT11 0
+SHOW_GPS 1
+SHOW_RTC 2
+NUM_DISPLAYS 3
+]
+"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+"193 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\doprnt.c
+[v _pad pad `(v  1 s 1 pad ]
+"1001
+[v _utoa utoa `(v  1 s 1 utoa ]
+"1158
+[v _read_prec_or_width read_prec_or_width `(i  1 s 2 read_prec_or_width ]
+"1177
+[v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
+"1817
+[v _vfprintf vfprintf `(i  1 e 2 0 ]
+"4 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\fleq.c
+[v ___fleq __fleq `(b  1 e 0 0 ]
+"62 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\float.c
+[v ___ftpack __ftpack `(f  1 e 4 0 ]
+"86 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 4 0 ]
+"54 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 4 0 ]
+"62 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 4 0 ]
+"19 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 4 0 ]
+"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"8 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\nf_fputc.c
+[v _fputc fputc `(i  1 e 2 0 ]
+"8 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\nf_fputs.c
+[v _fputs fputs `(i  1 e 2 0 ]
+"9 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\nf_sprintf.c
+[v _sprintf sprintf `(i  1 e 2 0 ]
+"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\putch.c
+[v _putch putch `(v  1 e 1 0 ]
+"10 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 4 0 ]
+"11 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+"8 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strcat.c
+[v _strcat strcat `(*.39uc  1 e 2 0 ]
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strchr.c
+[v _strchr strchr `(*.35uc  1 e 2 0 ]
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strcspn.c
+[v _strcspn strcspn `(ui  1 e 2 0 ]
+"5 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strlen.c
+[v _strlen strlen `(ui  1 e 2 0 ]
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strncat.c
+[v _strncat strncat `(*.39uc  1 e 2 0 ]
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strncmp.c
+[v _strncmp strncmp `(i  1 e 2 0 ]
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strncpy.c
+[v _strncpy strncpy `(*.39uc  1 e 2 0 ]
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strspn.c
+[v _strspn strspn `(ui  1 e 2 0 ]
+"4 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strstr.c
+[v _strstr strstr `(*.35uc  1 e 2 0 ]
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strtok.c
+[v _strtok strtok `(*.30uc  1 e 2 0 ]
+"15 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"91 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\Umul64.c
+[v ___omul __omul `(uo  1 e 8 0 ]
+"4 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\DHT11.c
+[v _DHT11_ReadByte DHT11_ReadByte `(uc  1 e 1 0 ]
+"16
+[v _DHT11_Read DHT11_Read `(uc  1 e 1 0 ]
+"6 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\ds1307.c
+[v _BCD2DEC BCD2DEC `(uc  1 e 1 0 ]
+"10
+[v _DEC2BCD DEC2BCD `(uc  1 e 1 0 ]
+"14
+[v _RTC_Init RTC_Init `(v  1 e 1 0 ]
+"63
+[v _RTC_GetDateTime RTC_GetDateTime `(v  1 e 1 0 ]
+"6 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\GPS.c
+[v _GPS_Init GPS_Init `(v  1 e 1 0 ]
+"24
+[v _GPS_ReadSentence GPS_ReadSentence `(uc  1 e 1 0 ]
+"72
+[v _GPS_ParseGPRMC GPS_ParseGPRMC `(uc  1 e 1 0 ]
+"4 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\i2c.c
+[v _I2C_Master_Init I2C_Master_Init `(v  1 e 1 0 ]
+"13
+[v _I2C_Master_Wait I2C_Master_Wait `(v  1 e 1 0 ]
+"17
+[v _I2C_Master_Start I2C_Master_Start `(v  1 e 1 0 ]
+"22
+[v _I2C_Master_RepeatedStart I2C_Master_RepeatedStart `(v  1 e 1 0 ]
+"27
+[v _I2C_Master_Stop I2C_Master_Stop `(v  1 e 1 0 ]
+"32
+[v _I2C_Master_Write I2C_Master_Write `(uc  1 e 1 0 ]
+"39
+[v _I2C_Master_Read I2C_Master_Read `(us  1 e 2 0 ]
+"3 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\LCD.c
+[v _LCD_Init LCD_Init `(v  1 e 1 0 ]
+"13
+[v _LCD_Command LCD_Command `(v  1 e 1 0 ]
+"28
+[v _LCD_Char LCD_Char `(v  1 e 1 0 ]
+"43
+[v _LCD_String LCD_String `(v  1 e 1 0 ]
+"50
+[v _LCD_String_xy LCD_String_xy `(v  1 e 1 0 ]
+"64
+[v _LCD_Clear LCD_Clear `(v  1 e 1 0 ]
+"23 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\main.c
+[v _Clear_Line Clear_Line `(v  1 e 1 0 ]
+"29
+[v _Display_DHT11 Display_DHT11 `(v  1 e 1 0 ]
+"46
+[v _Display_GPS Display_GPS `(v  1 e 1 0 ]
+"91
+[v _Display_RTC Display_RTC `(v  1 e 1 0 ]
+"109
+[v _main main `(v  1 e 1 0 ]
+[s S180 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+]
+"2353 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc/pic18f4550.h
+[s S188 . 1 `uc 1 AN0 1 0 :1:0 
+`uc 1 AN1 1 0 :1:1 
+`uc 1 AN2 1 0 :1:2 
+`uc 1 AN3 1 0 :1:3 
+`uc 1 T0CKI 1 0 :1:4 
+`uc 1 AN4 1 0 :1:5 
+`uc 1 OSC2 1 0 :1:6 
+]
+[s S196 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 VREFM 1 0 :1:2 
+`uc 1 VREFP 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 LVDIN 1 0 :1:5 
+]
+[s S202 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 HLVDIN 1 0 :1:5 
+]
+[s S205 . 1 `uc 1 ULPWUIN 1 0 :1:0 
+]
+[u S207 . 1 `S180 1 . 1 0 `S188 1 . 1 0 `S196 1 . 1 0 `S202 1 . 1 0 `S205 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES207  1 e 1 @3968 ]
+"3263
+[v _LATD LATD `VEuc  1 e 1 @3980 ]
+[s S243 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+`uc 1 TRISA6 1 0 :1:6 
+]
+"3457
+[u S259 . 1 `S243 1 . 1 0 `S180 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES259  1 e 1 @3986 ]
+"4001
+[v _TRISD TRISD `VEuc  1 e 1 @3989 ]
+[s S308 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 SPPIF 1 0 :1:7 
+]
+"4492
+[s S317 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TX1IF 1 0 :1:4 
+`uc 1 RC1IF 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 PSPIF 1 0 :1:7 
+]
+[u S323 . 1 `S308 1 . 1 0 `S317 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES323  1 e 1 @3998 ]
+"4936
+[v _RCSTA RCSTA `VEuc  1 e 1 @4011 ]
+[s S342 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"4977
+[s S351 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 ADEN 1 0 :1:3 
+]
+[s S354 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 SRENA 1 0 :1:5 
+]
+[s S357 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC8_9 1 0 :1:6 
+]
+[s S360 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC9 1 0 :1:6 
+]
+[s S363 . 1 `uc 1 RCD8 1 0 :1:0 
+]
+[u S365 . 1 `S342 1 . 1 0 `S351 1 . 1 0 `S354 1 . 1 0 `S357 1 . 1 0 `S360 1 . 1 0 `S363 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES365  1 e 1 @4011 ]
+"5146
+[v _TXSTA TXSTA `VEuc  1 e 1 @4012 ]
+"5414
+[v _RCREG RCREG `VEuc  1 e 1 @4014 ]
+"5426
+[v _SPBRG SPBRG `VEuc  1 e 1 @4015 ]
+"5587
+[v _CMCON CMCON `VEuc  1 e 1 @4020 ]
+"6062
+[v _BAUDCON BAUDCON `VEuc  1 e 1 @4024 ]
+"6581
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
+"6806
+[v _SSPCON2 SSPCON2 `VEuc  1 e 1 @4037 ]
+"6868
+[v _SSPCON1 SSPCON1 `VEuc  1 e 1 @4038 ]
+"6938
+[v _SSPSTAT SSPSTAT `VEuc  1 e 1 @4039 ]
+"7186
+[v _SSPADD SSPADD `VEuc  1 e 1 @4040 ]
+"7193
+[v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
+"7986
+[v _OSCCON OSCCON `VEuc  1 e 1 @4051 ]
+"8910
+[v _ACKDT ACKDT `VEb  1 e 0 @32301 ]
+"8913
+[v _ACKEN ACKEN `VEb  1 e 0 @32300 ]
+"8916
+[v _ACKSTAT ACKSTAT `VEb  1 e 0 @32302 ]
+"9987
+[v _LATD0 LATD0 `VEb  1 e 0 @31840 ]
+"9990
+[v _LATD1 LATD1 `VEb  1 e 0 @31841 ]
+"10275
+[v _PEN PEN `VEb  1 e 0 @32298 ]
+"10434
+[v _RCEN RCEN `VEb  1 e 0 @32299 ]
+"10515
+[v _RSEN RSEN `VEb  1 e 0 @32297 ]
+"10560
+[v _SEN SEN `VEb  1 e 0 @32296 ]
+"10902
+[v _TRISB0 TRISB0 `VEb  1 e 0 @31896 ]
+"10905
+[v _TRISB1 TRISB1 `VEb  1 e 0 @31897 ]
+"10938
+[v _TRISC7 TRISC7 `VEb  1 e 0 @31911 ]
+"153 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\doprnt.c
+[v _prec prec `i  1 s 2 prec ]
+[v _width width `i  1 s 2 width ]
+"154
+[v _flags flags `uc  1 s 1 flags ]
+"185
+[v _dbuf dbuf `[32]uc  1 s 32 dbuf ]
+"16 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\main.c
+[v _lcd_buffer lcd_buffer `[17]uc  1 e 17 0 ]
+"20
+[v _current_display current_display `E3755  1 e 1 0 ]
+"109
+[v _main main `(v  1 e 1 0 ]
+{
+"137
+} 0
+"14 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\ds1307.c
+[v _RTC_Init RTC_Init `(v  1 e 1 0 ]
+{
+"15
+[v RTC_Init@sec sec `uc  1 a 1 13 ]
+"37
+} 0
+"64 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\LCD.c
+[v _LCD_Clear LCD_Clear `(v  1 e 1 0 ]
+{
+"66
+} 0
+"3
+[v _LCD_Init LCD_Init `(v  1 e 1 0 ]
+{
+"11
+} 0
+"4 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\i2c.c
+[v _I2C_Master_Init I2C_Master_Init `(v  1 e 1 0 ]
+{
+[v I2C_Master_Init@c c `Cul  1 p 4 13 ]
+"11
+} 0
+"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+{
+"10
+[v ___lldiv@quotient quotient `ul  1 a 4 8 ]
+"11
+[v ___lldiv@counter counter `uc  1 a 1 12 ]
+"7
+[v ___lldiv@dividend dividend `ul  1 p 4 0 ]
+[v ___lldiv@divisor divisor `ul  1 p 4 4 ]
+"30
+} 0
+"6 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\GPS.c
+[v _GPS_Init GPS_Init `(v  1 e 1 0 ]
+{
+"17
+[v GPS_Init@dummy dummy `VEuc  1 a 1 0 ]
+"21
+} 0
+"91 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\main.c
+[v _Display_RTC Display_RTC `(v  1 e 1 0 ]
+{
+"93
+[v Display_RTC@cnt cnt `uc  1 a 1 71 ]
+"92
+[v Display_RTC@year year `uc  1 a 1 70 ]
+[v Display_RTC@mon mon `uc  1 a 1 69 ]
+[v Display_RTC@day day `uc  1 a 1 68 ]
+[v Display_RTC@s s `uc  1 a 1 67 ]
+[v Display_RTC@m m `uc  1 a 1 66 ]
+[v Display_RTC@h h `uc  1 a 1 65 ]
+"106
+} 0
+"63 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\ds1307.c
+[v _RTC_GetDateTime RTC_GetDateTime `(v  1 e 1 0 ]
+{
+[v RTC_GetDateTime@hour hour `*.30uc  1 p 1 5 ]
+[v RTC_GetDateTime@min min `*.30uc  1 p 1 6 ]
+[v RTC_GetDateTime@sec sec `*.30uc  1 p 1 7 ]
+"64
+[v RTC_GetDateTime@day day `*.30uc  1 p 1 8 ]
+[v RTC_GetDateTime@month month `*.30uc  1 p 1 9 ]
+[v RTC_GetDateTime@year year `*.30uc  1 p 1 10 ]
+"79
+} 0
+"32 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\i2c.c
+[v _I2C_Master_Write I2C_Master_Write `(uc  1 e 1 0 ]
+{
+[v I2C_Master_Write@d d `ui  1 p 2 1 ]
+"37
+} 0
+"27
+[v _I2C_Master_Stop I2C_Master_Stop `(v  1 e 1 0 ]
+{
+"30
+} 0
+"17
+[v _I2C_Master_Start I2C_Master_Start `(v  1 e 1 0 ]
+{
+"20
+} 0
+"22
+[v _I2C_Master_RepeatedStart I2C_Master_RepeatedStart `(v  1 e 1 0 ]
+{
+"25
+} 0
+"39
+[v _I2C_Master_Read I2C_Master_Read `(us  1 e 2 0 ]
+{
+"40
+[v I2C_Master_Read@temp temp `us  1 a 2 3 ]
+"39
+[v I2C_Master_Read@a a `us  1 p 2 1 ]
+"49
+} 0
+"13
+[v _I2C_Master_Wait I2C_Master_Wait `(v  1 e 1 0 ]
+{
+"15
+} 0
+"6 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\ds1307.c
+[v _BCD2DEC BCD2DEC `(uc  1 e 1 0 ]
+{
+[v BCD2DEC@val val `uc  1 p 1 wreg ]
+[v BCD2DEC@val val `uc  1 p 1 wreg ]
+[v BCD2DEC@val val `uc  1 p 1 1 ]
+"8
+} 0
+"46 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\main.c
+[v _Display_GPS Display_GPS `(v  1 e 1 0 ]
+{
+"62
+[v Display_GPS@formatted_lon formatted_lon `[17]uc  1 a 17 138 ]
+"61
+[v Display_GPS@formatted_lat formatted_lat `[17]uc  1 a 17 121 ]
+"51
+[v Display_GPS@i i `uc  1 a 1 159 ]
+"47
+[v Display_GPS@buffer buffer `[100]uc  1 a 100 0 ]
+[v Display_GPS@lon lon `[11]uc  1 a 11 100 ]
+[v Display_GPS@lat lat `[10]uc  1 a 10 111 ]
+[v Display_GPS@ew ew `[2]uc  1 a 2 157 ]
+[v Display_GPS@ns ns `[2]uc  1 a 2 155 ]
+"48
+[v Display_GPS@valid valid `uc  1 a 1 160 ]
+"88
+} 0
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strncat.c
+[v _strncat strncat `(*.39uc  1 e 2 0 ]
+{
+"5
+[v strncat@cp cp `*.39uc  1 a 2 6 ]
+"3
+[v strncat@dest dest `*.39uc  1 p 2 0 ]
+[v strncat@src src `*.39Cuc  1 p 2 2 ]
+[v strncat@n n `ui  1 p 2 4 ]
+"18
+} 0
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strcat.c
+[v _strcat strcat `(*.39uc  1 e 2 0 ]
+{
+"5
+[v strcat@i i `ui  1 a 2 4 ]
+"3
+[v strcat@dest dest `*.39uc  1 p 2 0 ]
+[v strcat@src src `*.35Cuc  1 p 2 2 ]
+"14
+} 0
+"24 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\GPS.c
+[v _GPS_ReadSentence GPS_ReadSentence `(uc  1 e 1 0 ]
+{
+"41
+[v GPS_ReadSentence@t t `us  1 a 2 8 ]
+"36
+[v GPS_ReadSentence@dummy dummy `VEuc  1 a 1 10 ]
+"25
+[v GPS_ReadSentence@i i `us  1 a 2 12 ]
+"26
+[v GPS_ReadSentence@c c `uc  1 a 1 14 ]
+"27
+[v GPS_ReadSentence@started started `uc  1 a 1 11 ]
+"24
+[v GPS_ReadSentence@buffer buffer `*.39uc  1 p 2 0 ]
+[v GPS_ReadSentence@max_len max_len `us  1 p 2 2 ]
+[v GPS_ReadSentence@timeout_ms timeout_ms `us  1 p 2 4 ]
+"69
+} 0
+"72
+[v _GPS_ParseGPRMC GPS_ParseGPRMC `(uc  1 e 1 0 ]
+{
+"73
+[v GPS_ParseGPRMC@buf buf `[100]uc  1 a 100 0 ]
+"74
+[v GPS_ParseGPRMC@token token `*.30uc  1 a 1 103 ]
+"76
+[v GPS_ParseGPRMC@data_valid data_valid `uc  1 a 1 102 ]
+"75
+[v GPS_ParseGPRMC@field field `uc  1 a 1 101 ]
+"72
+[v GPS_ParseGPRMC@msg msg `*.39Cuc  1 p 2 13 ]
+[v GPS_ParseGPRMC@lat lat `*.39uc  1 p 2 15 ]
+[v GPS_ParseGPRMC@ns ns `*.39uc  1 p 2 17 ]
+[v GPS_ParseGPRMC@lon lon `*.39uc  1 p 2 19 ]
+[v GPS_ParseGPRMC@ew ew `*.39uc  1 p 2 21 ]
+"121
+} 0
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strtok.c
+[v _strtok strtok `(*.30uc  1 e 2 0 ]
+{
+[v strtok@s s `*.30uc  1 p 1 11 ]
+[v strtok@sep sep `*.31Cuc  1 p 1 12 ]
+"5
+[v strtok@p p `*.30uc  1 s 1 p ]
+"13
+} 0
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strspn.c
+[v _strspn strspn `(ui  1 e 2 0 ]
+{
+"5
+[v strspn@i i `ui  1 a 2 9 ]
+"3
+[v strspn@s s `*.30Cuc  1 p 1 6 ]
+[v strspn@c c `*.31Cuc  1 p 1 7 ]
+"13
+} 0
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strcspn.c
+[v _strcspn strcspn `(ui  1 e 2 0 ]
+{
+"5
+[v strcspn@i i `ui  1 a 2 9 ]
+"3
+[v strcspn@s s `*.30Cuc  1 p 1 6 ]
+[v strcspn@c c `*.31Cuc  1 p 1 7 ]
+"13
+} 0
+"4 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strstr.c
+[v _strstr strstr `(*.35uc  1 e 2 0 ]
+{
+"7
+[v strstr@nl nl `ui  1 a 2 9 ]
+"4
+[v strstr@h h `*.35Cuc  1 p 2 6 ]
+[v strstr@n n `*.31Cuc  1 p 1 8 ]
+"15
+} 0
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strncmp.c
+[v _strncmp strncmp `(i  1 e 2 0 ]
+{
+[v strncmp@l l `*.35Cuc  1 p 2 0 ]
+[v strncmp@r r `*.31Cuc  1 p 1 2 ]
+[v strncmp@n n `ui  1 p 2 3 ]
+"8
+} 0
+"5 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strlen.c
+[v _strlen strlen `(ui  1 e 2 0 ]
+{
+"7
+[v strlen@a a `*.31Cuc  1 a 1 2 ]
+"5
+[v strlen@s s `*.31Cuc  1 p 1 0 ]
+"12
+} 0
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strchr.c
+[v _strchr strchr `(*.35uc  1 e 2 0 ]
+{
+[v strchr@s s `*.35Cuc  1 p 2 0 ]
+[v strchr@c c `i  1 p 2 2 ]
+"11
+} 0
+"3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\strncpy.c
+[v _strncpy strncpy `(*.39uc  1 e 2 0 ]
+{
+"5
+[v strncpy@cp cp `*.39uc  1 a 2 6 ]
+"3
+[v strncpy@d d `*.39uc  1 p 2 0 ]
+[v strncpy@s s `*.39Cuc  1 p 2 2 ]
+[v strncpy@n n `ui  1 p 2 4 ]
+"15
+} 0
+"29 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\main.c
+[v _Display_DHT11 Display_DHT11 `(v  1 e 1 0 ]
+{
+"30
+[v Display_DHT11@temp temp `uc  1 a 1 64 ]
+[v Display_DHT11@hum hum `uc  1 a 1 63 ]
+"43
+} 0
+"9 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\nf_sprintf.c
+[v _sprintf sprintf `(i  1 e 2 0 ]
+{
+[u S998 . 2 `*.30uc 1 buffer 1 0 `*.39Cuc 1 source 2 0 ]
+"13
+[s S1001 _IO_FILE 11 `S998 1 . 2 0 `i 1 count 2 2 `[3]uc 1 ungetbuf 3 4 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v sprintf@f f `S1001  1 a 11 52 ]
+"12
+[v sprintf@ap ap `[1]*.30v  1 a 1 51 ]
+"9
+[v sprintf@s s `*.30uc  1 p 1 43 ]
+[v sprintf@fmt fmt `*.31Cuc  1 p 1 44 ]
+"23
+} 0
+"1817 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\doprnt.c
+[v _vfprintf vfprintf `(i  1 e 2 0 ]
+{
+"1820
+[v vfprintf@cfmt cfmt `*.31uc  1 a 1 42 ]
+[s S1033 _IO_FILE 0 ]
+"1817
+[v vfprintf@fp fp `*.30S1033  1 p 1 39 ]
+[v vfprintf@fmt fmt `*.31Cuc  1 p 1 40 ]
+[v vfprintf@ap ap `*.30*.30v  1 p 1 41 ]
+"1840
+} 0
+"1177
+[v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
+{
+[u S1052 . 4 `i 1 sint 2 0 `ui 1 uint 2 0 `d 1 f 4 0 ]
+"1188
+[v vfpfcnvrt@convarg convarg `S1052  1 a 4 33 ]
+"1179
+[v vfpfcnvrt@cp cp `*.31uc  1 a 1 38 ]
+"1180
+[v vfpfcnvrt@done done `a  1 a 1 37 ]
+[s S1033 _IO_FILE 0 ]
+"1177
+[v vfpfcnvrt@fp fp `*.30S1033  1 p 1 30 ]
+[v vfpfcnvrt@fmt fmt `*.30*.31uc  1 p 1 31 ]
+[v vfpfcnvrt@ap ap `*.30*.30v  1 p 1 32 ]
+"1814
+} 0
+"1001
+[v _utoa utoa `(v  1 s 1 utoa ]
+{
+"1003
+[v utoa@i i `i  1 a 2 28 ]
+[v utoa@w w `i  1 a 2 26 ]
+"1007
+[v utoa@p p `a  1 a 1 25 ]
+[s S1033 _IO_FILE 0 ]
+"1001
+[v utoa@fp fp `*.30S1033  1 p 1 22 ]
+[v utoa@d d `ui  1 p 2 23 ]
+"1047
+} 0
+"193
+[v _pad pad `(v  1 s 1 pad ]
+{
+"195
+[v pad@i i `i  1 a 2 20 ]
+[s S1033 _IO_FILE 0 ]
+"193
+[v pad@fp fp `*.30S1033  1 p 1 14 ]
+[v pad@buf buf `*.39uc  1 p 2 15 ]
+[v pad@p p `i  1 p 2 17 ]
+"226
+} 0
+"8 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\nf_fputs.c
+[v _fputs fputs `(i  1 e 2 0 ]
+{
+"11
+[v fputs@i i `i  1 a 2 12 ]
+"10
+[v fputs@c c `uc  1 a 1 11 ]
+"8
+[v fputs@s s `*.39Cuc  1 p 2 8 ]
+[u S998 . 2 `*.30uc 1 buffer 1 0 `*.39Cuc 1 source 2 0 ]
+[s S1001 _IO_FILE 11 `S998 1 . 2 0 `i 1 count 2 2 `[3]uc 1 ungetbuf 3 4 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v fputs@fp fp `*.30S1001  1 p 1 10 ]
+"19
+} 0
+"8 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\nf_fputc.c
+[v _fputc fputc `(i  1 e 2 0 ]
+{
+[v fputc@c c `i  1 p 2 0 ]
+[u S998 . 2 `*.30uc 1 buffer 1 0 `*.39Cuc 1 source 2 0 ]
+[s S1001 _IO_FILE 11 `S998 1 . 2 0 `i 1 count 2 2 `[3]uc 1 ungetbuf 3 4 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v fputc@fp fp `*.30S1001  1 p 1 2 ]
+"24
+} 0
+"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\putch.c
+[v _putch putch `(v  1 e 1 0 ]
+{
+"9
+} 0
+"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+{
+"10
+[v ___lwmod@counter counter `uc  1 a 1 4 ]
+"7
+[v ___lwmod@dividend dividend `ui  1 p 2 0 ]
+[v ___lwmod@divisor divisor `ui  1 p 2 2 ]
+"25
+} 0
+"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"10
+[v ___lwdiv@quotient quotient `ui  1 a 2 4 ]
+"11
+[v ___lwdiv@counter counter `uc  1 a 1 6 ]
+"7
+[v ___lwdiv@dividend dividend `ui  1 p 2 0 ]
+[v ___lwdiv@divisor divisor `ui  1 p 2 2 ]
+"30
+} 0
+"1158 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\doprnt.c
+[v _read_prec_or_width read_prec_or_width `(i  1 s 2 read_prec_or_width ]
+{
+"1164
+[v read_prec_or_width@c c `uc  1 a 1 4 ]
+"1159
+[v read_prec_or_width@n n `i  1 a 2 5 ]
+"1158
+[v read_prec_or_width@fmt fmt `*.30*.31Cuc  1 p 1 0 ]
+[v read_prec_or_width@ap ap `*.30[1]*.30v  1 p 1 1 ]
+"1171
+} 0
+"16 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\DHT11.c
+[v _DHT11_Read DHT11_Read `(uc  1 e 1 0 ]
+{
+"30
+[v DHT11_Read@i i `uc  1 a 1 13 ]
+"29
+[v DHT11_Read@data data `[5]uc  1 a 5 8 ]
+"16
+[v DHT11_Read@humidity humidity `*.30uc  1 p 1 2 ]
+[v DHT11_Read@temperature temperature `*.30uc  1 p 1 3 ]
+"42
+} 0
+"4
+[v _DHT11_ReadByte DHT11_ReadByte `(uc  1 e 1 0 ]
+{
+"6
+[v DHT11_ReadByte@i i `uc  1 a 1 1 ]
+"5
+[v DHT11_ReadByte@data data `uc  1 a 1 0 ]
+"14
+} 0
+"23 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\main.c
+[v _Clear_Line Clear_Line `(v  1 e 1 0 ]
+{
+[v Clear_Line@line line `uc  1 p 1 wreg ]
+[v Clear_Line@line line `uc  1 p 1 wreg ]
+"25
+[v Clear_Line@line line `uc  1 p 1 11 ]
+"26
+} 0
+"50 C:\Users\Esteban\OneDrive - unicauca.edu.co\Documentos\Micro\proyecto1\Microproyectos2\Estacion.X\LCD.c
+[v _LCD_String_xy LCD_String_xy `(v  1 e 1 0 ]
+{
+[v LCD_String_xy@row row `uc  1 p 1 wreg ]
+"51
+[v LCD_String_xy@location location `uc  1 a 1 10 ]
+"50
+[v LCD_String_xy@row row `uc  1 p 1 wreg ]
+[v LCD_String_xy@pos pos `uc  1 p 1 4 ]
+[v LCD_String_xy@msg msg `*.35Cuc  1 p 2 5 ]
+"52
+[v LCD_String_xy@row row `uc  1 p 1 7 ]
+"62
+} 0
+"43
+[v _LCD_String LCD_String `(v  1 e 1 0 ]
+{
+[v LCD_String@msg msg `*.35Cuc  1 p 2 2 ]
+"48
+} 0
+"28
+[v _LCD_Char LCD_Char `(v  1 e 1 0 ]
+{
+[v LCD_Char@dat dat `uc  1 p 1 wreg ]
+[v LCD_Char@dat dat `uc  1 p 1 wreg ]
+[v LCD_Char@dat dat `uc  1 p 1 1 ]
+"41
+} 0
+"13
+[v _LCD_Command LCD_Command `(v  1 e 1 0 ]
+{
+[v LCD_Command@cmd cmd `uc  1 p 1 wreg ]
+[v LCD_Command@cmd cmd `uc  1 p 1 wreg ]
+[v LCD_Command@cmd cmd `uc  1 p 1 1 ]
+"26
+} 0
