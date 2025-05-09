@@ -7,6 +7,12 @@
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include/language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "main.c" 2
+
+
+
+
+
+
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include/xc.h" 1 3
 # 18 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -5638,7 +5644,7 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include/xc.h" 2 3
-# 2 "main.c" 2
+# 8 "main.c" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/stdio.h" 1 3
 # 24 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/stdio.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/bits/alltypes.h" 1 3
@@ -5791,7 +5797,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 3 "main.c" 2
+# 9 "main.c" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/string.h" 1 3
 # 25 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/string.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/bits/alltypes.h" 1 3
@@ -5849,7 +5855,7 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 
 
 void *memccpy (void *restrict, const void *restrict, int, size_t);
-# 4 "main.c" 2
+# 10 "main.c" 2
 # 1 "./Config.h" 1
 # 14 "./Config.h"
 #pragma config PLLDIV = 1
@@ -5885,7 +5891,7 @@ void *memccpy (void *restrict, const void *restrict, int, size_t);
 #pragma config WRTC = OFF, WRTB = OFF, WRTD = OFF
 #pragma config EBTR0 = OFF, EBTR1 = OFF, EBTR2 = OFF, EBTR3 = OFF
 #pragma config EBTRB = OFF
-# 5 "main.c" 2
+# 11 "main.c" 2
 # 1 "./LCD.h" 1
 # 18 "./LCD.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include\\c99/stdint.h" 1 3
@@ -5980,17 +5986,17 @@ void LCD_Char(uint8_t dat);
 void LCD_String(const char *msg);
 void LCD_String_xy(uint8_t row, uint8_t pos, const char *msg);
 void LCD_Clear(void);
-# 6 "main.c" 2
+# 12 "main.c" 2
 # 1 "./DHT11.h" 1
 # 19 "./DHT11.h"
 uint8_t DHT11_Read(uint8_t *humidity, uint8_t *temperature);
-# 7 "main.c" 2
+# 13 "main.c" 2
 # 1 "./GPS.h" 1
 # 15 "./GPS.h"
 void GPS_Init(void);
 uint8_t GPS_ReadSentence(char *buffer, uint16_t max_len, uint16_t timeout_ms);
 uint8_t GPS_ParseGPRMC(const char *msg, char *lat, char *ns, char *lon, char *ew);
-# 8 "main.c" 2
+# 14 "main.c" 2
 # 1 "./ds1307.h" 1
 
 
@@ -6002,7 +6008,7 @@ void RTC_GetDateTime(unsigned char *hour, unsigned char *min, unsigned char *sec
                      unsigned char *day, unsigned char *month, unsigned char *year);
 unsigned char BCD2DEC(unsigned char val);
 unsigned char DEC2BCD(unsigned char val);
-# 9 "main.c" 2
+# 15 "main.c" 2
 # 1 "./i2c.h" 1
 
 
@@ -6014,173 +6020,111 @@ void I2C_Master_RepeatedStart(void);
 void I2C_Master_Stop(void);
 unsigned char I2C_Master_Write(unsigned d);
 unsigned short I2C_Master_Read(unsigned short a);
-# 10 "main.c" 2
+# 16 "main.c" 2
 
 
 
 
-
-
-
-volatile unsigned char system_state = 1;
-volatile unsigned char system_needs_reset = 0;
 char lcd_buffer[17];
 
+enum DisplayState { SHOW_DHT11, SHOW_GPS, SHOW_RTC, NUM_DISPLAYS };
+enum DisplayState current_display = SHOW_DHT11;
 
-void Initialize_System(void);
-void Setup_Interrupts(void);
-void Enter_Low_Power_Mode(void);
-void Display_DHT11(void);
-void Display_GPS(void);
-void Display_RTC(void);
-void Clear_Line(unsigned char line);
+void Clear_Line(uint8_t line) {
+    LCD_String_xy(line, 0, "                ");
+}
+
+void Display_DHT11() {
+    uint8_t hum, temp;
+    Clear_Line(0); Clear_Line(1);
+    if(DHT11_Read(&hum, &temp)) {
+        sprintf(lcd_buffer, "H:%u%% T:%uC", hum, temp);
+        LCD_String_xy(0,0,lcd_buffer);
+    } else {
+        LCD_String_xy(0,0,"DHT11: Error");
+        LCD_String_xy(1,0,"Reintentando...");
+    }
+}
+
+void Display_GPS() {
+    char buffer[100], lat[10] = "", ns[2] = "", lon[11] = "", ew[2] = "";
+    uint8_t valid = 0;
 
 
-void Initialize_System() {
+    for(uint8_t i=0; i<5 && !valid; i++) {
+        if(GPS_ReadSentence(buffer, sizeof(buffer), 2000)) {
+            valid = GPS_ParseGPRMC(buffer, lat, ns, lon, ew);
+        }
+        _delay((unsigned long)((50)*(8000000/4000.0)));
+    }
 
+    Clear_Line(0); Clear_Line(1);
+    if(valid) {
+        char formatted_lat[17] = {0};
+        char formatted_lon[17] = {0};
+
+
+        strncpy(formatted_lat, lat, 2);
+        strcat(formatted_lat, "\xDF");
+        strncat(formatted_lat, lat + 2, 5);
+        strcat(formatted_lat, "' ");
+        strcat(formatted_lat, ns);
+
+
+        strncpy(formatted_lon, lon, 3);
+        strcat(formatted_lon, "\xDF");
+        strncat(formatted_lon, lon + 3, 5);
+        strcat(formatted_lon, "' ");
+        strcat(formatted_lon, ew);
+
+        LCD_String_xy(0,0,"Lat:");
+        LCD_String_xy(0,4,formatted_lat);
+        LCD_String_xy(1,0,"Lon:");
+        LCD_String_xy(1,4,formatted_lon);
+    } else {
+        LCD_String_xy(0,0,"GPS: Sin senal");
+        LCD_String_xy(1,0,"Reintentando");
+    }
+}
+
+
+
+
+void Display_RTC() {
+    unsigned char h,m,s,day,mon,year;
+    for(uint8_t cnt=0; cnt<5; cnt++) {
+        RTC_GetDateTime(&h,&m,&s,&day,&mon,&year);
+        Clear_Line(0);
+        sprintf(lcd_buffer, "%02u/%02u/20%02u", day,mon,year);
+        LCD_String_xy(0,0,lcd_buffer);
+        Clear_Line(1);
+        sprintf(lcd_buffer, "%02u:%02u:%02u", h,m,s);
+        LCD_String_xy(1,0,lcd_buffer);
+        _delay((unsigned long)((1000)*(8000000/4000.0)));
+    }
+}
+
+void main() {
     OSCCON = 0x72;
     ADCON1 = 0x0F;
     CMCON = 0x07;
-    TRISB = 0b00001000;
-
-
     LCD_Init();
     I2C_Master_Init(100000);
     RTC_Init();
     GPS_Init();
 
-
     LCD_Clear();
-    LCD_String_xy(0,0,"Estacion Meteo");
-    LCD_String_xy(1,0,"BT: Esperando...");
+    LCD_String_xy(0,0,"Estacion Met");
+    LCD_String_xy(1,0,"Iniciando...");
     _delay((unsigned long)((2000)*(8000000/4000.0)));
-}
-
-
-void Setup_Interrupts() {
-
-    INTCONbits.INT0IE = 1;
-    INTCONbits.INT0IF = 0;
-    INTCON2bits.INTEDG0 = 0;
-
-
-    RCONbits.IPEN = 1;
-    INTCONbits.GIEH = 1;
-    INTCONbits.GIEL = 1;
-}
-
-void __attribute__((picinterrupt(("high_priority")))) HighPriorityISR() {
-    if (INTCONbits.INT0IF) {
-        system_state = !system_state;
-        system_needs_reset = 1;
-        INTCONbits.INT0IF = 0;
-    }
-}
-
-
-void Enter_Low_Power_Mode() {
-    LCD_Clear();
-    LCD_String_xy(0,0,"Sistema OFF");
-    LCD_String_xy(1,0,"En espera...");
-
-
-
-}
-
-
-void Clear_Line(unsigned char line) {
-    LCD_Command(line == 0 ? 0x80 : 0xC0);
-    for(unsigned char i=0; i<16; i++) LCD_Char(' ');
-}
-
-void Display_DHT11() {
-    unsigned char hum = 0, temp = 0;
-    Clear_Line(0);
-    Clear_Line(1);
-
-    if(DHT11_Read(&hum, &temp)) {
-        sprintf(lcd_buffer, "H: %d%%", hum);
-        LCD_String_xy(0, 0, lcd_buffer);
-        sprintf(lcd_buffer, "T: %d\xDF""C", temp);
-        LCD_String_xy(1, 0, lcd_buffer);
-    } else {
-        LCD_String_xy(0, 0, "DHT11: Error");
-        LCD_String_xy(1, 0, "Reintentando...");
-    }
-}
-
-void Display_GPS() {
-    char buffer[100] = {0};
-    char lat[10] = {0}, ns[2] = {0}, lon[11] = {0}, ew[2] = {0};
-
-    Clear_Line(0);
-    Clear_Line(1);
-
-    if(GPS_ReadSentence(buffer, sizeof(buffer), 500)) {
-        if(strstr(buffer, "$GPRMC") && GPS_ParseGPRMC(buffer, lat, ns, lon, ew)) {
-            sprintf(lcd_buffer, "Lat:%s%s", lat, ns);
-            LCD_String_xy(0, 0, lcd_buffer);
-            sprintf(lcd_buffer, "Lon:%s%s", lon, ew);
-            LCD_String_xy(1, 0, lcd_buffer);
-        } else {
-            LCD_String_xy(0, 0, "GPS: Sin datos");
-            LCD_String_xy(1, 0, "Buscando...");
-        }
-    } else {
-        LCD_String_xy(0, 0, "GPS: Error");
-        LCD_String_xy(1, 0, "Reintentando...");
-    }
-}
-
-void Display_RTC() {
-    unsigned char h = 0, m = 0, s = 0, day = 0, mon = 0, year = 0;
-    int refresh_count = 0;
-
-    while (refresh_count < 5 && system_state == 1) {
-        RTC_GetDateTime(&h, &m, &s, &day, &mon, &year);
-
-        Clear_Line(0);
-        sprintf(lcd_buffer, "Fecha:%02d/%02d/20%02d", day, mon, year);
-        LCD_String_xy(0, 0, lcd_buffer);
-
-        Clear_Line(1);
-        sprintf(lcd_buffer, "Hora: %02d:%02d:%02d", h, m, s);
-        LCD_String_xy(1, 0, lcd_buffer);
-
-        _delay((unsigned long)((1000)*(8000000/4000.0)));
-        refresh_count++;
-
-        if (system_needs_reset) break;
-    }
-}
-
-
-void main() {
-    Initialize_System();
-    Setup_Interrupts();
 
     while(1) {
-        if (system_state == 1) {
-            if (system_needs_reset) {
-                Initialize_System();
-                system_needs_reset = 0;
-            }
-
-
-            Display_DHT11();
-            _delay((unsigned long)((5000)*(8000000/4000.0)));
-            if (system_state == 0) continue;
-
-            Display_GPS();
-            _delay((unsigned long)((5000)*(8000000/4000.0)));
-            if (system_state == 0) continue;
-
-            Display_RTC();
-        } else {
-            Enter_Low_Power_Mode();
-            while (system_state == 0) {
-                _delay((unsigned long)((100)*(8000000/4000.0)));
-            }
+        switch(current_display) {
+            case SHOW_DHT11: Display_DHT11(); break;
+            case SHOW_GPS: Display_GPS(); break;
+            case SHOW_RTC: Display_RTC(); break;
         }
+        current_display = (current_display + 1) % NUM_DISPLAYS;
+        _delay((unsigned long)((5000)*(8000000/4000.0)));
     }
 }

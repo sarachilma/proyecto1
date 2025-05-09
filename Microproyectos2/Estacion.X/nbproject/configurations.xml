@@ -24,8 +24,6 @@
       <itemPath>ds1307.h</itemPath>
       <itemPath>i2c.c</itemPath>
       <itemPath>i2c.h</itemPath>
-      <itemPath>USART_Header_File.h</itemPath>
-      <itemPath>USART_Source_File.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
