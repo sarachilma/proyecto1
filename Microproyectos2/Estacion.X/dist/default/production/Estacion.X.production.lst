@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V3.00 build 20241204225717 
-                                                                                               Fri May 09 09:35:31 2025
+                                                                                               Fri May 09 09:46:08 2025
 
 Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1 
      1                           	processor	18F4550
@@ -2024,7 +2024,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2010 ;;
   2011 ;; *************** function _main *****************
   2012 ;; Defined at:
-  2013 ;;		line 99 in file "main.c"
+  2013 ;;		line 109 in file "main.c"
   2014 ;; Parameters:    Size  Location     Type
   2015 ;;		None
   2016 ;; Auto vars:     Size  Location     Type
@@ -2066,22 +2066,22 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2052   001126                     _main:
   2053                           	callstack 22
   2054   001126                     
-  2055                           ;main.c: 100:     OSCCON = 0x72;
+  2055                           ;main.c: 110:     OSCCON = 0x72;
   2056   001126  0E72               	movlw	114
   2057   001128  6ED3               	movwf	211,c	;volatile
   2058                           
-  2059                           ;main.c: 101:     ADCON1 = 0x0F;
+  2059                           ;main.c: 111:     ADCON1 = 0x0F;
   2060   00112A  0E0F               	movlw	15
   2061   00112C  6EC1               	movwf	193,c	;volatile
   2062                           
-  2063                           ;main.c: 102:     CMCON = 0x07;
+  2063                           ;main.c: 112:     CMCON = 0x07;
   2064   00112E  0E07               	movlw	7
   2065   001130  6EB4               	movwf	180,c	;volatile
   2066   001132                     
-  2067                           ;main.c: 103:     LCD_Init();
+  2067                           ;main.c: 113:     LCD_Init();
   2068   001132  ECA1  F010         	call	_LCD_Init	;wreg free
   2069   001136                     
-  2070                           ;main.c: 104:     I2C_Master_Init(100000);
+  2070                           ;main.c: 114:     I2C_Master_Init(100000);
   2071   001136  0EA0               	movlw	160
   2072   001138  6E0E               	movwf	I2C_Master_Init@c^0,c
   2073   00113A  0E86               	movlw	134
@@ -2092,16 +2092,16 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2078   001144  6E11               	movwf	(I2C_Master_Init@c+3)^0,c
   2079   001146  EC6A  F00F         	call	_I2C_Master_Init	;wreg free
   2080   00114A                     
-  2081                           ;main.c: 105:     RTC_Init();
+  2081                           ;main.c: 115:     RTC_Init();
   2082   00114A  ECB9  F00A         	call	_RTC_Init	;wreg free
   2083   00114E                     
-  2084                           ;main.c: 106:     GPS_Init();
+  2084                           ;main.c: 116:     GPS_Init();
   2085   00114E  ECD1  F010         	call	_GPS_Init	;wreg free
   2086   001152                     
-  2087                           ;main.c: 108:     LCD_Clear();
+  2087                           ;main.c: 119:     LCD_Clear();
   2088   001152  EC19  F011         	call	_LCD_Clear	;wreg free
   2089   001156                     
-  2090                           ;main.c: 109:     LCD_String_xy(0,0,"Estacion Met");
+  2090                           ;main.c: 120:     LCD_String_xy(0,0,"Estacion Met");
   2091   001156  0E00               	movlw	0
   2092   001158  6E05               	movwf	LCD_String_xy@pos^0,c
   2093   00115A  0E92               	movlw	low STR_15
@@ -2113,7 +2113,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2099   001166  0E00               	movlw	0
   2100   001168  EC3C  F00F         	call	_LCD_String_xy
   2101   00116C                     
-  2102                           ;main.c: 110:     LCD_String_xy(1,0,"Iniciando...");
+  2102                           ;main.c: 121:     LCD_String_xy(1,0,"Iniciando...");
   2103   00116C  0E00               	movlw	0
   2104   00116E  6E05               	movwf	LCD_String_xy@pos^0,c
   2105   001170  0E5E               	movlw	low STR_16
@@ -2125,7 +2125,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2111   00117C  0E01               	movlw	1
   2112   00117E  EC3C  F00F         	call	_LCD_String_xy
   2113   001182                     
-  2114                           ;main.c: 111:     _delay((unsigned long)((2000)*(8000000/4000.0)));
+  2114                           ;main.c: 122:     _delay((unsigned long)((2000)*(8000000/4000.0)));
   2115   001182  0E15               	movlw	21
   2116   001184  6E4A               	movwf	(??_main+1)^0,c
   2117   001186  0E4B               	movlw	75
@@ -2188,7 +2188,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2173   0011E4  EFF4  F008         	goto	l2939
   2174   0011E8                     l2939:
   2175                           
-  2176                           ;main.c: 119:         current_display = (current_display + 1) % NUM_DISPLAYS;
+  2176                           ;main.c: 134:         current_display = (current_display + 1) % NUM_DISPLAYS;
   2177   0011E8  0E01               	movlw	1
   2178   0011EA  245B               	addwf	_current_display^0,w,c
   2179   0011EC  6E01               	movwf	___lwmod@dividend^0,c
@@ -2203,7 +2203,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2188   001200  5001               	movf	?___lwmod^0,w,c
   2189   001202  6E5B               	movwf	_current_display^0,c
   2190   001204                     
-  2191                           ;main.c: 120:         _delay((unsigned long)((5000)*(8000000/4000.0)));
+  2191                           ;main.c: 135:         _delay((unsigned long)((5000)*(8000000/4000.0)));
   2192   001204  0E33               	movlw	51
   2193   001206  6E4A               	movwf	(??_main+1)^0,c
   2194   001208  0EBB               	movlw	187
@@ -2769,7 +2769,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2754                           
   2755 ;; *************** function _Display_RTC *****************
   2756 ;; Defined at:
-  2757 ;;		line 85 in file "main.c"
+  2757 ;;		line 91 in file "main.c"
   2758 ;; Parameters:    Size  Location     Type
   2759 ;;		None
   2760 ;; Auto vars:     Size  Location     Type
@@ -2812,12 +2812,12 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2797   001624                     _Display_RTC:
   2798                           	callstack 22
   2799   001624                     
-  2800                           ;main.c: 86:     unsigned char h,m,s,day,mon,year;;main.c: 87:     for(uint8_t cnt=0; cn
+  2800                           ;main.c: 92:     unsigned char h,m,s,day,mon,year;;main.c: 93:     for(uint8_t cnt=0; cn
       +                          t<5; cnt++) {
   2801   001624  6A48               	clrf	Display_RTC@cnt^0,c
   2802   001626                     l2847:
   2803                           
-  2804                           ;main.c: 88:         RTC_GetDateTime(&h,&m,&s,&day,&mon,&year);
+  2804                           ;main.c: 95:         RTC_GetDateTime(&h,&m,&s,&day,&mon,&year);
   2805   001626  0E42               	movlw	low Display_RTC@h
   2806   001628  6E06               	movwf	RTC_GetDateTime@hour^0,c
   2807   00162A  0E43               	movlw	low Display_RTC@m
@@ -2832,11 +2832,11 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2816   00163C  6E0B               	movwf	RTC_GetDateTime@year^0,c
   2817   00163E  EC84  F009         	call	_RTC_GetDateTime	;wreg free
   2818   001642                     
-  2819                           ;main.c: 89:         Clear_Line(0);
+  2819                           ;main.c: 96:         Clear_Line(0);
   2820   001642  0E00               	movlw	0
   2821   001644  ECFA  F010         	call	_Clear_Line
   2822   001648                     
-  2823                           ;main.c: 90:         sprintf(lcd_buffer, "%02u/%02u/20%02u", day,mon,year);
+  2823                           ;main.c: 98:         sprintf(lcd_buffer, "%02u/%02u/20%02u", day,mon,year);
   2824   001648  0EE4               	movlw	low _lcd_buffer
   2825   00164A  6E2C               	movwf	sprintf@s^0,c
   2826   00164C  0E12               	movlw	low STR_13
@@ -2849,7 +2849,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2833   001660  6A33               	clrf	(?_sprintf+7)^0,c
   2834   001662  EC87  F010         	call	_sprintf	;wreg free
   2835   001666                     
-  2836                           ;main.c: 91:         LCD_String_xy(0,0,lcd_buffer);
+  2836                           ;main.c: 99:         LCD_String_xy(0,0,lcd_buffer);
   2837   001666  0E00               	movlw	0
   2838   001668  6E05               	movwf	LCD_String_xy@pos^0,c
   2839   00166A  0EE4               	movlw	low _lcd_buffer
@@ -2858,11 +2858,11 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2842   001670  0E00               	movlw	0
   2843   001672  EC3C  F00F         	call	_LCD_String_xy
   2844   001676                     
-  2845                           ;main.c: 92:         Clear_Line(1);
+  2845                           ;main.c: 100:         Clear_Line(1);
   2846   001676  0E01               	movlw	1
   2847   001678  ECFA  F010         	call	_Clear_Line
   2848   00167C                     
-  2849                           ;main.c: 93:         sprintf(lcd_buffer, "%02u:%02u:%02u", h,m,s);
+  2849                           ;main.c: 102:         sprintf(lcd_buffer, "%02u:%02u:%02u", h,m,s);
   2850   00167C  0EE4               	movlw	low _lcd_buffer
   2851   00167E  6E2C               	movwf	sprintf@s^0,c
   2852   001680  0E42               	movlw	low STR_14
@@ -2875,7 +2875,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2859   001694  6A33               	clrf	(?_sprintf+7)^0,c
   2860   001696  EC87  F010         	call	_sprintf	;wreg free
   2861   00169A                     
-  2862                           ;main.c: 94:         LCD_String_xy(1,0,lcd_buffer);
+  2862                           ;main.c: 103:         LCD_String_xy(1,0,lcd_buffer);
   2863   00169A  0E00               	movlw	0
   2864   00169C  6E05               	movwf	LCD_String_xy@pos^0,c
   2865   00169E  0EE4               	movlw	low _lcd_buffer
@@ -2884,7 +2884,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2868   0016A4  0E01               	movlw	1
   2869   0016A6  EC3C  F00F         	call	_LCD_String_xy
   2870   0016AA                     
-  2871                           ;main.c: 95:         _delay((unsigned long)((1000)*(8000000/4000.0)));
+  2871                           ;main.c: 104:         _delay((unsigned long)((1000)*(8000000/4000.0)));
   2872   0016AA  0E0B               	movlw	11
   2873   0016AC  6E41               	movwf	(??_Display_RTC+1)^0,c
   2874   0016AE  0E26               	movlw	38
@@ -2898,7 +2898,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2882   0016BC  2E41               	decfsz	(??_Display_RTC+1)^0,f,c
   2883   0016BE  D7FA               	bra	u2487
   2884   0016C0                     
-  2885                           ;main.c: 96:     }
+  2885                           ;main.c: 105:     }
   2886   0016C0  2A48               	incf	Display_RTC@cnt^0,f,c
   2887   0016C2  0E04               	movlw	4
   2888   0016C4  6448               	cpfsgt	Display_RTC@cnt^0,c
@@ -3461,7 +3461,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3443                           
   3444 ;; *************** function _Display_GPS *****************
   3445 ;; Defined at:
-  3446 ;;		line 41 in file "main.c"
+  3446 ;;		line 46 in file "main.c"
   3447 ;; Parameters:    Size  Location     Type
   3448 ;;		None
   3449 ;; Auto vars:     Size  Location     Type
@@ -3509,7 +3509,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3491   0008B8                     _Display_GPS:
   3492                           	callstack 26
   3493   0008B8                     
-  3494                           ;main.c: 42:     char buffer[100], lat[10] = "", ns[2] = "", lon[11] = "", ew[2] = "";
+  3494                           ;main.c: 47:     char buffer[100], lat[10] = "", ns[2] = "", lon[11] = "", ew[2] = "";
   3495   0008B8  EE21  F06F         	lfsr	2,Display_GPS@lat
   3496   0008BC  0E09               	movlw	9
   3497   0008BE                     u2331:
@@ -3535,17 +3535,17 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3517   0008E0  6F9D               	movwf	Display_GPS@ew& (0+255),b
   3518   0008E2                     
   3519                           ; BSR set to: 1
-  3520                           ;main.c: 43:     uint8_t valid = 0;
+  3520                           ;main.c: 48:     uint8_t valid = 0;
   3521   0008E2  6BA0               	clrf	Display_GPS@valid& (0+255),b
   3522   0008E4                     
   3523                           ; BSR set to: 1
-  3524                           ;main.c: 46:     for(uint8_t i=0; i<5 && !valid; i++) {
+  3524                           ;main.c: 51:     for(uint8_t i=0; i<5 && !valid; i++) {
   3525   0008E4  6B9F               	clrf	Display_GPS@i& (0+255),b
   3526   0008E6  EFAC  F004         	goto	l2801
   3527   0008EA                     l2793:
   3528                           
   3529                           ; BSR set to: 1
-  3530                           ;main.c: 47:         if(GPS_ReadSentence(buffer, sizeof(buffer), 2000)) {
+  3530                           ;main.c: 52:         if(GPS_ReadSentence(buffer, sizeof(buffer), 2000)) {
   3531   0008EA  0E00               	movlw	low Display_GPS@buffer
   3532   0008EC  6E01               	movwf	GPS_ReadSentence@buffer^0,c
   3533   0008EE  0E01               	movlw	high Display_GPS@buffer
@@ -3567,7 +3567,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3549   000912  EFA3  F004         	goto	l2797
   3550   000916                     u2350:
   3551   000916                     
-  3552                           ;main.c: 48:             valid = GPS_ParseGPRMC(buffer, lat, ns, lon, ew);
+  3552                           ;main.c: 54:             valid = GPS_ParseGPRMC(buffer, lat, ns, lon, ew);
   3553   000916  0E00               	movlw	low Display_GPS@buffer
   3554   000918  6E0E               	movwf	GPS_ParseGPRMC@msg^0,c
   3555   00091A  0E01               	movlw	high Display_GPS@buffer
@@ -3593,7 +3593,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3575   000944  6FA0               	movwf	Display_GPS@valid& (0+255),b
   3576   000946                     l2797:
   3577                           
-  3578                           ;main.c: 50:         _delay((unsigned long)((50)*(8000000/4000.0)));
+  3578                           ;main.c: 56:         _delay((unsigned long)((50)*(8000000/4000.0)));
   3579   000946  0E82               	movlw	130
   3580   000948  6E19               	movwf	??_Display_GPS^0,c
   3581   00094A  0EDE               	movlw	222
@@ -3603,7 +3603,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3585   000950  2E19               	decfsz	??_Display_GPS^0,f,c
   3586   000952  D7FC               	bra	u2497
   3587   000954                     
-  3588                           ;main.c: 51:     }
+  3588                           ;main.c: 57:     }
   3589   000954  0101               	movlb	1	; () banked
   3590   000956  2B9F               	incf	Display_GPS@i& (0+255),f,b
   3591   000958                     l2801:
@@ -3628,13 +3628,13 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3610   000978                     l2805:
   3611                           
   3612                           ; BSR set to: 1
-  3613                           ;main.c: 53:     Clear_Line(0); Clear_Line(1);
+  3613                           ;main.c: 59:     Clear_Line(0); Clear_Line(1);
   3614   000978  0E00               	movlw	0
   3615   00097A  ECFA  F010         	call	_Clear_Line
   3616   00097E  0E01               	movlw	1
   3617   000980  ECFA  F010         	call	_Clear_Line
   3618   000984                     
-  3619                           ;main.c: 54:     if(valid) {
+  3619                           ;main.c: 60:     if(valid) {
   3620   000984  0101               	movlb	1	; () banked
   3621   000986  51A0               	movf	Display_GPS@valid& (0+255),w,b
   3622   000988  B4D8               	btfsc	status,2,c
@@ -3645,7 +3645,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3627   000996                     u2380:
   3628   000996                     
   3629                           ; BSR set to: 1
-  3630                           ;main.c: 55:         char formatted_lat[17] = {0};
+  3630                           ;main.c: 61:         char formatted_lat[17] = {0};
   3631   000996  EE21  F079         	lfsr	2,Display_GPS@formatted_lat
   3632   00099A  0E10               	movlw	16
   3633   00099C                     u2391:
@@ -3653,7 +3653,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3635   00099E  06E8               	decf	wreg,f,c
   3636   0009A0  E2FD               	bc	u2391
   3637                           
-  3638                           ;main.c: 56:         char formatted_lon[17] = {0};
+  3638                           ;main.c: 62:         char formatted_lon[17] = {0};
   3639   0009A2  EE21  F08A         	lfsr	2,Display_GPS@formatted_lon
   3640   0009A6  0E10               	movlw	16
   3641   0009A8                     u2401:
@@ -3662,7 +3662,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3644   0009AC  E2FD               	bc	u2401
   3645   0009AE                     
   3646                           ; BSR set to: 1
-  3647                           ;main.c: 59:         strncpy(formatted_lat, lat, 2);
+  3647                           ;main.c: 65:         strncpy(formatted_lat, lat, 2);
   3648   0009AE  0E79               	movlw	low Display_GPS@formatted_lat
   3649   0009B0  6E01               	movwf	strncpy@d^0,c
   3650   0009B2  0E01               	movlw	high Display_GPS@formatted_lat
@@ -3677,7 +3677,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3659   0009C4  6E05               	movwf	strncpy@n^0,c
   3660   0009C6  EC7F  F00D         	call	_strncpy	;wreg free
   3661   0009CA                     
-  3662                           ;main.c: 60:         strcat(formatted_lat, "\xDF");
+  3662                           ;main.c: 66:         strcat(formatted_lat, "\xDF");
   3663   0009CA  0E79               	movlw	low Display_GPS@formatted_lat
   3664   0009CC  6E01               	movwf	strcat@dest^0,c
   3665   0009CE  0E01               	movlw	high Display_GPS@formatted_lat
@@ -3690,7 +3690,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3672   0009DC  6E04               	movwf	(strcat@src+1)^0,c
   3673   0009DE  EC01  F00E         	call	_strcat	;wreg free
   3674   0009E2                     
-  3675                           ;main.c: 61:         strncat(formatted_lat, lat + 2, 5);
+  3675                           ;main.c: 67:         strncat(formatted_lat, lat + 2, 5);
   3676   0009E2  0E79               	movlw	low Display_GPS@formatted_lat
   3677   0009E4  6E01               	movwf	strncat@dest^0,c
   3678   0009E6  0E01               	movlw	high Display_GPS@formatted_lat
@@ -3705,7 +3705,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3687   0009F8  6E05               	movwf	strncat@n^0,c
   3688   0009FA  ECF7  F00C         	call	_strncat	;wreg free
   3689   0009FE                     
-  3690                           ;main.c: 62:         strcat(formatted_lat, "' ");
+  3690                           ;main.c: 68:         strcat(formatted_lat, "' ");
   3691   0009FE  0E79               	movlw	low Display_GPS@formatted_lat
   3692   000A00  6E01               	movwf	strcat@dest^0,c
   3693   000A02  0E01               	movlw	high Display_GPS@formatted_lat
@@ -3718,7 +3718,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3700   000A10  6E04               	movwf	(strcat@src+1)^0,c
   3701   000A12  EC01  F00E         	call	_strcat	;wreg free
   3702   000A16                     
-  3703                           ;main.c: 63:         strcat(formatted_lat, ns);
+  3703                           ;main.c: 69:         strcat(formatted_lat, ns);
   3704   000A16  0E79               	movlw	low Display_GPS@formatted_lat
   3705   000A18  6E01               	movwf	strcat@dest^0,c
   3706   000A1A  0E01               	movlw	high Display_GPS@formatted_lat
@@ -3729,7 +3729,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3711   000A24  6E04               	movwf	(strcat@src+1)^0,c
   3712   000A26  EC01  F00E         	call	_strcat	;wreg free
   3713   000A2A                     
-  3714                           ;main.c: 66:         strncpy(formatted_lon, lon, 3);
+  3714                           ;main.c: 72:         strncpy(formatted_lon, lon, 3);
   3715   000A2A  0E8A               	movlw	low Display_GPS@formatted_lon
   3716   000A2C  6E01               	movwf	strncpy@d^0,c
   3717   000A2E  0E01               	movlw	high Display_GPS@formatted_lon
@@ -3744,7 +3744,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3726   000A40  6E05               	movwf	strncpy@n^0,c
   3727   000A42  EC7F  F00D         	call	_strncpy	;wreg free
   3728   000A46                     
-  3729                           ;main.c: 67:         strcat(formatted_lon, "\xDF");
+  3729                           ;main.c: 73:         strcat(formatted_lon, "\xDF");
   3730   000A46  0E8A               	movlw	low Display_GPS@formatted_lon
   3731   000A48  6E01               	movwf	strcat@dest^0,c
   3732   000A4A  0E01               	movlw	high Display_GPS@formatted_lon
@@ -3757,7 +3757,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3739   000A58  6E04               	movwf	(strcat@src+1)^0,c
   3740   000A5A  EC01  F00E         	call	_strcat	;wreg free
   3741   000A5E                     
-  3742                           ;main.c: 68:         strncat(formatted_lon, lon + 3, 5);
+  3742                           ;main.c: 74:         strncat(formatted_lon, lon + 3, 5);
   3743   000A5E  0E8A               	movlw	low Display_GPS@formatted_lon
   3744   000A60  6E01               	movwf	strncat@dest^0,c
   3745   000A62  0E01               	movlw	high Display_GPS@formatted_lon
@@ -3772,7 +3772,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3754   000A74  6E05               	movwf	strncat@n^0,c
   3755   000A76  ECF7  F00C         	call	_strncat	;wreg free
   3756   000A7A                     
-  3757                           ;main.c: 69:         strcat(formatted_lon, "' ");
+  3757                           ;main.c: 75:         strcat(formatted_lon, "' ");
   3758   000A7A  0E8A               	movlw	low Display_GPS@formatted_lon
   3759   000A7C  6E01               	movwf	strcat@dest^0,c
   3760   000A7E  0E01               	movlw	high Display_GPS@formatted_lon
@@ -3785,7 +3785,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3767   000A8C  6E04               	movwf	(strcat@src+1)^0,c
   3768   000A8E  EC01  F00E         	call	_strcat	;wreg free
   3769   000A92                     
-  3770                           ;main.c: 70:         strcat(formatted_lon, ew);
+  3770                           ;main.c: 76:         strcat(formatted_lon, ew);
   3771   000A92  0E8A               	movlw	low Display_GPS@formatted_lon
   3772   000A94  6E01               	movwf	strcat@dest^0,c
   3773   000A96  0E01               	movlw	high Display_GPS@formatted_lon
@@ -3796,7 +3796,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3778   000AA0  6E04               	movwf	(strcat@src+1)^0,c
   3779   000AA2  EC01  F00E         	call	_strcat	;wreg free
   3780   000AA6                     
-  3781                           ;main.c: 72:         LCD_String_xy(0,0,"Lat:");
+  3781                           ;main.c: 79:         LCD_String_xy(0,0,"Lat:");
   3782   000AA6  0E00               	movlw	0
   3783   000AA8  6E05               	movwf	LCD_String_xy@pos^0,c
   3784   000AAA  0EAB               	movlw	low STR_9
@@ -3808,7 +3808,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3790   000AB6  0E00               	movlw	0
   3791   000AB8  EC3C  F00F         	call	_LCD_String_xy
   3792   000ABC                     
-  3793                           ;main.c: 73:         LCD_String_xy(0,4,formatted_lat);
+  3793                           ;main.c: 80:         LCD_String_xy(0,4,formatted_lat);
   3794   000ABC  0E04               	movlw	4
   3795   000ABE  6E05               	movwf	LCD_String_xy@pos^0,c
   3796   000AC0  0E79               	movlw	low Display_GPS@formatted_lat
@@ -3818,7 +3818,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3800   000AC8  0E00               	movlw	0
   3801   000ACA  EC3C  F00F         	call	_LCD_String_xy
   3802   000ACE                     
-  3803                           ;main.c: 74:         LCD_String_xy(1,0,"Lon:");
+  3803                           ;main.c: 81:         LCD_String_xy(1,0,"Lon:");
   3804   000ACE  0E00               	movlw	0
   3805   000AD0  6E05               	movwf	LCD_String_xy@pos^0,c
   3806   000AD2  0EA6               	movlw	low STR_10
@@ -3830,7 +3830,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3812   000ADE  0E01               	movlw	1
   3813   000AE0  EC3C  F00F         	call	_LCD_String_xy
   3814   000AE4                     
-  3815                           ;main.c: 75:         LCD_String_xy(1,4,formatted_lon);
+  3815                           ;main.c: 82:         LCD_String_xy(1,4,formatted_lon);
   3816   000AE4  0E04               	movlw	4
   3817   000AE6  6E05               	movwf	LCD_String_xy@pos^0,c
   3818   000AE8  0E8A               	movlw	low Display_GPS@formatted_lon
@@ -3840,12 +3840,12 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3822   000AF0  0E01               	movlw	1
   3823   000AF2  EC3C  F00F         	call	_LCD_String_xy
   3824                           
-  3825                           ;main.c: 76:     } else {
+  3825                           ;main.c: 83:     } else {
   3826   000AF6  EF93  F005         	goto	l71
   3827   000AFA                     l2839:
   3828                           
   3829                           ; BSR set to: 1
-  3830                           ;main.c: 77:         LCD_String_xy(0,0,"GPS: Sin senal");
+  3830                           ;main.c: 85:         LCD_String_xy(0,0,"GPS: Sin senal");
   3831   000AFA  0E00               	movlw	0
   3832   000AFC  6E05               	movwf	LCD_String_xy@pos^0,c
   3833   000AFE  0E33               	movlw	low STR_11
@@ -3857,7 +3857,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3839   000B0A  0E00               	movlw	0
   3840   000B0C  EC3C  F00F         	call	_LCD_String_xy
   3841                           
-  3842                           ;main.c: 78:         LCD_String_xy(1,0,"Reintentando");
+  3842                           ;main.c: 86:         LCD_String_xy(1,0,"Reintentando");
   3843   000B10  0E00               	movlw	0
   3844   000B12  6E05               	movwf	LCD_String_xy@pos^0,c
   3845   000B14  0E78               	movlw	low STR_12
@@ -5611,7 +5611,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   5592   001B86  0E01               	movlw	1
   5593   001B88  ECFA  F010         	call	_Clear_Line
   5594   001B8C                     
-  5595                           ;main.c: 32:     if(DHT11_Read(&hum, &temp)) {
+  5595                           ;main.c: 34:     if(DHT11_Read(&hum, &temp)) {
   5596   001B8C  0E40               	movlw	low Display_DHT11@hum
   5597   001B8E  6E03               	movwf	DHT11_Read@humidity^0,c
   5598   001B90  0E41               	movlw	low Display_DHT11@temp
@@ -5625,7 +5625,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   5606   001BA4  EFEA  F00D         	goto	l2781
   5607   001BA8                     u2320:
   5608   001BA8                     
-  5609                           ;main.c: 33:         sprintf(lcd_buffer, "H:%u%% T:%uC", hum, temp);
+  5609                           ;main.c: 36:         sprintf(lcd_buffer, "H:%u%% T:%uC", hum, temp);
   5610   001BA8  0EE4               	movlw	low _lcd_buffer
   5611   001BAA  6E2C               	movwf	sprintf@s^0,c
   5612   001BAC  0E6B               	movlw	low STR_2
@@ -5636,7 +5636,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   5617   001BBA  6A31               	clrf	(?_sprintf+5)^0,c
   5618   001BBC  EC87  F010         	call	_sprintf	;wreg free
   5619   001BC0                     
-  5620                           ;main.c: 34:         LCD_String_xy(0,0,lcd_buffer);
+  5620                           ;main.c: 37:         LCD_String_xy(0,0,lcd_buffer);
   5621   001BC0  0E00               	movlw	0
   5622   001BC2  6E05               	movwf	LCD_String_xy@pos^0,c
   5623   001BC4  0EE4               	movlw	low _lcd_buffer
@@ -5645,11 +5645,11 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   5626   001BCA  0E00               	movlw	0
   5627   001BCC  EC3C  F00F         	call	_LCD_String_xy
   5628                           
-  5629                           ;main.c: 35:     } else {
+  5629                           ;main.c: 38:     } else {
   5630   001BD0  EF00  F00E         	goto	l48
   5631   001BD4                     l2781:
   5632                           
-  5633                           ;main.c: 36:         LCD_String_xy(0,0,"DHT11: Error");
+  5633                           ;main.c: 40:         LCD_String_xy(0,0,"DHT11: Error");
   5634   001BD4  0E00               	movlw	0
   5635   001BD6  6E05               	movwf	LCD_String_xy@pos^0,c
   5636   001BD8  0E85               	movlw	low STR_3
@@ -5661,7 +5661,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   5642   001BE4  0E00               	movlw	0
   5643   001BE6  EC3C  F00F         	call	_LCD_String_xy
   5644                           
-  5645                           ;main.c: 37:         LCD_String_xy(1,0,"Reintentando...");
+  5645                           ;main.c: 41:         LCD_String_xy(1,0,"Reintentando...");
   5646   001BEA  0E00               	movlw	0
   5647   001BEC  6E05               	movwf	LCD_String_xy@pos^0,c
   5648   001BEE  0E23               	movlw	low STR_4
@@ -7344,7 +7344,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   7251                           
   7252 ;; *************** function _Clear_Line *****************
   7253 ;; Defined at:
-  7254 ;;		line 25 in file "main.c"
+  7254 ;;		line 23 in file "main.c"
   7255 ;; Parameters:    Size  Location     Type
   7256 ;;  line            1    wreg     unsigned char 
   7257 ;; Auto vars:     Size  Location     Type
@@ -7384,7 +7384,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   7291                           ;Clear_Line@line stored from wreg
   7292   0021F4  6E0C               	movwf	Clear_Line@line^0,c
   7293   0021F6                     
-  7294                           ;main.c: 26:     LCD_String_xy(line, 0, "                ");
+  7294                           ;main.c: 25:     LCD_String_xy(line, 0, "                ");
   7295   0021F6  0E00               	movlw	0
   7296   0021F8  6E05               	movwf	LCD_String_xy@pos^0,c
   7297   0021FA  0E01               	movlw	low STR_1
@@ -8673,7 +8673,7 @@ DATA                 0      0     452      0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V3.00 build 20241204225717 
-Symbol Table                                                                                   Fri May 09 09:35:31 2025
+Symbol Table                                                                                   Fri May 09 09:46:08 2025
 
                _LCD_String_xy$482 0009                      ?_LCD_Command 0001                                l43 220C  
                               l71 0B26                                l48 1C00                                l76 16D2  

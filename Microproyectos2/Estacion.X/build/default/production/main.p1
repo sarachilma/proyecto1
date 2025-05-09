@@ -1,6 +1,6 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"23 main.c
-[; ;main.c: 23: enum DisplayState current_display = SHOW_DHT11;
+"20 main.c
+[; ;main.c: 20: enum DisplayState current_display = SHOW_DHT11;
 [c E3755 0 1 2 3 .. ]
 [n E3755 DisplayState SHOW_DHT11 SHOW_GPS SHOW_RTC NUM_DISPLAYS  ]
 "32 ./LCD.h
@@ -621,27 +621,27 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x EBTR0  =  OFF   EBTR1  =  OFF   EBTR2  =  OFF   EBTR3  =  OFF ]
 "46
 [p x EBTRB  =  OFF ]
-"20 main.c
-[; ;main.c: 20: char lcd_buffer[17];
+"16 main.c
+[; ;main.c: 16: char lcd_buffer[17];
 [v _lcd_buffer `uc ~T0 @X0 -> 17 `i e ]
-"23
-[; ;main.c: 23: enum DisplayState current_display = SHOW_DHT11;
+"20
+[; ;main.c: 20: enum DisplayState current_display = SHOW_DHT11;
 [v _current_display `E3755 ~T0 @X0 1 e ]
 [i _current_display
 . `E3755 0
 ]
-"25
-[; ;main.c: 25: void Clear_Line(uint8_t line) {
+"23
+[; ;main.c: 23: void Clear_Line(uint8_t line) {
 [v _Clear_Line `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _Clear_Line ]
 [v _line `uc ~T0 @X0 1 r1 ]
 [f ]
-"26
-[; ;main.c: 26:     LCD_String_xy(line, 0, "                ");
+"25
+[; ;main.c: 25:     LCD_String_xy(line, 0, "                ");
 [e ( _LCD_String_xy (3 , , _line -> -> 0 `i `uc :s 1C ]
-"27
-[; ;main.c: 27: }
+"26
+[; ;main.c: 26: }
 [e :UE 370 ]
 }
 "29
@@ -658,44 +658,44 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 31:     Clear_Line(0); Clear_Line(1);
 [e ( _Clear_Line (1 -> -> 0 `i `uc ]
 [e ( _Clear_Line (1 -> -> 1 `i `uc ]
-"32
-[; ;main.c: 32:     if(DHT11_Read(&hum, &temp)) {
+"34
+[; ;main.c: 34:     if(DHT11_Read(&hum, &temp)) {
 [e $ ! != -> ( _DHT11_Read (2 , &U _hum &U _temp `i -> 0 `i 372  ]
 {
-"33
-[; ;main.c: 33:         sprintf(lcd_buffer, "H:%u%% T:%uC", hum, temp);
+"36
+[; ;main.c: 36:         sprintf(lcd_buffer, "H:%u%% T:%uC", hum, temp);
 [e ( _sprintf (1 , , (. , &U _lcd_buffer :s 2C -> _hum `i -> _temp `i ]
-"34
-[; ;main.c: 34:         LCD_String_xy(0,0,lcd_buffer);
+"37
+[; ;main.c: 37:         LCD_String_xy(0,0,lcd_buffer);
 [e ( _LCD_String_xy (3 , , -> -> 0 `i `uc -> -> 0 `i `uc -> &U _lcd_buffer `*Cuc ]
-"35
-[; ;main.c: 35:     } else {
+"38
+[; ;main.c: 38:     } else {
 }
 [e $U 373  ]
 [e :U 372 ]
 {
-"36
-[; ;main.c: 36:         LCD_String_xy(0,0,"DHT11: Error");
+"40
+[; ;main.c: 40:         LCD_String_xy(0,0,"DHT11: Error");
 [e ( _LCD_String_xy (3 , , -> -> 0 `i `uc -> -> 0 `i `uc :s 3C ]
-"37
-[; ;main.c: 37:         LCD_String_xy(1,0,"Reintentando...");
+"41
+[; ;main.c: 41:         LCD_String_xy(1,0,"Reintentando...");
 [e ( _LCD_String_xy (3 , , -> -> 1 `i `uc -> -> 0 `i `uc :s 4C ]
-"38
-[; ;main.c: 38:     }
+"42
+[; ;main.c: 42:     }
 }
 [e :U 373 ]
-"39
-[; ;main.c: 39: }
+"43
+[; ;main.c: 43: }
 [e :UE 371 ]
 }
-"41
-[; ;main.c: 41: void Display_GPS() {
+"46
+[; ;main.c: 46: void Display_GPS() {
 [v _Display_GPS `(v ~T0 @X0 1 ef ]
 {
 [e :U _Display_GPS ]
 [f ]
-"42
-[; ;main.c: 42:     char buffer[100], lat[10] = "", ns[2] = "", lon[11] = "", ew[2] = "";
+"47
+[; ;main.c: 47:     char buffer[100], lat[10] = "", ns[2] = "", lon[11] = "", ew[2] = "";
 [v _buffer `uc ~T0 @X0 -> 100 `i a ]
 [v F3768 `uc ~T0 @X0 -> 10 `i s ]
 [i F3768
@@ -729,53 +729,53 @@ Version 4.0 HI-TECH Software Intermediate Code
 ]
 [v _ew `uc ~T0 @X0 -> 2 `i a ]
 [e = _ew F3774 ]
-"43
-[; ;main.c: 43:     uint8_t valid = 0;
+"48
+[; ;main.c: 48:     uint8_t valid = 0;
 [v _valid `uc ~T0 @X0 1 a ]
 [e = _valid -> -> 0 `i `uc ]
-"46
-[; ;main.c: 46:     for(uint8_t i=0; i<5 && !valid; i++) {
+"51
+[; ;main.c: 51:     for(uint8_t i=0; i<5 && !valid; i++) {
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
 [e $U 378  ]
 [e :U 375 ]
 {
-"47
-[; ;main.c: 47:         if(GPS_ReadSentence(buffer, sizeof(buffer), 2000)) {
+"52
+[; ;main.c: 52:         if(GPS_ReadSentence(buffer, sizeof(buffer), 2000)) {
 [e $ ! != -> ( _GPS_ReadSentence (3 , , &U _buffer -> -> # _buffer `ui `us -> -> 2000 `i `us `i -> 0 `i 379  ]
 {
-"48
-[; ;main.c: 48:             valid = GPS_ParseGPRMC(buffer, lat, ns, lon, ew);
+"54
+[; ;main.c: 54:             valid = GPS_ParseGPRMC(buffer, lat, ns, lon, ew);
 [e = _valid ( _GPS_ParseGPRMC (4 , , , , -> &U _buffer `*Cuc &U _lat &U _ns &U _lon &U _ew ]
-"49
-[; ;main.c: 49:         }
+"55
+[; ;main.c: 55:         }
 }
 [e :U 379 ]
-"50
-[; ;main.c: 50:         _delay((unsigned long)((50)*(8000000/4000.0)));
+"56
+[; ;main.c: 56:         _delay((unsigned long)((50)*(8000000/4000.0)));
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"51
-[; ;main.c: 51:     }
+"57
+[; ;main.c: 57:     }
 }
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 378 ]
 [e $ && < -> _i `i -> 5 `i ! != -> _valid `i -> 0 `i 375  ]
 [e :U 376 ]
 }
-"53
-[; ;main.c: 53:     Clear_Line(0); Clear_Line(1);
+"59
+[; ;main.c: 59:     Clear_Line(0); Clear_Line(1);
 [e ( _Clear_Line (1 -> -> 0 `i `uc ]
 [e ( _Clear_Line (1 -> -> 1 `i `uc ]
-"54
-[; ;main.c: 54:     if(valid) {
+"60
+[; ;main.c: 60:     if(valid) {
 [e $ ! != -> _valid `i -> 0 `i 380  ]
 {
 [v F3778 `uc ~T0 @X0 -> 17 `i s ]
 [i F3778
 :U ..
-"55
-[; ;main.c: 55:         char formatted_lat[17] = {0};
+"61
+[; ;main.c: 61:         char formatted_lat[17] = {0};
 -> -> 0 `i `uc
 ..
 ]
@@ -784,91 +784,91 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v F3780 `uc ~T0 @X0 -> 17 `i s ]
 [i F3780
 :U ..
-"56
-[; ;main.c: 56:         char formatted_lon[17] = {0};
+"62
+[; ;main.c: 62:         char formatted_lon[17] = {0};
 -> -> 0 `i `uc
 ..
 ]
 [v _formatted_lon `uc ~T0 @X0 -> 17 `i a ]
 [e = _formatted_lon F3780 ]
-"59
-[; ;main.c: 59:         strncpy(formatted_lat, lat, 2);
+"65
+[; ;main.c: 65:         strncpy(formatted_lat, lat, 2);
 [e ( _strncpy (3 , , &U _formatted_lat -> &U _lat `*Cuc -> -> 2 `i `ui ]
-"60
-[; ;main.c: 60:         strcat(formatted_lat, "\xDF");
-[e ( _strcat (2 , &U _formatted_lat :s 5C ]
-"61
-[; ;main.c: 61:         strncat(formatted_lat, lat + 2, 5);
-[e ( _strncat (3 , , &U _formatted_lat -> + &U _lat * -> -> 2 `i `x -> -> # *U &U _lat `i `x `*Cuc -> -> 5 `i `ui ]
-"62
-[; ;main.c: 62:         strcat(formatted_lat, "' ");
-[e ( _strcat (2 , &U _formatted_lat :s 6C ]
-"63
-[; ;main.c: 63:         strcat(formatted_lat, ns);
-[e ( _strcat (2 , &U _formatted_lat -> &U _ns `*Cuc ]
 "66
-[; ;main.c: 66:         strncpy(formatted_lon, lon, 3);
-[e ( _strncpy (3 , , &U _formatted_lon -> &U _lon `*Cuc -> -> 3 `i `ui ]
+[; ;main.c: 66:         strcat(formatted_lat, "\xDF");
+[e ( _strcat (2 , &U _formatted_lat :s 5C ]
 "67
-[; ;main.c: 67:         strcat(formatted_lon, "\xDF");
-[e ( _strcat (2 , &U _formatted_lon :s 7C ]
+[; ;main.c: 67:         strncat(formatted_lat, lat + 2, 5);
+[e ( _strncat (3 , , &U _formatted_lat -> + &U _lat * -> -> 2 `i `x -> -> # *U &U _lat `i `x `*Cuc -> -> 5 `i `ui ]
 "68
-[; ;main.c: 68:         strncat(formatted_lon, lon + 3, 5);
-[e ( _strncat (3 , , &U _formatted_lon -> + &U _lon * -> -> 3 `i `x -> -> # *U &U _lon `i `x `*Cuc -> -> 5 `i `ui ]
+[; ;main.c: 68:         strcat(formatted_lat, "' ");
+[e ( _strcat (2 , &U _formatted_lat :s 6C ]
 "69
-[; ;main.c: 69:         strcat(formatted_lon, "' ");
-[e ( _strcat (2 , &U _formatted_lon :s 8C ]
-"70
-[; ;main.c: 70:         strcat(formatted_lon, ew);
-[e ( _strcat (2 , &U _formatted_lon -> &U _ew `*Cuc ]
+[; ;main.c: 69:         strcat(formatted_lat, ns);
+[e ( _strcat (2 , &U _formatted_lat -> &U _ns `*Cuc ]
 "72
-[; ;main.c: 72:         LCD_String_xy(0,0,"Lat:");
-[e ( _LCD_String_xy (3 , , -> -> 0 `i `uc -> -> 0 `i `uc :s 9C ]
+[; ;main.c: 72:         strncpy(formatted_lon, lon, 3);
+[e ( _strncpy (3 , , &U _formatted_lon -> &U _lon `*Cuc -> -> 3 `i `ui ]
 "73
-[; ;main.c: 73:         LCD_String_xy(0,4,formatted_lat);
-[e ( _LCD_String_xy (3 , , -> -> 0 `i `uc -> -> 4 `i `uc -> &U _formatted_lat `*Cuc ]
+[; ;main.c: 73:         strcat(formatted_lon, "\xDF");
+[e ( _strcat (2 , &U _formatted_lon :s 7C ]
 "74
-[; ;main.c: 74:         LCD_String_xy(1,0,"Lon:");
-[e ( _LCD_String_xy (3 , , -> -> 1 `i `uc -> -> 0 `i `uc :s 10C ]
+[; ;main.c: 74:         strncat(formatted_lon, lon + 3, 5);
+[e ( _strncat (3 , , &U _formatted_lon -> + &U _lon * -> -> 3 `i `x -> -> # *U &U _lon `i `x `*Cuc -> -> 5 `i `ui ]
 "75
-[; ;main.c: 75:         LCD_String_xy(1,4,formatted_lon);
-[e ( _LCD_String_xy (3 , , -> -> 1 `i `uc -> -> 4 `i `uc -> &U _formatted_lon `*Cuc ]
+[; ;main.c: 75:         strcat(formatted_lon, "' ");
+[e ( _strcat (2 , &U _formatted_lon :s 8C ]
 "76
-[; ;main.c: 76:     } else {
+[; ;main.c: 76:         strcat(formatted_lon, ew);
+[e ( _strcat (2 , &U _formatted_lon -> &U _ew `*Cuc ]
+"79
+[; ;main.c: 79:         LCD_String_xy(0,0,"Lat:");
+[e ( _LCD_String_xy (3 , , -> -> 0 `i `uc -> -> 0 `i `uc :s 9C ]
+"80
+[; ;main.c: 80:         LCD_String_xy(0,4,formatted_lat);
+[e ( _LCD_String_xy (3 , , -> -> 0 `i `uc -> -> 4 `i `uc -> &U _formatted_lat `*Cuc ]
+"81
+[; ;main.c: 81:         LCD_String_xy(1,0,"Lon:");
+[e ( _LCD_String_xy (3 , , -> -> 1 `i `uc -> -> 0 `i `uc :s 10C ]
+"82
+[; ;main.c: 82:         LCD_String_xy(1,4,formatted_lon);
+[e ( _LCD_String_xy (3 , , -> -> 1 `i `uc -> -> 4 `i `uc -> &U _formatted_lon `*Cuc ]
+"83
+[; ;main.c: 83:     } else {
 }
 [e $U 381  ]
 [e :U 380 ]
 {
-"77
-[; ;main.c: 77:         LCD_String_xy(0,0,"GPS: Sin senal");
+"85
+[; ;main.c: 85:         LCD_String_xy(0,0,"GPS: Sin senal");
 [e ( _LCD_String_xy (3 , , -> -> 0 `i `uc -> -> 0 `i `uc :s 11C ]
-"78
-[; ;main.c: 78:         LCD_String_xy(1,0,"Reintentando");
+"86
+[; ;main.c: 86:         LCD_String_xy(1,0,"Reintentando");
 [e ( _LCD_String_xy (3 , , -> -> 1 `i `uc -> -> 0 `i `uc :s 12C ]
-"79
-[; ;main.c: 79:     }
+"87
+[; ;main.c: 87:     }
 }
 [e :U 381 ]
-"80
-[; ;main.c: 80: }
+"88
+[; ;main.c: 88: }
 [e :UE 374 ]
 }
-"85
-[; ;main.c: 85: void Display_RTC() {
+"91
+[; ;main.c: 91: void Display_RTC() {
 [v _Display_RTC `(v ~T0 @X0 1 ef ]
 {
 [e :U _Display_RTC ]
 [f ]
-"86
-[; ;main.c: 86:     unsigned char h,m,s,day,mon,year;
+"92
+[; ;main.c: 92:     unsigned char h,m,s,day,mon,year;
 [v _h `uc ~T0 @X0 1 a ]
 [v _m `uc ~T0 @X0 1 a ]
 [v _s `uc ~T0 @X0 1 a ]
 [v _day `uc ~T0 @X0 1 a ]
 [v _mon `uc ~T0 @X0 1 a ]
 [v _year `uc ~T0 @X0 1 a ]
-"87
-[; ;main.c: 87:     for(uint8_t cnt=0; cnt<5; cnt++) {
+"93
+[; ;main.c: 93:     for(uint8_t cnt=0; cnt<5; cnt++) {
 {
 [v _cnt `uc ~T0 @X0 1 a ]
 [e = _cnt -> -> 0 `i `uc ]
@@ -876,106 +876,106 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 384  ]
 [e :U 383 ]
 {
-"88
-[; ;main.c: 88:         RTC_GetDateTime(&h,&m,&s,&day,&mon,&year);
-[e ( _RTC_GetDateTime (4 , , , , , &U _h &U _m &U _s &U _day &U _mon &U _year ]
-"89
-[; ;main.c: 89:         Clear_Line(0);
-[e ( _Clear_Line (1 -> -> 0 `i `uc ]
-"90
-[; ;main.c: 90:         sprintf(lcd_buffer, "%02u/%02u/20%02u", day,mon,year);
-[e ( _sprintf (1 , , , (. , &U _lcd_buffer :s 13C -> _day `i -> _mon `i -> _year `i ]
-"91
-[; ;main.c: 91:         LCD_String_xy(0,0,lcd_buffer);
-[e ( _LCD_String_xy (3 , , -> -> 0 `i `uc -> -> 0 `i `uc -> &U _lcd_buffer `*Cuc ]
-"92
-[; ;main.c: 92:         Clear_Line(1);
-[e ( _Clear_Line (1 -> -> 1 `i `uc ]
-"93
-[; ;main.c: 93:         sprintf(lcd_buffer, "%02u:%02u:%02u", h,m,s);
-[e ( _sprintf (1 , , , (. , &U _lcd_buffer :s 14C -> _h `i -> _m `i -> _s `i ]
-"94
-[; ;main.c: 94:         LCD_String_xy(1,0,lcd_buffer);
-[e ( _LCD_String_xy (3 , , -> -> 1 `i `uc -> -> 0 `i `uc -> &U _lcd_buffer `*Cuc ]
 "95
-[; ;main.c: 95:         _delay((unsigned long)((1000)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;main.c: 95:         RTC_GetDateTime(&h,&m,&s,&day,&mon,&year);
+[e ( _RTC_GetDateTime (4 , , , , , &U _h &U _m &U _s &U _day &U _mon &U _year ]
 "96
-[; ;main.c: 96:     }
+[; ;main.c: 96:         Clear_Line(0);
+[e ( _Clear_Line (1 -> -> 0 `i `uc ]
+"98
+[; ;main.c: 98:         sprintf(lcd_buffer, "%02u/%02u/20%02u", day,mon,year);
+[e ( _sprintf (1 , , , (. , &U _lcd_buffer :s 13C -> _day `i -> _mon `i -> _year `i ]
+"99
+[; ;main.c: 99:         LCD_String_xy(0,0,lcd_buffer);
+[e ( _LCD_String_xy (3 , , -> -> 0 `i `uc -> -> 0 `i `uc -> &U _lcd_buffer `*Cuc ]
+"100
+[; ;main.c: 100:         Clear_Line(1);
+[e ( _Clear_Line (1 -> -> 1 `i `uc ]
+"102
+[; ;main.c: 102:         sprintf(lcd_buffer, "%02u:%02u:%02u", h,m,s);
+[e ( _sprintf (1 , , , (. , &U _lcd_buffer :s 14C -> _h `i -> _m `i -> _s `i ]
+"103
+[; ;main.c: 103:         LCD_String_xy(1,0,lcd_buffer);
+[e ( _LCD_String_xy (3 , , -> -> 1 `i `uc -> -> 0 `i `uc -> &U _lcd_buffer `*Cuc ]
+"104
+[; ;main.c: 104:         _delay((unsigned long)((1000)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"105
+[; ;main.c: 105:     }
 }
 [e ++ _cnt -> -> 1 `i `uc ]
 [e $ < -> _cnt `i -> 5 `i 383  ]
 [e :U 384 ]
 }
-"97
-[; ;main.c: 97: }
+"106
+[; ;main.c: 106: }
 [e :UE 382 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"99
-[; ;main.c: 99: void main() {
+"109
+[; ;main.c: 109: void main() {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"100
-[; ;main.c: 100:     OSCCON = 0x72;
-[e = _OSCCON -> -> 114 `i `uc ]
-"101
-[; ;main.c: 101:     ADCON1 = 0x0F;
-[e = _ADCON1 -> -> 15 `i `uc ]
-"102
-[; ;main.c: 102:     CMCON = 0x07;
-[e = _CMCON -> -> 7 `i `uc ]
-"103
-[; ;main.c: 103:     LCD_Init();
-[e ( _LCD_Init ..  ]
-"104
-[; ;main.c: 104:     I2C_Master_Init(100000);
-[e ( _I2C_Master_Init (1 -> -> 100000 `l `ul ]
-"105
-[; ;main.c: 105:     RTC_Init();
-[e ( _RTC_Init ..  ]
-"106
-[; ;main.c: 106:     GPS_Init();
-[e ( _GPS_Init ..  ]
-"108
-[; ;main.c: 108:     LCD_Clear();
-[e ( _LCD_Clear ..  ]
-"109
-[; ;main.c: 109:     LCD_String_xy(0,0,"Estacion Met");
-[e ( _LCD_String_xy (3 , , -> -> 0 `i `uc -> -> 0 `i `uc :s 15C ]
 "110
-[; ;main.c: 110:     LCD_String_xy(1,0,"Iniciando...");
-[e ( _LCD_String_xy (3 , , -> -> 1 `i `uc -> -> 0 `i `uc :s 16C ]
+[; ;main.c: 110:     OSCCON = 0x72;
+[e = _OSCCON -> -> 114 `i `uc ]
 "111
-[; ;main.c: 111:     _delay((unsigned long)((2000)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;main.c: 111:     ADCON1 = 0x0F;
+[e = _ADCON1 -> -> 15 `i `uc ]
+"112
+[; ;main.c: 112:     CMCON = 0x07;
+[e = _CMCON -> -> 7 `i `uc ]
 "113
-[; ;main.c: 113:     while(1) {
+[; ;main.c: 113:     LCD_Init();
+[e ( _LCD_Init ..  ]
+"114
+[; ;main.c: 114:     I2C_Master_Init(100000);
+[e ( _I2C_Master_Init (1 -> -> 100000 `l `ul ]
+"115
+[; ;main.c: 115:     RTC_Init();
+[e ( _RTC_Init ..  ]
+"116
+[; ;main.c: 116:     GPS_Init();
+[e ( _GPS_Init ..  ]
+"119
+[; ;main.c: 119:     LCD_Clear();
+[e ( _LCD_Clear ..  ]
+"120
+[; ;main.c: 120:     LCD_String_xy(0,0,"Estacion Met");
+[e ( _LCD_String_xy (3 , , -> -> 0 `i `uc -> -> 0 `i `uc :s 15C ]
+"121
+[; ;main.c: 121:     LCD_String_xy(1,0,"Iniciando...");
+[e ( _LCD_String_xy (3 , , -> -> 1 `i `uc -> -> 0 `i `uc :s 16C ]
+"122
+[; ;main.c: 122:     _delay((unsigned long)((2000)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"125
+[; ;main.c: 125:     while(1) {
 [e :U 388 ]
 {
-"114
-[; ;main.c: 114:         switch(current_display) {
+"127
+[; ;main.c: 127:         switch(current_display) {
 [e $U 391  ]
 {
-"115
-[; ;main.c: 115:             case SHOW_DHT11: Display_DHT11(); break;
+"128
+[; ;main.c: 128:             case SHOW_DHT11: Display_DHT11(); break;
 [e :U 392 ]
 [e ( _Display_DHT11 ..  ]
 [e $U 390  ]
-"116
-[; ;main.c: 116:             case SHOW_GPS: Display_GPS(); break;
+"129
+[; ;main.c: 129:             case SHOW_GPS: Display_GPS(); break;
 [e :U 393 ]
 [e ( _Display_GPS ..  ]
 [e $U 390  ]
-"117
-[; ;main.c: 117:             case SHOW_RTC: Display_RTC(); break;
+"130
+[; ;main.c: 130:             case SHOW_RTC: Display_RTC(); break;
 [e :U 394 ]
 [e ( _Display_RTC ..  ]
 [e $U 390  ]
-"118
-[; ;main.c: 118:         }
+"131
+[; ;main.c: 131:         }
 }
 [e $U 390  ]
 [e :U 391 ]
@@ -984,20 +984,20 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> . `E3755 2 `ui 394
  390 ]
 [e :U 390 ]
-"119
-[; ;main.c: 119:         current_display = (current_display + 1) % NUM_DISPLAYS;
+"134
+[; ;main.c: 134:         current_display = (current_display + 1) % NUM_DISPLAYS;
 [e = _current_display -> % + -> _current_display `ui -> -> 1 `i `ui -> . `E3755 3 `ui `E3755 ]
-"120
-[; ;main.c: 120:         _delay((unsigned long)((5000)*(8000000/4000.0)));
+"135
+[; ;main.c: 135:         _delay((unsigned long)((5000)*(8000000/4000.0)));
 [e ( __delay (1 -> * -> -> 5000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"121
-[; ;main.c: 121:     }
+"136
+[; ;main.c: 136:     }
 }
 [e :U 387 ]
 [e $U 388  ]
 [e :U 389 ]
-"122
-[; ;main.c: 122: }
+"137
+[; ;main.c: 137: }
 [e :UE 386 ]
 }
 [p f _sprintf 9470980 ]
