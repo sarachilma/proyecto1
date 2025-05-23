@@ -1,63 +1,82 @@
-#include <WiFi.h>
-#include <WebServer.h>
-#include <DHT.h>
-#include <TinyGPS++.h>
-#include <Wire.h>
-#include <RTClib.h>
+/* ====================================================
+ * ESTACIÓN METEOROLÓGICA CON GPS - ESP32
+ * 
+ * Características:
+ * - Monitoriza temperatura y humedad (DHT11)
+ * - Obtiene posición GPS (latitud, longitud, altitud)
+ * - Muestra hora exacta (RTC DS1307)
+ * - Interfaz web con gráficos en tiempo real
+ * - Control de encendido/apagado remoto
+ * 
+ * ====================================================
+ */
 
-// -------- CONFIGURACIÓN WiFi --------
-const char* ssid = "iPhone";
-const char* password = "8865316@";
+/********************** SECCIÓN DE BIBLIOTECAS **********************/
+#include <WiFi.h>          // Para conexión WiFi
+#include <WebServer.h>     // Para crear servidor web
+#include <DHT.h>           // Para sensor DHT11
+#include <TinyGPS++.h>     // Para módulo GPS
+#include <Wire.h>          // Para comunicación I2C (RTC)
+#include <RTClib.h>        // Para reloj en tiempo real (RTC)
 
-// Configuración DHT11
-#define DHTPIN 4
-#define DHTTYPE DHT11
-DHT dht(DHTPIN, DHTTYPE);
+/********************** CONFIGURACIÓN WIFI **********************/
+const char* ssid = "iPhone";       // Nombre de tu red WiFi
+const char* password = "8865316@"; // Contraseña WiFi
 
-// Configuración GPS
-#define RXD2 16
-#define TXD2 17
-TinyGPSPlus gps;
-HardwareSerial ss(1);
+/********************** CONFIGURACIÓN SENSOR DHT11 **********************/
+#define DHTPIN 4           // Pin GPIO4 para datos DHT11
+#define DHTTYPE DHT11      // Tipo de sensor
+DHT dht(DHTPIN, DHTTYPE);  // Objeto sensor
 
-// Configuración RTC
-RTC_DS1307 rtc;
+/********************** CONFIGURACIÓN GPS **********************/
+#define RXD2 16            // GPIO16 como RX para GPS
+#define TXD2 17            // GPIO17 como TX para GPS
+TinyGPSPlus gps;           // Objeto GPS
+HardwareSerial ss(1);      // Usamos Serial2 (pines 16/17)
 
-// Servidor Web
-WebServer server(80);
+/********************** CONFIGURACIÓN RTC **********************/
+RTC_DS1307 rtc;            // Reloj de tiempo real
 
-// Variables globales
-bool systemOn = true;
-float temp = 0, hum = 0;
-float tempMax = -1000, tempMin = 1000;
-float humMax = -1000, humMin = 1000;
+/********************** SERVIDOR WEB **********************/
+WebServer server(80);      // Servidor en puerto 80
+
+/********************** VARIABLES GLOBALES **********************/
+bool systemOn = true;      // Estado del sistema (ON/OFF)
+
+// Variables para DHT11
+float temp = 0, hum = 0;               // Valores actuales
+float tempMax = -1000, tempMin = 1000; // Registros extremos
+float humMax = -1000, humMin = 1000;   // Registros extremos
+
+// Variables para GPS
 double latitude = 0, longitude = 0, altitude = 0;
 int satellites = 0;
-String dateTime = "";
 
-// Función para convertir grados decimales a grados, minutos, segundos y dirección
+// Variable para RTC
+String dateTime = "";      // Almacena fecha+hora
+
+/********************** FUNCIÓN PARA FORMATO GPS **********************/
 String formatGPScoord(double coord, bool isLat) {
-  char direction;
-  if (isLat) {
-    direction = coord >= 0 ? 'N' : 'S';
-  } else {
-    direction = coord >= 0 ? 'E' : 'W';
-  }
+  // Determina dirección cardinal (N/S/E/W)
+  char direction = isLat ? (coord >= 0 ? 'N' : 'S') : (coord >= 0 ? 'E' : 'W');
   
-  coord = fabs(coord);
+  coord = fabs(coord); // Valor absoluto
   int degrees = (int)coord;
   double minutesWithSeconds = (coord - degrees) * 60;
   int minutes = (int)minutesWithSeconds;
   double seconds = (minutesWithSeconds - minutes) * 60;
   
+  // Formatea "DD°MM'SS.SS" Dirección"
   char buffer[30];
   snprintf(buffer, sizeof(buffer), "%d°%d'%.2f\" %c", degrees, minutes, seconds, direction);
   return String(buffer);
 }
 
-// HTML con gráficos perfectamente alineados
+
+/********************** INTERFAZ WEB (HTML/CSS/JS) **********************/
 const char index_html[] PROGMEM = R"rawliteral(
-<!DOCTYPE HTML><html>
+<!DOCTYPE HTML>
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -104,7 +123,7 @@ const char index_html[] PROGMEM = R"rawliteral(
     }
     .thermo-container {
       width: 65px;
-      height: 260px; /* Altura del termómetro */
+      height: 260px;
       background: linear-gradient(to top, #0000ff, #00ffff, #00ff00, #ffff00, #ff0000);
       border-radius: 35px;
       border: 3px solid #ddd;
@@ -116,7 +135,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       bottom: 0;
       width: 100%;
       background: rgba(50, 50, 50, 0.4);
-      transition: height 0.8s ease-out;
+      transition: height 0.5s ease-out;
     }
     .thermo-scale {
       display: flex;
@@ -146,6 +165,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       transform: translate(-50%, -50%);
       border: 2px solid white;
       box-shadow: 0 0 0 2px var(--color-danger);
+      transition: all 0.5s ease;
     }
     .clock-container {
       width: 180px;
@@ -245,6 +265,20 @@ const char index_html[] PROGMEM = R"rawliteral(
     .power-btn:active {
       transform: translateY(0);
     }
+    .gps-status {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-left: 8px;
+    }
+    .gps-status-active {
+      background-color: var(--color-success);
+      box-shadow: 0 0 8px var(--color-success);
+    }
+    .gps-status-inactive {
+      background-color: var(--color-danger);
+    }
   </style>
 </head>
 <body>
@@ -294,7 +328,7 @@ const char index_html[] PROGMEM = R"rawliteral(
 
     <!-- Tarjeta GPS -->
     <div class="card">
-      <div class="card-title">📍 Posición GPS</div>
+      <div class="card-title">📍 Posición GPS <span id="gps-status" class="gps-status gps-status-inactive"></span></div>
       <div class="gps-map">
         <div class="gps-marker" id="gps-marker"></div>
       </div>
@@ -326,7 +360,7 @@ const char index_html[] PROGMEM = R"rawliteral(
 // Variables de estado
 let systemOn = %SYSTEM_STATUS%;
 
-// Funciones (usando sintaxis moderna const + arrow)
+// Función para actualizar el reloj analógico
 const updateClock = (hours, minutes, seconds) => {
   const hourHand = document.getElementById('hour-hand');
   const minuteHand = document.getElementById('minute-hand');
@@ -337,11 +371,13 @@ const updateClock = (hours, minutes, seconds) => {
   secondHand.style.transform = `translateX(-50%) rotate(${seconds * 6}deg)`;
 };
 
+// Función para encender/apagar el sistema
 const toggleSystem = () => {
   fetch('/control?action=' + (systemOn ? 'off' : 'on'))
     .then(() => location.reload());
 };
 
+// Función para convertir decimal a formato DMS
 const decimalToDMS = (coord, isLat) => {
   let direction = isLat ? (coord >= 0 ? 'N' : 'S') : (coord >= 0 ? 'E' : 'W');
   coord = Math.abs(coord);
@@ -351,36 +387,48 @@ const decimalToDMS = (coord, isLat) => {
   return `${degrees}°${minutes}'${seconds}" ${direction}`;
 };
 
+// Función principal que actualiza todos los datos
 const updateData = () => {
   if (!systemOn) return;
   
   fetch('/data')
     .then(response => response.json())
     .then(data => {
-      // Actualizar termómetros
+      // Actualizar temperatura
       document.getElementById('temp').textContent = data.temp.toFixed(1);
       document.getElementById('temp-max').textContent = data.tempMax.toFixed(1);
       document.getElementById('temp-min').textContent = data.tempMin.toFixed(1);
+      
+      // Actualizar humedad (con corrección para gráfico)
       document.getElementById('hum').textContent = data.hum.toFixed(1);
       document.getElementById('hum-max').textContent = data.humMax.toFixed(1);
       document.getElementById('hum-min').textContent = data.humMin.toFixed(1);
+      document.getElementById('hum-mask').style.height = `${100 - data.hum}%`;
       
-      // Ajustar máscaras
+      // Ajustar gráfico de temperatura
       document.getElementById('temp-mask').style.height = `${100 - (data.temp * 2)}%`;
-      document.getElementById('hum-mask').style.height = `${100 - (data.hum * 0.01 * 100)}%`;
 
-      // Actualizar GPS (formato DMS)
-      document.getElementById('lat').textContent = decimalToDMS(data.lat, true);
-      document.getElementById('lon').textContent = decimalToDMS(data.lon, false);
-      document.getElementById('alt').textContent = data.alt.toFixed(0);
-      document.getElementById('sats').textContent = data.sats;
-      
-      // Posicionar marcador
+      // Actualizar GPS
+      const gpsValid = data.lat !== 0 && data.lon !== 0;
+      const statusElement = document.getElementById('gps-status');
       const marker = document.getElementById('gps-marker');
-      const latPos = 50 - ((data.lat - %INITIAL_LAT%) * 1000);
-      const lonPos = 50 + ((data.lon - %INITIAL_LON%) * 1000);
-      marker.style.top = `${Math.min(Math.max(latPos, 5), 95)}%`;
-      marker.style.left = `${Math.min(Math.max(lonPos, 5), 95)}%`;
+      
+      statusElement.className = gpsValid ? 'gps-status gps-status-active' : 'gps-status gps-status-inactive';
+      
+      document.getElementById('lat').textContent = gpsValid ? decimalToDMS(data.lat, true) : 'Sin señal';
+      document.getElementById('lon').textContent = gpsValid ? decimalToDMS(data.lon, false) : 'Sin señal';
+      document.getElementById('alt').textContent = gpsValid ? data.alt.toFixed(0) : '--';
+      document.getElementById('sats').textContent = gpsValid ? data.sats : '0';
+
+      if (gpsValid) {
+        const latPos = 50 - ((data.lat - %INITIAL_LAT%) * 1000);
+        const lonPos = 50 + ((data.lon - %INITIAL_LON%) * 1000);
+        marker.style.top = `${Math.min(Math.max(latPos, 5), 95)}%`;
+        marker.style.left = `${Math.min(Math.max(lonPos, 5), 95)}%`;
+        marker.style.backgroundColor = 'var(--color-success)';
+      } else {
+        marker.style.backgroundColor = 'var(--color-danger)';
+      }
 
       // Actualizar RTC
       const [date, time] = data.datetime.split(' ');
@@ -388,10 +436,13 @@ const updateData = () => {
       document.getElementById('rtc-time').textContent = time;
       document.getElementById('rtc-date').textContent = date;
       updateClock(parseInt(hours), parseInt(minutes), parseInt(seconds));
+    })
+    .catch(error => {
+      console.error('Error al obtener datos:', error);
     });
 };
 
-// Iniciar actualización
+// Actualizar cada segundo y al cargar
 setInterval(updateData, 1000);
 window.onload = updateData;
 </script>
@@ -399,8 +450,10 @@ window.onload = updateData;
 </html>
 )rawliteral";
 
+/********************** FUNCIÓN PARA GENERAR HTML **********************/
 String getHTML() {
   String html = index_html;
+  // Reemplaza placeholders con valores actuales
   html.replace("%BTN_TEXT%", systemOn ? "🔴 APAGAR SISTEMA" : "🟢 ENCENDER SISTEMA");
   html.replace("%SYSTEM_STATUS%", systemOn ? "true" : "false");
   html.replace("%INITIAL_LAT%", String(latitude, 6));
@@ -408,62 +461,80 @@ String getHTML() {
   return html;
 }
 
+/********************** LECTURA DE SENSORES **********************/
 void readSensors() {
-  if (!systemOn) return;
+  if (!systemOn) return; // Si está apagado, no leer
 
-  // Leer DHT11
+  // ========= LECTURA DHT11 =========
   temp = dht.readTemperature();
   hum = dht.readHumidity();
-  if (!isnan(temp) && !isnan(hum)) {
-    if (temp > tempMax) tempMax = temp;
-    if (temp < tempMin) tempMin = temp;
-    if (hum > humMax) humMax = hum;
-    if (hum < humMin) humMin = hum;
+  
+  if (!isnan(temp) && !isnan(hum)) { // Si son valores válidos
+    // Actualiza máximos y mínimos
+    tempMax = max(tempMax, temp);
+    tempMin = min(tempMin, temp);
+    humMax = max(humMax, hum);
+    humMin = min(humMin, hum);
   }
 
-  // Leer GPS
-  bool newData = false;
-  for (unsigned long start = millis(); millis() - start < 1000;) {
-    while (ss.available()) {
+  // ========= LECTURA GPS =========
+  bool gpsUpdated = false;
+  unsigned long start = millis();
+  
+  // Intenta leer durante 1.5 segundos
+  while (millis() - start < 1500 && !gpsUpdated) {
+    while (ss.available() > 0) {
       if (gps.encode(ss.read())) {
-        if (gps.location.isValid()) {
+        if (gps.location.isValid() && gps.location.age() < 2000) {
           latitude = gps.location.lat();
           longitude = gps.location.lng();
           altitude = gps.altitude.meters();
           satellites = gps.satellites.value();
-          newData = true;
+          gpsUpdated = true;
         }
       }
     }
   }
 
-  // Leer RTC
+  // ========= LECTURA RTC =========
   DateTime now = rtc.now();
-  dateTime = String(now.day()) + "/" + String(now.month()) + "/" + String(now.year()) + " " +
-             String(now.hour()) + ":" + String(now.minute()) + ":" + String(now.second());
+  dateTime = String(now.day()) + "/" + String(now.month()) + "/" + 
+             String(now.year()) + " " + String(now.hour()) + ":" + 
+             String(now.minute()) + ":" + String(now.second());
 }
 
+/********************** SETUP (INICIALIZACIÓN) **********************/
 void setup() {
-  Serial.begin(115200);
-  Wire.begin();
+  Serial.begin(115200); // Para depuración
+  Wire.begin();         // Inicia I2C
   
-  // Inicializar sensores
-  dht.begin();
-  ss.begin(9600, SERIAL_8N1, RXD2, TXD2);
-  if (!rtc.begin()) Serial.println("Error: RTC no encontrado");
-
-  // Conectar WiFi
-  WiFi.begin(ssid, password);
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(1000);
-    Serial.println("Conectando a WiFi...");
+  // ========= INICIALIZAR SENSORES =========
+  dht.begin(); // DHT11
+  ss.begin(9600, SERIAL_8N1, RXD2, TXD2); // GPS
+  
+  if (!rtc.begin()) { // RTC
+    Serial.println("Error al iniciar RTC");
   }
-  Serial.println("Conectado. IP: " + WiFi.localIP().toString());
 
-  // Configurar rutas
-  server.on("/", HTTP_GET, []() { server.send(200, "text/html", getHTML()); });
+  // ========= CONEXIÓN WIFI =========
+  Serial.println("Conectando a WiFi...");
+  WiFi.begin(ssid, password);
+  
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  
+  Serial.println("\nConectado! IP: " + WiFi.localIP().toString());
+
+  // ========= RUTAS DEL SERVIDOR WEB =========
+  server.on("/", HTTP_GET, []() {
+    server.send(200, "text/html", getHTML());
+  });
+  
   server.on("/data", HTTP_GET, []() {
     readSensors();
+    // Crear JSON con todos los datos
     String json = "{";
     json += "\"temp\":" + String(temp, 1) + ",";
     json += "\"tempMax\":" + String(tempMax, 1) + ",";
@@ -477,16 +548,21 @@ void setup() {
     json += "\"sats\":" + String(satellites) + ",";
     json += "\"datetime\":\"" + dateTime + "\"";
     json += "}";
+    
     server.send(200, "application/json", json);
   });
+  
   server.on("/control", HTTP_GET, []() {
     systemOn = (server.arg("action") == "on");
     server.send(200, "text/plain", "OK");
   });
-  server.begin();
+  
+  server.begin(); // Inicia servidor
+  Serial.println("Servidor HTTP iniciado");
 }
 
+/********************** LOOP (BUCLE PRINCIPAL) **********************/
 void loop() {
-  server.handleClient();
-  delay(100);
+  server.handleClient(); // Maneja peticiones web
+  delay(50); // Pequeña pausa para estabilidad
 }
