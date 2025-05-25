@@ -564,5 +564,5 @@ void setup() {
 /********************** LOOP (BUCLE PRINCIPAL) **********************/
 void loop() {
   server.handleClient(); // Maneja peticiones web
-  delay(50); // Pequeña pausa para estabilidad
+  delay(100); // Pequeña pausa para estabilidad
 }
