@@ -1,0 +1,153 @@
+#include <WiFi.h>
+#include <Wire.h>
+#include <DHT.h>
+#include <Adafruit_GPS.h>
+#include <RTClib.h>
+#include <WiFiClient.h>
+#include <WebServer.h>
+
+// Configuracion WiFi
+const char* ssid = "nombre";
+const char* password = "contraseña";
+
+// Configuración del sensor DHT
+#define DHTPIN 4
+#define DHTTYPE DHT11
+DHT dht(DHTPIN, DHTTYPE);
+
+// Configuración del GPS
+#define GPSSerial Serial1
+Adafruit_GPS GPS(&GPSSerial);
+
+// Configuración del RTC
+RTC_DS1307 rtc;
+
+// Servidor web en el puerto 80
+WebServer server(80);
+
+// Variables globales
+float temperatura = 0.0;
+float humedad = 0.0;
+String latitud = "";
+String longitud = "";
+String fechaHoraActual = "";
+
+void setup() {
+  Serial.begin(115200);
+  dht.begin();
+
+  // Inicializa RTC
+  Wire.begin();
+  if (!rtc.begin()) {
+    Serial.println("No se encuentra el módulo RTC");
+    while (1);
+  }
+
+  // Inicializa GPS
+  GPSSerial.begin(9600);
+  GPS.begin(9600);
+  GPS.sendCommand(PMTK_SET_NMEA_OUTPUT_RMCGGA);
+  GPS.sendCommand(PMTK_SET_NMEA_UPDATE_1HZ);
+  GPS.sendCommand(PGCMD_ANTENNA);
+  delay(1000);
+
+  // Conexión WiFi
+  WiFi.begin(ssid, password);
+  Serial.print("Conectando a WiFi");
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.print(".");
+  }
+  Serial.println("\nConectado a WiFi. Dirección IP: " + WiFi.localIP().toString());
+
+  // Rutas del servidor
+  server.on("/", handleRoot);
+  server.begin();
+  Serial.println("Servidor web iniciado");
+}
+
+void loop() {
+  actualizarDatos();
+  server.handleClient();
+}
+
+void actualizarDatos() {
+  // Leer temperatura y humedad
+  temperatura = dht.readTemperature();
+  humedad = dht.readHumidity();
+
+  // Leer GPS
+  GPS.read();
+  if (GPS.newNMEAreceived()) {
+    GPS.parse(GPS.lastNMEA());
+  }
+
+  if (GPS.fix) {
+    latitud = String(GPS.latitude, 6);
+    longitud = String(GPS.longitude, 6);
+  } else {
+    latitud = "No disponible";
+    longitud = "No disponible";
+  }
+
+  // Leer fecha y hora del RTC
+  DateTime now = rtc.now();
+  fechaHoraActual = String(now.day()) + "/" + String(now.month()) + "/" + String(now.year()) +
+                    " " + String(now.hour()) + ":" + String(now.minute()) + ":" + String(now.second());
+}
+
+void handleRoot() {
+  server.send(200, "text/html", generarPaginaWeb());
+}
+
+String generarPaginaWeb() {
+  String pagina = R"rawliteral(
+  <!DOCTYPE html>
+  <html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <title>Estación Meteorológica</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f4f8;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+      h1 {
+        color: #0077cc;
+      }
+      .contenedor {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+        text-align: left;
+      }
+      .dato {
+        margin-bottom: 15px;
+      }
+      .dato span {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Estación Meteorológica</h1>
+    <div class="contenedor">
+      <div class="dato"><span>Temperatura:</span> )rawliteral" + String(temperatura) + R"rawliteral( °C</div>
+      <div class="dato"><span>Humedad:</span> )rawliteral" + String(humedad) + R"rawliteral( %</div>
+      <div class="dato"><span>Latitud:</span> )rawliteral" + latitud + R"rawliteral(</div>
+      <div class="dato"><span>Longitud:</span> )rawliteral" + longitud + R"rawliteral(</div>
+      <div class="dato"><span>Fecha y hora:</span> )rawliteral" + fechaHoraActual + R"rawliteral(</div>
+    </div>
+  </body>
+  </html>
+  )rawliteral";
+  return pagina;
+}
